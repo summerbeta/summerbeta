@@ -1,0 +1,198 @@
+@import url("http://fonts.googleapis.com/css?family=PTSans");
+body {
+  background: #fff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+footer {
+  background: #e0e0e0;
+  display: block;
+  margin-top: 4em;
+  padding: 2em 0;
+}
+header {
+  background: #e0e0e0;
+  border-bottom: 20px solid #545454;
+  display: block;
+  margin-bottom: 2.43em;
+}
+.cajaconborde {
+  border: 1px solid #c4c4c4;
+  display: block;
+  margin-bottom: 1em;
+}
+.clear {
+  clear: both;
+}
+/* Columnas */
+.columns {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: auto;
+/*&:last-child
+		float none
+		margin-right 0*/
+}
+.columns:first-child,
+.columns.alpha {
+  margin-left: 0;
+}
+@media only screen and (min-width: 767px) {
+  .columns {
+    float: left;
+    margin-left: 2.12766%;
+    min-height: 1px;
+    box-sizing: border-box;
+  }
+  .columns:first-child,
+  .columns.alpha {
+    margin-left: 0;
+  }
+  .columns.one {
+    width: 14.89362%;
+  }
+  .columns.two {
+    width: 31.91489%;
+  }
+  .columns.three {
+    width: 48.93617%;
+  }
+  .columns.four {
+    width: 65.95745%;
+  }
+  .columns.five {
+    width: 82.97872%;
+  }
+  .columns.six {
+    width: 100%;
+  }
+}
+.logo {
+  font-size: 2.25em;
+  margin-top: 45px;
+}
+.logo img {
+  width: 100%;
+}
+.logomenu {
+  position: relative;
+}
+.muestras {
+  background: #c4c4c4;
+  font-size: 1.5em;
+  margin-top: 1em;
+  min-height: 5em;
+  padding: 2em;
+  text-align: center;
+}
+.navprimary {
+  display: block;
+  margin-top: 45px;
+  width: 100%;
+}
+.navprimary ul {
+  display: block;
+  float: right;
+  font-weight: lighter;
+  list-style: none;
+  text-transform: uppercase;
+}
+.navprimary ul li {
+  border-left: 1px solid #c4c4c4;
+  color: #606060;
+  display: inline-block;
+  margin: 0;
+  padding: 0.2em 0.5em;
+}
+.navprimary ul li:first-child {
+  border-left: 0;
+}
+.navprimary ul li a {
+  text-decoration: none;
+  color: #606060;
+}
+.perfil {
+  background: #fff;
+}
+.perfil.columns {
+  padding: 0.5em;
+  position: relative;
+}
+.perfil .perfil_accion {
+  background: rgba(255,255,255,0.8);
+  bottom: 0;
+  display: block;
+  left: 1em;
+  margin: 2em;
+  padding: 0.5em 1em;
+  position: absolute;
+  right: 1em;
+}
+.perfil .perfil_foto {
+  width: 100%;
+}
+.popular {
+  background: #e0e0e0;
+}
+.popular .nombre {
+  text-align: center;
+  font-size: 36px;
+  font-size: 2.25em;
+}
+.popular .seguidores {
+  border-left: 0;
+}
+.popular .popular_caja {
+  border-left: 1px solid #c4c4c4;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+  width: 32.75%;
+}
+.popular .popular_caja .popular_cantidad {
+  font-size: 1.4em;
+}
+.popular .popular_caja .popular_titulo {
+  font-size: 1.6em;
+}
+.publicaciones {
+  margin-top: 1em;
+}
+.publicaciones div {
+  border: 1px solid #c4c4c4;
+  margin: 0;
+  padding: 0;
+}
+/* Filas */
+.row {
+  margin: 0 auto;
+  max-width: 1024px;
+  min-width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+.row .row {
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.social {
+  float: right;
+  margin-top: 16px;
+  margin-top: 1em;
+}
+.tituloTrendi {
+  font-size: 36px;
+  font-size: 2.25em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.tituloTrendi span {
+  font-weight: lighter;
+}

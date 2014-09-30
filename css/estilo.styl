@@ -1,0 +1,183 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans)
+
+color-gris = #c4c4c4
+color-grisclaro = #e0e0e0
+color-hombre = #01a4b3
+color-mujer = #d803c6
+
+body
+	background #ffffff
+	font-family 'PT Sans', sans-serif
+	font-size 16px
+	margin 0
+	padding 0
+
+footer
+	background color-grisclaro
+	display block
+	margin-top 4em
+	padding 2em 0
+
+header
+	background color-grisclaro
+	border-bottom 20px solid #545454
+	display block
+	margin-bottom 2.43em
+
+.cajaconborde
+	border 1px solid color-gris
+	display block
+	margin-bottom 1em
+.clear
+	clear both
+	
+/* Columnas */
+.columns
+	float none
+	margin-left 0
+	margin-right 0
+	width auto
+	&:first-child, &.alpha
+		margin-left 0
+	/*&:last-child
+		float none
+		margin-right 0*/
+	@media only screen and (min-width: 767px)
+		float: left; 
+		margin-left: 2.12766%; 
+		min-height: 1px; 
+		box-sizing border-box
+
+		&:first-child, &.alpha
+			margin-left 0
+			
+		&.one
+			width: 14.89362%
+		&.two
+			width: 31.91489%
+		&.three
+			width: 48.93617%
+		&.four
+			width: 65.95745%
+		&.five
+			width: 82.97872%
+		&.six
+			width: 100%
+	
+.logo
+	font-size 2.25em
+	margin-top 45px
+	img
+		width 100%
+
+.logomenu
+	position relative
+
+
+.muestras
+	background color-gris
+	font-size 1.5em
+	margin-top 1em
+	min-height 5em
+	padding 2em
+	text-align center
+
+.navprimary
+	display block
+	margin-top 45px
+	width 100%
+	ul
+		display block
+		float right
+		font-weight lighter
+		list-style none
+		text-transform uppercase
+		li
+			border-left 1px solid color-gris
+			color #606060
+			display inline-block
+			margin 0
+			padding 0.2em 0.5em
+			&:first-child
+				border-left 0
+			a
+				text-decoration none
+				color #606060
+
+.perfil
+	background #fff
+	&.columns
+		padding 0.5em
+		position relative
+	.perfil_accion
+		background rgba(255,255,255,0.8)
+		bottom 0
+		display block
+		left 1em
+		margin 2em
+		padding 0.5em 1em
+		position absolute
+		right 1em
+	.perfil_foto
+		width 100%
+
+.popular
+	background color-grisclaro
+	.nombre
+		text-align center
+		font-size 36px
+		font-size 2.25em
+	.seguidores
+		border-left 0
+	.popular_caja
+		border-left 1px solid color-gris
+		display inline-block
+		margin 0
+		padding 0
+		text-align center
+		vertical-align top
+		width 32.75%
+		.popular_cantidad
+			font-size 1.4em
+		.popular_titulo
+			font-size 1.6em
+
+.publicaciones
+	margin-top 1em
+	div
+		border 1px solid color-gris
+		margin 0
+		padding 0
+
+/* Filas */
+.row
+	margin 0 auto
+	max-width 1024px
+	min-width 320px
+	padding-left 20px
+	padding-right 20px
+	width 100%
+	.row
+		min-width 0
+		padding-left 0
+		padding-right 0
+
+
+.social
+	float right
+	margin-top 16px
+	margin-top 1em
+
+.tituloTrendi
+	font-size 36px
+	font-size 2.25em
+	text-align center
+	text-transform uppercase
+	span
+		font-weight lighter
+
+
+
+
+
+
