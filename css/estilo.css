@@ -1,4 +1,3 @@
-@import url("http://fonts.googleapis.com/css?family=PTSans");
 body {
   background: #fff;
   font-family: 'PT Sans', sans-serif;
@@ -17,6 +16,9 @@ header {
   border-bottom: 20px solid #545454;
   display: block;
   margin-bottom: 2.43em;
+}
+.borde1 {
+  border-bottom: 2em;
 }
 .cajaconborde {
   border: 1px solid #c4c4c4;
@@ -114,6 +116,10 @@ header {
   text-decoration: none;
   color: #606060;
 }
+.navprimary ul li a:hover,
+.navprimary ul li a.actual {
+  border-bottom: 1px solid #c4c4c4;
+}
 .perfil {
   background: #fff;
 }
@@ -123,27 +129,27 @@ header {
 }
 .perfil .perfil_accion {
   background: rgba(255,255,255,0.8);
-  bottom: 0;
+  bottom: 2em;
   display: block;
-  left: 1em;
-  margin: 2em;
+  left: 2em;
   padding: 0.5em 1em;
   position: absolute;
-  right: 1em;
+  right: 2em;
 }
 .perfil .perfil_foto {
   width: 100%;
+  height: auto;
 }
 .popular {
-  background: #e0e0e0;
+  background: #f2f2f2;
+  padding-bottom: 1em;
+  padding-top: 1em;
 }
-.popular .nombre {
-  text-align: center;
-  font-size: 36px;
+.popular .popular_nombre {
   font-size: 2.25em;
-}
-.popular .seguidores {
-  border-left: 0;
+  font-size: 36px;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 .popular .popular_caja {
   border-left: 1px solid #c4c4c4;
@@ -154,11 +160,29 @@ header {
   vertical-align: top;
   width: 32.75%;
 }
+.popular .popular_caja.seguidores {
+  border-left: 0;
+}
 .popular .popular_caja .popular_cantidad {
   font-size: 1.4em;
+  margin: 0.5em 0 1em;
 }
 .popular .popular_caja .popular_titulo {
   font-size: 1.6em;
+  margin: 0.2em 0;
+}
+.producto {
+  clear: both;
+  color: #fff;
+  height: 367px;
+  margin: 0;
+  padding: 0;
+}
+.producto .descripcion {
+  background: rgba(0,0,0,0.8);
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 .publicaciones {
   margin-top: 1em;
@@ -171,7 +195,7 @@ header {
 /* Filas */
 .row {
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 1150px;
   min-width: 320px;
   padding-left: 20px;
   padding-right: 20px;
@@ -181,6 +205,21 @@ header {
   min-width: 0;
   padding-left: 0;
   padding-right: 0;
+}
+.search_form {
+  display: inline-block;
+}
+.search_form input,
+.search_form button {
+  background: none;
+  border: 1px solid #606060;
+  margin: 0;
+  padding: 0;
+  height: 1.2em;
+  vertical-align: middle;
+}
+.search_form input {
+  padding: 0 10;
 }
 .social {
   float: right;
@@ -195,4 +234,10 @@ header {
 }
 .tituloTrendi span {
   font-weight: lighter;
+}
+.video_cuatrocol {
+  height: auto;
+  min-height: 315px;
+  width: 759px;
+  width: 100%;
 }
