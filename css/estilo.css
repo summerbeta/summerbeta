@@ -12,13 +12,48 @@ footer {
   padding: 2em 0;
 }
 header {
-  background: #e0e0e0;
+  background: color-grisclaro;
   border-bottom: 20px solid #545454;
   display: block;
   margin-bottom: 2.43em;
 }
+.add img {
+  width: 100%;
+  height: auto;
+}
+.add .add2cols {
+  display: block;
+  margin-top: 22px;
+  margin-top: 1.375em;
+}
+.add .add2cols.top {
+  margin-top: 0;
+}
 .borde1 {
   border-bottom: 2em;
+  padding-top: 2em;
+}
+.blog_element {
+  padding: 1em;
+  color: #4c4c4c;
+}
+.blog_element h3 {
+  font-size: 2.125em;
+}
+.blog_element img {
+  float: left;
+  margin-right: 1em;
+  display: inline-block;
+}
+.blog_element p {
+  font-size: 1.5em;
+}
+.blog_element .inf {
+  display: inline-block;
+  max-width: 50%;
+}
+.blog_element .url {
+  font-size: 1em;
 }
 .cajaconborde {
   border: 1px solid #c4c4c4;
@@ -71,6 +106,10 @@ header {
   .columns.six {
     width: 100%;
   }
+}
+.girl a {
+  color: #d803c6;
+  text-decoration: none;
 }
 .logo {
   font-size: 2.25em;
@@ -172,17 +211,50 @@ header {
   margin: 0.2em 0;
 }
 .producto {
-  clear: both;
   color: #fff;
   height: 367px;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 .producto .descripcion {
   background: rgba(0,0,0,0.8);
+  bottom: 0;
+  height: 4em;
   margin: 0;
+  overflow: hidden;
   padding: 0;
+  position: absolute;
   width: 100%;
+}
+.producto .descripcion img {
+  width: 100%;
+  height: auto;
+}
+.producto .descripcion .nombre_marca,
+.producto .descripcion .precio {
+  display: inline-block;
+  vertical-align: top;
+}
+.producto .descripcion .nombre_marca {
+  width: 55%;
+  margin-top: 0.5em;
+  margin-left: 0.7em;
+}
+.producto .descripcion .precio {
+  background: #d803c6;
+  font-size: 1.2em;
+  height: 4em;
+  padding: 0.2em;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 20%;
+}
+.producto .descripcion .precio .detalles {
+  border-top: 1px solid #fff;
+  font-size: 0.8em;
 }
 .publicaciones {
   margin-top: 1em;
@@ -206,6 +278,9 @@ header {
   padding-left: 0;
   padding-right: 0;
 }
+.row.space10 {
+  margin-bottom: 1em;
+}
 .search_form {
   display: inline-block;
 }
@@ -226,6 +301,58 @@ header {
   margin-top: 16px;
   margin-top: 1em;
 }
+.trend .perfil {
+  border: 1px solid #b0b0b0;
+  width: 100%;
+}
+.trend .perfil figure {
+  margin: 0.5em;
+}
+.trend .perfil figure.foto {
+  margin-top: 0.5em;
+  padding: 0;
+  text-align: center;
+}
+.trend .perfil .descripcion {
+  display: block;
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  position: relative;
+}
+.trend .perfil .descripcion .nombre,
+.trend .perfil .descripcion .summer_love {
+  width: 48%;
+  display: inline-block;
+  vertical-align: top;
+  border-left: 1px solid #b0b0b0;
+}
+.trend .perfil .descripcion .nombre {
+  border-left: 0;
+  text-align: center;
+}
+.trend .perfil .descripcion .summer_love {
+  text-align: center;
+}
+.trend .perfil .descripcion .summer_love .smm_lv_m {
+  width: auto;
+  margin: 0 auto;
+}
+.trend .perfil .descripcion .summer_love .heart {
+  display: inline-block;
+}
+.trend .perfil .descripcion .summer_love .heart .icon-heart.girl {
+  margin-left: -0.5em;
+  color: #d803c6;
+}
+.trend .perfil .descripcion .summer_love .heart .icon-heart.boy {
+  margin-left: -0.5em;
+  color: #01a4b3;
+}
+.trend .perfil .descripcion .summer_love .love {
+  display: inline-block;
+  font-size: 1em;
+}
 .tituloTrendi {
   font-size: 36px;
   font-size: 2.25em;
@@ -235,9 +362,24 @@ header {
 .tituloTrendi span {
   font-weight: lighter;
 }
-.video_cuatrocol {
+.video h3 {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.2em;
+  padding: 0;
+}
+.video p {
+  margin: 0;
+  padding: 0;
+}
+.video .video4cols {
   height: auto;
   min-height: 315px;
   width: 759px;
+  width: 100%;
+}
+.video .video6cols {
+  height: auto;
+  min-height: 630px;
+  width: 1150px;
   width: 100%;
 }

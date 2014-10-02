@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=PT+Sans)
 
 color-gris = #c4c4c4
-color-grisclaro = #e0e0e0
+color-gris-claro = #e0e0e0
+color-gris-caja = #b0b0b0
 color-hombre = #01a4b3
 color-mujer = #d803c6
 
@@ -13,24 +13,53 @@ body
 	padding 0
 
 footer
-	background color-grisclaro
+	background color-gris-claro
 	display block
 	margin-top 4em
 	padding 2em 0
-
 header
 	background color-grisclaro
 	border-bottom 20px solid #545454
 	display block
 	margin-bottom 2.43em
 
+.add
+	img
+		width 100%
+		height auto
+	.add2cols
+		display block
+		margin-top 22px
+		margin-top 1.375em
+		&.top
+			margin-top 0
+.borde1
+	border-bottom 2em
+	padding-top 2em
+.blog_element
+	padding 1em
+	color #4c4c4c
+	h3
+		font-size 2.125em
+
+	img
+		float left
+		margin-right 1em
+		display inline-block
+	p
+		font-size 1.5em
+	.inf
+		display inline-block
+		max-width 50%
+	.url
+		font-size 1em
+		
 .cajaconborde
 	border 1px solid color-gris
 	display block
 	margin-bottom 1em
 .clear
 	clear both
-	
 /* Columnas */
 .columns
 	float none
@@ -63,17 +92,17 @@ header
 			width: 82.97872%
 		&.six
 			width: 100%
-	
+.girl
+	a
+		color color-mujer
+		text-decoration none
 .logo
 	font-size 2.25em
 	margin-top 45px
 	img
 		width 100%
-
 .logomenu
 	position relative
-
-
 .muestras
 	background color-gris
 	font-size 1.5em
@@ -81,7 +110,6 @@ header
 	min-height 5em
 	padding 2em
 	text-align center
-
 .navprimary
 	display block
 	margin-top 45px
@@ -103,7 +131,9 @@ header
 			a
 				text-decoration none
 				color #606060
-
+				&:hover,
+				&.actual
+					border-bottom 1px solid color-gris
 .perfil
 	background #fff
 	&.columns
@@ -111,24 +141,25 @@ header
 		position relative
 	.perfil_accion
 		background rgba(255,255,255,0.8)
-		bottom 0
+		bottom 2em
 		display block
-		left 1em
-		margin 2em
+		left 2em
+		// margin 2em
 		padding 0.5em 1em
 		position absolute
-		right 1em
+		right 2em
 	.perfil_foto
 		width 100%
-
+		height auto
 .popular
-	background color-grisclaro
-	.nombre
-		text-align center
-		font-size 36px
+	background rgb(242, 242, 242)
+	padding-bottom 1em
+	padding-top 1em
+	.popular_nombre
 		font-size 2.25em
-	.seguidores
-		border-left 0
+		font-size 36px
+		margin-bottom 0.5em
+		text-align center
 	.popular_caja
 		border-left 1px solid color-gris
 		display inline-block
@@ -137,22 +168,64 @@ header
 		text-align center
 		vertical-align top
 		width 32.75%
+		&.seguidores
+			border-left 0
 		.popular_cantidad
 			font-size 1.4em
+			margin 0.5em 0 1em
 		.popular_titulo
 			font-size 1.6em
-
+			margin 0.2em 0
+.producto
+	color #ffffff
+	height 367px
+	margin 0
+	padding 0
+	position relative
+	.descripcion
+		background rgba(0,0,0,0.8)
+		bottom 0
+		height 4em
+		margin 0
+		overflow hidden
+		padding 0
+		position absolute
+		width 100%
+		img
+			width 100%
+			height auto
+		.nombre_marca,
+		.precio
+			display inline-block
+			vertical-align top
+		.nombre_marca
+			width 55%
+			margin-top 0.5em
+			margin-left 0.7em
+		.precio
+			background color-mujer
+			// float right
+			font-size 1.2em
+			height 4em
+			padding 0.2em
+			position absolute
+			right 0
+			text-align center
+			top 0
+			width 20%
+			.detalles
+				border-top 1px solid #fff
+				font-size 0.8em
 .publicaciones
 	margin-top 1em
 	div
 		border 1px solid color-gris
 		margin 0
 		padding 0
-
 /* Filas */
 .row
 	margin 0 auto
-	max-width 1024px
+	max-width 1150px
 	min-width 320px
 	padding-left 20px
 	padding-right 20px
@@ -161,13 +234,66 @@ header
 		min-width 0
 		padding-left 0
 		padding-right 0
-
-
+	&.space10
+		margin-bottom 1em
+.search_form
+	display inline-block
+	input,
+	button
+		background none
+		border 1px solid #606060
+		margin 0
+		padding 0
+		height 1.2em
+		vertical-align middle
+	input
+		padding 0 10
 .social
 	float right
 	margin-top 16px
 	margin-top 1em
-
+.trend
+	.perfil
+		border 1px solid color-gris-caja
+		width 100%
+		figure
+			margin 0.5em
+			&.foto
+				margin-top 0.5em
+				padding 0
+				text-align center
+				// img
+		.descripcion
+			display block
+			font-size 1.25em
+			margin-bottom 1em
+			margin-top 1em
+			position relative
+			.nombre,
+			.summer_love
+				width 48%
+				display inline-block
+				vertical-align top
+				border-left 1px solid color-gris-caja
+			.nombre
+				border-left 0
+				text-align center
+			.summer_love
+				text-align center
+				.smm_lv_m
+					width auto
+					margin 0 auto
+				.heart
+					display inline-block
+					.icon-heart.girl
+						margin-left -0.5em
+						color color-mujer
+					.icon-heart.boy
+						margin-left -0.5em
+						color color-hombre
+				.love
+					display inline-block
+					font-size 1em
 .tituloTrendi
 	font-size 36px
 	font-size 2.25em
@@ -175,8 +301,25 @@ header
 	text-transform uppercase
 	span
 		font-weight lighter
-
-
+.video
+	h3
+		font-size 1.5em
+		margin 0.5em 0 0.2em
+		padding 0
+	p
+		margin 0
+		padding 0
+	.video4cols
+		height auto
+		min-height 315px
+		width 759px
+		width 100%
+	.video6cols
+		height auto
+		min-height 630px
+		width 1150px
+		width 100%
+		
 
 
 
