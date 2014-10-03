@@ -96,6 +96,10 @@ header
 	a
 		color color-mujer
 		text-decoration none
+.loader
+	clear both
+	margin-bottom 5em
+	padding-bottom 5em
 .logo
 	font-size 2.25em
 	margin-top 45px
@@ -176,6 +180,41 @@ header
 		.popular_titulo
 			font-size 1.6em
 			margin 0.2em 0
+.preloader
+	background color-gris
+	border-radius 50px
+	height 30px
+	margin 50px auto
+	position relative
+	width 30px
+
+	-webkit-animation preloader 1.5s infinite linear
+	animation preloader 1.5s infinite linear
+	&:after
+		border-bottom 10px solid color-gris
+		border-left 10px solid transparent
+		border-right 10px solid transparent
+		border-top 10px solid color-gris
+		content ''
+		height 50px
+		left -20px
+		position absolute
+		top -20px
+		width 50px
+
+		-webkit-animation: preloader_after 1.5s infinite linear;
+		animation: preloader_after 1.5s infinite linear;
+		border-radius 50px
+@keyframes preloader {
+	0% {transform: rotate(0deg);}
+	50% {transform: rotate(180deg);background: color-gris-caja;}
+	100% {transform: rotate(360deg);}
+}
+@keyframes preloader_after {
+	0% {border-top:10px solid color-gris;border-bottom:10px solid color-gris;}
+	50% {border-top:10px solid color-gris-caja;border-bottom:10px solid color-gris-caja;}
+	100% {border-top:10px solid color-gris;border-bottom:10px solid color-gris;}
+}
 .producto
 	color #ffffff
 	height 367px
@@ -218,10 +257,23 @@ header
 				font-size 0.8em
 .publicaciones
 	margin-top 1em
-	div
+	/*div
 		border 1px solid color-gris
-		margin 0
-		padding 0
+		margin-bottom 0.5em
+		// margin 0
+		// padding 0*/
+	img
+		height auto
+		width 100%
+		margin 0 0 1em
+	.c
+		overflow hidden
+	.columns
+		margin-left 1em
+		&:first-child
+			margin-left 0
+		&.four
+			width 64.837%
 /* Filas */
 .row
 	margin 0 auto
