@@ -1,10 +1,20 @@
+@import "normalize.css"
+@import "../fonts/icomoon.css"
 
+// Variables
 color-gris = #c4c4c4
-color-gris-claro = #e0e0e0
 color-gris-caja = #b0b0b0
+color-gris-claro = #e0e0e0
 color-hombre = #01a4b3
 color-mujer = #d803c6
 
+// Mixins
+border-radius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	border-radius arguments
+
+// Estilos
 body
 	background #ffffff
 	font-family 'PT Sans', sans-serif
@@ -96,6 +106,12 @@ header
 	a
 		color color-mujer
 		text-decoration none
+
+.heart
+	.icon-heart.girl
+		color color-mujer
+	.icon-heart.boy
+		color color-hombre
 .loader
 	clear both
 	margin-bottom 5em
@@ -104,6 +120,7 @@ header
 	font-size 2.25em
 	margin-top 45px
 	img
+		max-width 250px
 		width 100%
 .logomenu
 	position relative
@@ -274,20 +291,184 @@ header
 			margin-left 0
 		&.four
 			width 64.837%
+.registro
+	font-size 16px
+	color #494949
+	a
+		color #000000
+		font-weight bold
+	header
+		border-bottom 0
+	button
+		background color-gris-claro
+		border 1px solid color-gris-claro
+		padding 0.5em 1em
+		&:hover
+			background #ffffff
+			border 1px solid color-gris-caja
+		&.registrame
+			float right
+			margin 1em 17.02128% 3em
+	label
+		display block
+		margin-bottom 0.5em
+		padding-left 1em
+		width 100%
+	input
+		border 1px solid color-gris
+		height 2em
+		margin-bottom 1.5em
+		padding-left 0.5em
+		&.wide-xx
+			width 100%
+	.alert
+		background #f0c5c5
+		border 1px solid #ca3838
+		color #7b2121
+		font-size 0.875rem
+		font-size 14px
+		font-weight: 600
+		list-style-type none
+		margin-bottom 8px
+		margin-top -0.8em
+		max-width 100%
+		overflow hidden
+		padding 0 10px
+		position relative
+		word-wrap break-word
+		border-radius 4px
+		transition-duration 0.2s
+		&:after
+			content: "\2716"; 
+			font-size: 16px; 
+			position: absolute; 
+			top: 14%; 
+			right: 15px; 
+			z-index: 999; 
+			color: #ca3838
+	.confirm
+		display inline-block
+		width auto
+		vertical-align top
+	.foto_perfil
+		&.row:first-child
+			margin-left 14.89362%
+		.foto_perfil_caja
+			border 1px solid color-gris
+			display block
+			margin-bottom 1em
+			img
+				height auto
+				width 100%
+		.foto_perfil_image.medium
+			height auto
+			max-height 358px
+			max-width 365px
+			overflow hidden
+			width 100%
+		.foto_perfil_image.full
+			height auto
+			max-height 615px
+			max-width 365px
+			overflow hidden
+			width 100%
+	.heart
+		input
+			display inline-block
+			vertical-align top
+			width auto
+		label
+			display inline-block
+			margin-right 2em
+			vertical-align top
+			width auto
+		.icon-heart
+			margin-right 0.5em
+	.logo
+		display inline-block
+		margin-top 45px
+		width 100%
+		img
+			margin 0 auto
+	.sexo
+		display inline-block
+		vertical-align top
+	.marcas
+		border 1px solid color-gris-claro
+		margin 0.5em
+		margin-bottom 1em
+		position relative
+		&:first-child
+			margin-left: 17.02128%;
+		.marcas_imagen
+			width 100%
+			img
+				width 100%
+		/*.marcas_select
+			position absolute
+			right 1em
+			bottom 0
+			background none
+			border 0*/
+		.roundedOne
+			bottom 0
+			height 20px
+			margin 20px
+			position absolute
+			right 0
+			width 20px
+			input[type=checkbox]
+				visibility hidden
+				&:checked + label:after
+					background color-mujer
+			label
+				color #ffffff
+				height 20px
+				left 0
+				padding-left 0
+				position absolute
+				top 0
+				width 20px
+				border-radius 50px
+				&:after
+					background color-gris
+					content '+'
+					height 20px
+					left 0
+					position absolute
+					text-align center
+					top 0
+					width 20px
+					border-radius 50px
+				&:hover::after
+					background color-mujer
+	.pasos
+		border-left 2px solid color-gris-caja
+		margin-top 45px
+		padding 1em
+		display inline-block
+			.icono
+				margin-left 1em
+
 /* Filas */
 .row
-	margin 0 auto
-	max-width 1150px
-	min-width 320px
-	padding-left 20px
-	padding-right 20px
+	margin 0
+	min-width 0
 	width 100%
+	@media only screen and (min-width: 767px)
+		margin 0 auto
+		max-width 1150px
+		min-width 320px
+		padding-left 20px
+		padding-right 20px
+		width 100%
 	.row
 		min-width 0
 		padding-left 0
 		padding-right 0
 	&.space10
 		margin-bottom 1em
+
 .search_form
 	display inline-block
 	input,

@@ -1,3 +1,5 @@
+@import "normalize.css";
+@import "../fonts/icomoon.css";
 body {
   background: #fff;
   font-family: 'PT Sans', sans-serif;
@@ -111,6 +113,12 @@ header {
   color: #d803c6;
   text-decoration: none;
 }
+.heart .icon-heart.girl {
+  color: #d803c6;
+}
+.heart .icon-heart.boy {
+  color: #01a4b3;
+}
 .loader {
   clear: both;
   margin-bottom: 5em;
@@ -121,6 +129,7 @@ header {
   margin-top: 45px;
 }
 .logo img {
+  max-width: 250px;
   width: 100%;
 }
 .logomenu {
@@ -217,6 +226,8 @@ header {
 }
 .preloader {
   background: #c4c4c4;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
   border-radius: 50px;
   height: 30px;
   margin: 50px auto;
@@ -238,6 +249,8 @@ header {
   width: 50px;
   -webkit-animation: preloader_after 1.5s infinite linear;
   animation: preloader_after 1.5s infinite linear;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
   border-radius: 50px;
 }
 .producto {
@@ -311,14 +324,217 @@ header {
 .publicaciones .columns.four {
   width: 64.837%;
 }
+.registro {
+  font-size: 16px;
+  color: #494949;
+}
+.registro a {
+  color: #000;
+  font-weight: bold;
+}
+.registro header {
+  border-bottom: 0;
+}
+.registro button {
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  padding: 0.5em 1em;
+}
+.registro button:hover {
+  background: #fff;
+  border: 1px solid #b0b0b0;
+}
+.registro button.registrame {
+  float: right;
+  margin: 1em 17.02128% 3em;
+}
+.registro label {
+  display: block;
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+  width: 100%;
+}
+.registro input {
+  border: 1px solid #c4c4c4;
+  height: 2em;
+  margin-bottom: 1.5em;
+  padding-left: 0.5em;
+}
+.registro input.wide-xx {
+  width: 100%;
+}
+.registro .alert {
+  background: #f0c5c5;
+  border: 1px solid #ca3838;
+  color: #7b2121;
+  font-size: 0.875rem;
+  font-size: 14px;
+  font-weight: 600;
+  list-style-type: none;
+  margin-bottom: 8px;
+  margin-top: -0.8em;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+  position: relative;
+  word-wrap: break-word;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+}
+.registro .alert:after {
+  content: "\2716";
+  font-size: 16px;
+  position: absolute;
+  top: 14%;
+  right: 15px;
+  z-index: 999;
+  color: #ca3838;
+}
+.registro .confirm {
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+.registro .foto_perfil.row:first-child {
+  margin-left: 14.89362%;
+}
+.registro .foto_perfil .foto_perfil_caja {
+  border: 1px solid #c4c4c4;
+  display: block;
+  margin-bottom: 1em;
+}
+.registro .foto_perfil .foto_perfil_caja img {
+  height: auto;
+  width: 100%;
+}
+.registro .foto_perfil .foto_perfil_image.medium {
+  height: auto;
+  max-height: 358px;
+  max-width: 365px;
+  overflow: hidden;
+  width: 100%;
+}
+.registro .foto_perfil .foto_perfil_image.full {
+  height: auto;
+  max-height: 615px;
+  max-width: 365px;
+  overflow: hidden;
+  width: 100%;
+}
+.registro .heart input {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+}
+.registro .heart label {
+  display: inline-block;
+  margin-right: 2em;
+  vertical-align: top;
+  width: auto;
+}
+.registro .heart .icon-heart {
+  margin-right: 0.5em;
+}
+.registro .logo {
+  display: inline-block;
+  margin-top: 45px;
+  width: 100%;
+}
+.registro .logo img {
+  margin: 0 auto;
+}
+.registro .sexo {
+  display: inline-block;
+  vertical-align: top;
+}
+.registro .marcas {
+  border: 1px solid #e0e0e0;
+  margin: 0.5em;
+  margin-bottom: 1em;
+  position: relative;
+/*.marcas_select
+			position absolute
+			right 1em
+			bottom 0
+			background none
+			border 0*/
+}
+.registro .marcas:first-child {
+  margin-left: 17.02128%;
+}
+.registro .marcas .marcas_imagen {
+  width: 100%;
+}
+.registro .marcas .marcas_imagen img {
+  width: 100%;
+}
+.registro .marcas .roundedOne {
+  bottom: 0;
+  height: 20px;
+  margin: 20px;
+  position: absolute;
+  right: 0;
+  width: 20px;
+}
+.registro .marcas .roundedOne input[type=checkbox] {
+  visibility: hidden;
+}
+.registro .marcas .roundedOne input[type=checkbox]:checked + label:after {
+  background: #d803c6;
+}
+.registro .marcas .roundedOne label {
+  color: #fff;
+  height: 20px;
+  left: 0;
+  padding-left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+.registro .marcas .roundedOne label:after {
+  background: #c4c4c4;
+  content: '+';
+  height: 20px;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+}
+.registro .marcas .roundedOne label:hover::after {
+  background: #d803c6;
+}
+.registro .pasos {
+  border-left: 2px solid #b0b0b0;
+  margin-top: 45px;
+  padding: 1em;
+}
+.registro .pasos display inline-block .icono {
+  margin-left: 1em;
+}
 /* Filas */
 .row {
-  margin: 0 auto;
-  max-width: 1150px;
-  min-width: 320px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0;
+  min-width: 0;
   width: 100%;
+}
+@media only screen and (min-width: 767px) {
+  .row {
+    margin: 0 auto;
+    max-width: 1150px;
+    min-width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
 }
 .row .row {
   min-width: 0;
