@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="two columns">
 				<div class="logo">
-					<img src="img/logotipo.png">
+					<img src="img/logo.svg" alt="" class="">
 				</div>
 			</div>
 			<div class="four columns">

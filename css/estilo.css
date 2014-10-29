@@ -35,6 +35,13 @@ header {
   border-bottom: 2em;
   padding-top: 2em;
 }
+.button {
+  display: block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  font-size: 1.3em;
+  text-align: center;
+}
 .blog_element {
   padding: 1em;
   color: #4c4c4c;
@@ -65,7 +72,15 @@ header {
 .clear {
   clear: both;
 }
-/* Columnas */
+.closet .marcas {
+  border: 1px solid #c4c4c4;
+}
+.closet .marcas .marcas_imagen {
+  width: 100%;
+}
+.closet .marcas .marcas_imagen img {
+  width: 100%;
+}
 .columns {
   float: none;
   margin-left: 0;
@@ -109,9 +124,36 @@ header {
     width: 100%;
   }
 }
+.row {
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+}
+@media only screen and (min-width: 767px) {
+  .row {
+    margin: 0 auto;
+    max-width: 1150px;
+    min-width: 320px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
+}
+.row .row {
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.row.space10 {
+  margin-bottom: 1em;
+}
 .girl a {
   color: #d803c6;
   text-decoration: none;
+}
+.girl .button {
+  background: #d803c6;
+  color: #fff;
 }
 .heart .icon-heart.girl {
   color: #d803c6;
@@ -189,9 +231,32 @@ header {
   position: absolute;
   right: 2em;
 }
+.perfil .perfil_accion i {
+  display: inline-block;
+  font-size: 2em;
+  margin: 0 0.5em;
+}
+.perfil .perfil_accion .perfil_accion_box {
+  display: inline-block;
+}
+.perfil .perfil_accion .perfil_spoint {
+  border-bottom: 1px solid #b0b0b0;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+}
 .perfil .perfil_foto {
   width: 100%;
   height: auto;
+}
+.perfil .perfil_informacion h2 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.perfil .perfil_informacion p {
+  font-size: 0.85em;
+  margin: 0;
 }
 .popular {
   background: #f2f2f2;
@@ -217,11 +282,11 @@ header {
   border-left: 0;
 }
 .popular .popular_caja .popular_cantidad {
-  font-size: 1.4em;
+  font-size: 1.35em;
   margin: 0.5em 0 1em;
 }
 .popular .popular_caja .popular_titulo {
-  font-size: 1.6em;
+  font-size: 1.4em;
   margin: 0.2em 0;
 }
 .preloader {
@@ -257,8 +322,13 @@ header {
   color: #fff;
   height: 367px;
   margin: 0;
+  margin-bottom: 1em;
   padding: 0;
   position: relative;
+}
+.producto img {
+  width: 100%;
+  height: auto;
 }
 .producto .descripcion {
   background: rgba(0,0,0,0.8);
@@ -270,17 +340,13 @@ header {
   position: absolute;
   width: 100%;
 }
-.producto .descripcion img {
-  width: 100%;
-  height: auto;
-}
 .producto .descripcion .nombre_marca,
 .producto .descripcion .precio {
   display: inline-block;
   vertical-align: top;
 }
 .producto .descripcion .nombre_marca {
-  width: 55%;
+  width: 75%;
   margin-top: 0.5em;
   margin-left: 0.7em;
 }
@@ -298,6 +364,17 @@ header {
 .producto .descripcion .precio .detalles {
   border-top: 1px solid #fff;
   font-size: 0.8em;
+}
+.producto .producto_image {
+  width: 100%;
+  display: block;
+}
+.producto .producto_image img {
+  width: 100%;
+  border: 1px solid #c4c4c4;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 .publicaciones {
   margin-top: 1em;
@@ -400,28 +477,109 @@ header {
 .registro .foto_perfil.row:first-child {
   margin-left: 14.89362%;
 }
+.registro .foto_perfil .foto_perfil_boton {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+.registro .foto_perfil .foto_perfil_boton i:before {
+  font-size: 3em;
+}
 .registro .foto_perfil .foto_perfil_caja {
   border: 1px solid #c4c4c4;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
   display: block;
   margin-bottom: 1em;
+  overflow: hidden;
+  position: relative;
 }
 .registro .foto_perfil .foto_perfil_caja img {
   height: auto;
   width: 100%;
 }
-.registro .foto_perfil .foto_perfil_image.medium {
+.registro .foto_perfil .foto_perfil_cargar_foto {
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  display: block;
+  left: 1em;
+  opacity: 1;
+  overflow: hidden;
+  position: absolute;
+  top: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition: opacity 1s linear;
+  -o-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto h3 {
+  margin: 0;
+  padding: 1em 2em 0.5em;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto ul li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto ul li a {
+  border-top: 1px solid #c4c4c4;
+  display: block;
+  padding: 1em 2em;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto ul li a:hover {
+  background: #e0e0e0;
+}
+.registro .foto_perfil .foto_perfil_cargar_foto.hidden {
+  opacity: 0;
+  display: none;
+}
+.registro .foto_perfil .foto_perfil_image {
+  position: relative;
   height: auto;
-  max-height: 358px;
-  max-width: 365px;
   overflow: hidden;
   width: 100%;
 }
+.registro .foto_perfil .foto_perfil_image.medium {
+  max-height: 358px;
+  max-width: 365px;
+}
+.registro .foto_perfil .foto_perfil_image.medium:after {
+  background: url("../img/perfil_gb_medium.jpg") no-repeat center bottom;
+  content: "";
+  display: block;
+  height: 358px;
+  min-height: 358px;
+  min-width: 365px;
+  width: 100%;
+}
 .registro .foto_perfil .foto_perfil_image.full {
-  height: auto;
   max-height: 615px;
   max-width: 365px;
-  overflow: hidden;
+}
+.registro .foto_perfil .foto_perfil_image.full:after {
+  background: url("../img/perfil_gb_full.jpg") no-repeat center bottom;
+  content: "";
+  display: block;
+  height: 100%;
+  min-height: 615px;
+  min-width: 365px;
   width: 100%;
+}
+.registro .foto_perfil .foto_perfil_nombre {
+  border-top: 1px solid #c4c4c4;
+  font-size: 1.5em;
+  padding: 0.5em 0;
+  text-align: center;
 }
 .registro .heart input {
   display: inline-block;
@@ -470,7 +628,61 @@ header {
 .registro .marcas .marcas_imagen img {
   width: 100%;
 }
-.registro .marcas .roundedOne {
+.registro .pasos {
+  border-left: 2px solid #b0b0b0;
+  margin-top: 45px;
+  padding: 1em;
+}
+.registro .pasos display inline-block .icono {
+  margin-left: 1em;
+}
+.registro .popup_overlay {
+  background: rgba(255,255,255,0.8);
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.registro .popup_overlay .popup_box {
+  background: #fff;
+  border: 2px solid #b0b0b0;
+  display: block;
+  left: 50%;
+  margin-left: -284px;
+  padding: 1em;
+  position: absolute;
+  top: 20%;
+  width: 568px;
+  z-index: 101;
+}
+.registro .popup_overlay .popup_box h3 {
+  margin: 0;
+  margin-bottom: 2em;
+  padding: 0;
+  text-transform: uppercase;
+}
+.registro .popup_overlay .popup_box .botones {
+  width: auto;
+  float: right;
+}
+.registro .popup_overlay .popup_box .forgot_pass {
+  text-align: left;
+}
+.registro .popup_overlay .popup_box .camara {
+  background: #c4c4c4;
+  height: 300px;
+  margin: 1em 0;
+  width: 100%;
+}
+.registro .popup_overlay.hidden {
+  display: none;
+}
+.registro .roundedOne {
   bottom: 0;
   height: 20px;
   margin: 20px;
@@ -478,13 +690,13 @@ header {
   right: 0;
   width: 20px;
 }
-.registro .marcas .roundedOne input[type=checkbox] {
+.registro .roundedOne input[type=checkbox] {
   visibility: hidden;
 }
-.registro .marcas .roundedOne input[type=checkbox]:checked + label:after {
+.registro .roundedOne input[type=checkbox]:checked + label:before {
   background: #d803c6;
 }
-.registro .marcas .roundedOne label {
+.registro .roundedOne label {
   color: #fff;
   height: 20px;
   left: 0;
@@ -496,7 +708,7 @@ header {
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
-.registro .marcas .roundedOne label:after {
+.registro .roundedOne label:before {
   background: #c4c4c4;
   content: '+';
   height: 20px;
@@ -509,40 +721,110 @@ header {
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
-.registro .marcas .roundedOne label:hover::after {
+.registro .roundedOne label:hover::before {
   background: #d803c6;
 }
-.registro .pasos {
-  border-left: 2px solid #b0b0b0;
-  margin-top: 45px;
-  padding: 1em;
-}
-.registro .pasos display inline-block .icono {
-  margin-left: 1em;
-}
-/* Filas */
-.row {
-  margin: 0;
-  min-width: 0;
+.shop .add2cols {
+  margin-top: 1em;
   width: 100%;
 }
-@media only screen and (min-width: 767px) {
-  .row {
-    margin: 0 auto;
-    max-width: 1150px;
-    min-width: 320px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 100%;
-  }
+.shop .add2cols img {
+  width: 100%;
 }
-.row .row {
-  min-width: 0;
-  padding-left: 0;
-  padding-right: 0;
+.shop .filtros {
+  margin: 0;
+  padding: 0;
 }
-.row.space10 {
-  margin-bottom: 1em;
+.shop .paginate {
+  font-size: 1.3em;
+  display: block;
+  list-style: none;
+  margin: 1em 0;
+  text-align: center;
+}
+.shop .paginate li {
+  display: inline-block;
+  list-style: none;
+}
+.shop .paginate li a {
+  display: inline-block;
+  border: 1px solid #000;
+  margin: 0 0.5em;
+  padding: 0.2em 0.5em;
+}
+.shop .roundedOne {
+  margin-bottom: 0.5em;
+  position: relative;
+}
+.shop .roundedOne input[type=checkbox]:checked + label:after {
+  background: #fff;
+  color: #000;
+}
+.shop .roundedOne label {
+  margin-left: 0.4em;
+}
+.shop .roundedOne label:after {
+  background: #c4c4c4;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  content: '+';
+  display: inline-block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 20px;
+}
+.shop .roundedOne label:hover::after {
+  background: #fff;
+  color: #000;
+}
+.shop .roundedOne .filtro_label {
+  display: inline-block;
+}
+.shop #tab {
+  display: block;
+}
+.shop #tab .ui-tabs-nav {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.shop #tab .ui-tabs-nav li {
+  background: #e0e0e0;
+  cursor: pointer;
+  border-bottom: 1px solid #b0b0b0;
+  border-left: 1px solid #b0b0b0;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 32.99%;
+}
+.shop #tab .ui-tabs-nav li:first-child {
+  border-left: 0;
+}
+.shop #tab .ui-tabs-nav li a {
+  display: block;
+  font-size: 1.18em;
+  margin: 0;
+  padding: 1em 1.5em;
+  width: 100%;
+}
+.shop #tab .ui-tabs-nav li.ui-state-hover a {
+  text-decoration: underline;
+}
+.shop #tab .ui-tabs-nav li.ui-state-active {
+  border-bottom: 1px solid #fff;
+}
+.shop #tab .ui-tabs-nav li.ui-state-active a {
+  background: #fff;
+}
+.shop #tab .ui-tabs-panel {
+  display: block;
+  padding: 1em;
 }
 .search_form {
   display: inline-block;
@@ -566,6 +848,7 @@ header {
 }
 .trend .perfil {
   border: 1px solid #b0b0b0;
+  margin-bottom: 1.2em;
   width: 100%;
 }
 .trend .perfil figure {
@@ -616,6 +899,9 @@ header {
   display: inline-block;
   font-size: 1em;
 }
+.trend .two.columns:nth-child(3n+1) {
+  margin-left: 0;
+}
 .tituloTrendi {
   font-size: 36px;
   font-size: 2.25em;
@@ -624,6 +910,9 @@ header {
 }
 .tituloTrendi span {
   font-weight: lighter;
+}
+.uppercase {
+  text-transform: uppercase;
 }
 .video h3 {
   font-size: 1.5em;
@@ -645,6 +934,25 @@ header {
   min-height: 630px;
   width: 1150px;
   width: 100%;
+}
+.sidebar h3 {
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0.5em 1em;
+}
+.sidebar li {
+  list-style: none;
+}
+.sidebar .opcionesMarca {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .fondo_color {
+  background: #d803c6;
+  padding: 1em;
+  color: #fff;
 }
 @-moz-keyframes preloader {
   0% {
