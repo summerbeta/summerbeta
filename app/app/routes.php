@@ -20,3 +20,8 @@ Route::get('armario/{name}', function($name)
 {
     return View::make('armario')->with('name', $name);;
 });
+
+Route::get('socialsummer/', ['as' => 'socialsummer', 'uses' => 'SocialsummerController@index']);
+// Route::resource('socialsummer/', 'SocialsummerController');
+
+Route::get('armario/{profile}/{id}', ['as' => 'armario', 'uses' => 'ArmarioController@showProfile']);
