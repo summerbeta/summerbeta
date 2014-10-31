@@ -1,4 +1,4 @@
-@extends ('user/layout')
+@extends ('layout')
 
 @section ('title') Social @stop
 
@@ -7,18 +7,15 @@
 @section ('content')
 		<div class="row">
 			<div class="two columns perfil">
-				<img class="perfil_foto" src="{{ asset('uploads/perfil/'.$profile->picture) }}" width="356" height="596">
+				<img class="perfil_foto" src="{{ asset('uploads/profile/'.$profile->picture) }}" width="356" height="596">
 				<div class="perfil_informacion">
 					<h2>{{ $profile->first_name }}</h2>
-					<p>{{ $profile->address }}</p>
+					<p>{{{ $profile->description }}}</p>
 					<p>Chiapas - Mexico</p>
 				</div>
 			</div>
 			<div class="four columns">
 				<div class="popular">
-					<!-- <div class="popular_nombre">
-						Gabriela
-					</div> -->
 					<div class="popular_caja seguidores">
 						<p class="popular_titulo">Seguidores</p>
 						<p class="popular_cantidad">486</p>
@@ -78,17 +75,17 @@
 		</div>
 
 		<div class="row">
-			@foreach (range(1, 2) as $row)
 			<div class="row trend">
-				@foreach (range(1, 3) as $cols)
+			<?php $count = 1; ?>
+			@foreach ($profile->lastesPicProfile as $picture)
 				<div class="two columns">
 					<div class="perfil">
 						<figure class="foto">
-							<img src="{{ asset('uploads/perfil/Gabriela/profile-girl-full-0'.$cols.'.jpg') }}" alt="Perfil de Gabriela">
+							<img src="{{ asset('uploads/profile/' . $picture->filename) }}" alt="Perfil de Gabriela">
 						</figure>
 						<div class="descripcion">
 							<div class="nombre">
-								Gabriela
+								{{ $profile->first_name }}
 							</div>
 							<div class="summer_love">
 								<div class="smm_lv_m">
@@ -103,9 +100,20 @@
 						</div>
 					</div>
 				</div>
-				@endforeach
+				<?php
+				$count++;
+				if ($count > 3) {
+					$count = 1;
+					?>
+				<div class="clear"></div>
 			</div>
+			<div class="row trend">
+
+					<?php
+				}
+				?>  
 			@endforeach
+			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="row borde1">

@@ -9,8 +9,8 @@
 				<div class="perfil">
 					<figure class="foto">
 						<!-- <a href="@{{ route('armario', [$profile->first_name, $profile->id]) }}"> -->
-						<a href="{{ route('armario', [$profile->first_name, $profile->id]) }}">
-							<img src="uploads/perfil/{{ $profile->picture }}" alt="Perfil de Jessica">
+						<a href="{{ route('closet', [$profile->first_name, $profile->id]) }}">
+							<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de Jessica">
 						</a>
 					</figure>
 					<div class="descripcion">

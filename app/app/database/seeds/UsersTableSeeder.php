@@ -13,28 +13,31 @@ class UsersTableSeeder extends Seeder {
 		{
 			$gender = $faker->randomElement(['male','female']);
 			$firstname = $faker->firstname($gender);
+			$hashmd5 = md5($firstname);
 
 			$user = User::create([
 				'user_name' 	=> $faker->userName,
 				'email' 		=> $faker->safeEmail,
 				'password' 	=> Hash::make('123456'),
+				'valuecode'		=> $hashmd5,
 			]);
 
 			$pic_category = $faker->randomElement(['city','transport','food','nightlife']);
 			$img = file_get_contents($faker->imageUrl('351', '591', $pic_category ));
-			$fileName = $user->id.'_'.$firstname.'_'.str_random(5).'.jpg';
+			$fileName = 'profile_'.$user->id.'_'.$hashmd5.'_'.$firstname.'_'.str_random(5).'.jpg';
 
 			Profile::create([
 				'user_id' 	=> $user->id,
 				'picture' 	=> $fileName,
 				'first_name' 	=> $firstname,
 				'last_name' 	=> $faker->lastName,
+				'description' 	=> $faker->paragraph($nbSentences = 3),
 				'date' 		=> $faker->dateTime($max = 'now'),
 				'gender' 	=> $gender,
 				'address' 	=> $faker->address,
 			]);
 
-			file_put_contents("public/uploads/perfil/$fileName", $img);
+			file_put_contents("public/uploads/profile/$fileName", $img);
 		}
 	}
 

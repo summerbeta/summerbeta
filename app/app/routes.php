@@ -16,12 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('armario/{name}', function($name)
-{
-    return View::make('armario')->with('name', $name);;
-});
 
-Route::get('socialsummer/', ['as' => 'socialsummer', 'uses' => 'SocialsummerController@index']);
-// Route::resource('socialsummer/', 'SocialsummerController');
-
-Route::get('armario/{profile}/{id}', ['as' => 'armario', 'uses' => 'ArmarioController@showProfile']);
+Route::get('socialsummer/', ['as' => 'socialsummer', 'uses' => 'UserController@socialsummer']);
+Route::get('armario/{profile}/{id}', ['as' => 'closet', 'uses' => 'UserController@closet']);
+Route::get('tienda', ['as' => 'shop', 'uses' => 'UserController@shop']);
+Route::get('producto', ['as' => 'shop-item', 'uses' => 'UserController@shopItem']);

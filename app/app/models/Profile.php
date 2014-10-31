@@ -5,6 +5,11 @@ class Profile extends \Eloquent {
 
 	public function user()
 	{
-		return $this->hasOne('user');
-	}	
+		return $this->hasOne('User');
+	}
+
+	public function lastesPicProfile()
+	{
+		return $this->hasMany('Picture');
+	}
 }
