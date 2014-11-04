@@ -13,21 +13,21 @@
 						<div class="producto cajaconborde">
 							<div class="producto_image">
 								<a href="{{ route('item', [$item->id]) }}">
-									<img src="{{ asset('uploads/items/'.$item->photo->filename) }}" alt="{{ $item->name }}">
+									<img src="{{ asset('uploads/items/'.$item->photo->filename) }}" alt="{{ $item->photo->title }}">
 								</a>
 							</div>
-							<div class="descripcion">
-								<div class="nombre_marca">
-									{{ $item->name }} <span class="uppercase">{{ $item->brand->name }}</span> <br>
-									<!-- Tallas / S M X -->
-								</div>
-								<div class="precio">
-									$590
-									<div class="detalles">
-										Detalles
+								<div class="descripcion">
+									<div class="nombre_marca">
+										{{ $item->name }} <span class="uppercase">{{ $item->brand->name }}</span> <br>
+										<!-- Tallas / S M X -->
+									</div>
+									<div class="precio">
+										$590
+										<div class="detalles">
+											Detalles
+										</div>
 									</div>
 								</div>
-							</div>
 						</div>	
 					</div>
 					@endforeach
@@ -137,10 +137,10 @@
 
 				<div class="adds">
 					<div class="add2cols top">
-						<img src="uploads/publicidad/add2cols-lv.jpg" width="375" height="158" alt="lv">
+						<img src="{{ asset('uploads/publicidad/add2cols-lv.jpg') }}" width="375" height="158" alt="lv">
 					</div>
 					<div class="add2cols">
-						<img src="uploads/publicidad/add2cols-oakley.jpg" width="375" height="158" alt="lv">
+						<img src="{{ asset('uploads/publicidad/add2cols-oakley.jpg') }}" width="375" height="158" alt="lv">
 					</div>
 				</div>
 
@@ -160,7 +160,7 @@
 				<div class="trend" style="margin-top: 1em;">
 				<div class="perfil">
 					<figure class="foto">
-						<img src="uploads/perfil/Gabriela/profile-girl-full-01.jpg" alt="Perfil de Jessica">
+						<img src="{{ asset('uploads/perfil/Gabriela/profile-girl-full-01.jpg') }}" alt="Perfil de Jessica">
 					</figure>
 					<div class="descripcion">
 						<div class="nombre">

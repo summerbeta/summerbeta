@@ -42,7 +42,7 @@
 						<li><a href="{{ route('shop') }}">Mujer</a></li>
 						<li><a href="{{ route('shop') }}">Hombre</a></li>
 						<li><a href="{{ route('socialsummer') }}">Social Summer</a></li>
-						<li><a href="#">Marcas</a></li>
+						<li><a href="{{ route('brands') }}">Marcas</a></li>
 						<li><a href="#">Noticias</a></li>
 					</ul>
 				</nav>
@@ -59,6 +59,8 @@
 	</section>
 
 	<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/summer.js') }}"></script>
 
 </body>
 </html>

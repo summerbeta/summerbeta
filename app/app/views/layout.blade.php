@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href='{{ asset('css/estilo.css') }}' type="text/css" />
 
 </head>
-<body class="girl {{ $shop }} @yield('bodyclass', '')">
+<body class="girl {{ @$shop }} @yield('bodyclass', '')">
 
 	<header>
 		<div id = "topmenu" class="row">

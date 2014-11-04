@@ -72,13 +72,17 @@ header {
 .clear {
   clear: both;
 }
-.closet .marcas {
-  border: 1px solid #c4c4c4;
+.closet .marcas .columns:nth-child(0n+7) {
+  margin-left: 0;
 }
-.closet .marcas .marcas_imagen {
+.closet .marcas .marca {
+  border: 1px solid #c4c4c4;
+  margin-bottom: 1em;
+}
+.closet .marcas .marca .marcas_imagen {
   width: 100%;
 }
-.closet .marcas .marcas_imagen img {
+.closet .marcas .marca .marcas_imagen img {
   width: 100%;
 }
 .columns {
@@ -317,64 +321,6 @@ header {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
-}
-.producto {
-  color: #fff;
-  height: 367px;
-  margin: 0;
-  margin-bottom: 1em;
-  padding: 0;
-  position: relative;
-}
-.producto img {
-  width: 100%;
-  height: auto;
-}
-.producto .descripcion {
-  background: rgba(0,0,0,0.8);
-  bottom: 0;
-  height: 4em;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-}
-.producto .descripcion .nombre_marca,
-.producto .descripcion .precio {
-  display: inline-block;
-  vertical-align: top;
-}
-.producto .descripcion .nombre_marca {
-  width: 75%;
-  margin-top: 0.5em;
-  margin-left: 0.7em;
-}
-.producto .descripcion .precio {
-  background: #d803c6;
-  font-size: 1.2em;
-  height: 4em;
-  padding: 0.2em;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
-  width: 20%;
-}
-.producto .descripcion .precio .detalles {
-  border-top: 1px solid #fff;
-  font-size: 0.8em;
-}
-.producto .producto_image {
-  width: 100%;
-  display: block;
-}
-.producto .producto_image img {
-  width: 100%;
-  border: 1px solid #c4c4c4;
-  margin: 0;
-  padding: 0;
-  display: block;
 }
 .publicaciones {
   margin-top: 1em;
@@ -735,22 +681,31 @@ header {
   margin: 0;
   padding: 0;
 }
-.shop .paginate {
-  font-size: 1.3em;
+.shop .paginate,
+.shop .pagination {
   display: block;
+  font-size: 1em;
   list-style: none;
   margin: 1em 0;
+  padding: 0;
   text-align: center;
 }
-.shop .paginate li {
+.shop .paginate li,
+.shop .pagination li {
   display: inline-block;
   list-style: none;
 }
-.shop .paginate li a {
+.shop .paginate li a,
+.shop .pagination li a,
+.shop .paginate li span,
+.shop .pagination li span {
   display: inline-block;
   border: 1px solid #000;
-  margin: 0 0.5em;
+  margin: 0 0.2em;
   padding: 0.2em 0.5em;
+}
+.shop .productos .columns:nth-child(2n+1) {
+  margin-left: 0;
 }
 .shop .roundedOne {
   margin-bottom: 0.5em;
@@ -825,6 +780,63 @@ header {
 .shop #tab .ui-tabs-panel {
   display: block;
   padding: 1em;
+}
+.producto {
+  color: #fff;
+  height: 365px;
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+  position: relative;
+}
+.producto img {
+  width: 100%;
+  height: auto;
+}
+.producto .descripcion {
+  background: rgba(0,0,0,0.8);
+  bottom: 0;
+  height: 4em;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+.producto .descripcion .nombre_marca,
+.producto .descripcion .precio {
+  display: inline-block;
+  vertical-align: top;
+}
+.producto .descripcion .nombre_marca {
+  width: 75%;
+  margin-top: 0.5em;
+  margin-left: 0.7em;
+}
+.producto .descripcion .precio {
+  background: #d803c6;
+  font-size: 1.2em;
+  height: 4em;
+  padding: 0.2em;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 20%;
+}
+.producto .descripcion .precio .detalles {
+  border-top: 1px solid #fff;
+  font-size: 0.8em;
+}
+.producto .producto_image {
+  width: 100%;
+  display: block;
+}
+.producto .producto_image img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 .search_form {
   display: inline-block;

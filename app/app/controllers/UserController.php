@@ -7,7 +7,8 @@ class UserController extends \BaseController {
 		// Muestra la lista de los perfiles
 
 		// llamamos a todos los perfiles
-		$profiles = Profile::all();
+		$profiles = DB::table('profiles')->where('gender', 'male')->get();
+
 		// Creamos la vista
 		return View::make('user/socialsummer')->with('profiles', $profiles);
 	}
@@ -24,14 +25,27 @@ class UserController extends \BaseController {
 
 	public function shop()
 	{
-		return View::make('user/shop');
+		$items = Item::paginate(6);
+		return View::make('user/shop', ['items' => $items]);
 	}
 
-	public function shopItem()
+	public function shopItem($id)
 	{
-		// return 'Esta es la lista de usuarios';
+		$item = Item::find($id);
 
-		return View::make('user/shopitem');
+		return View::make('user/shopItem', ['item' => $item]);
+	}
+
+	public function shopBrand($id)
+	{
+		$items = Item::where('brand_id', '=', $id)->paginate(6);
+		return View::make('user/shopBrand', ['items' => $items]);
+	}
+
+	public function brands()
+	{
+		$brands = Brand::all();
+		return View::make('user/brands', ['brands' => $brands]);
 	}
 
 	/**

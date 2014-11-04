@@ -1,29 +1,28 @@
 @extends ('user/layout')
 
-@section ('title') Tienda @stop
+@section ('title') {{ $item->name }} @stop
 @section('bodyclass')  @stop
 
 @section ('content')
-
-		<div class="row shop shop-item">
-			<div class="two columns">
-				<div class="producto full cajaconborde">
-					<img src="uploads/productos/sparkz/rk021/rk021_1.jpg" alt="">
+		
+	<div class="shop">
+		<div class="row shop-item">
+			<!-- <div class="row">
+				<h1>{{ $item->name }}</h1>
+			</div> -->
+			<div class="row">
+				@foreach ($item->photos as $photo)
+				<!-- @{{ $photo }} -->
+				<div class="two columns">
+					<div class="producto full cajaconborde">
+						<img src="{{ asset('uploads/items/'.$photo->filename) }}" alt="{{ $photo->title }}">
+					</div>
 				</div>
+				@endforeach
+				<div class="clear"></div>
 			</div>
-			<div class="two columns">
-				<div class="producto full cajaconborde">
-					<img src="uploads/productos/sparkz/rk021/rk021_2.jpg" alt="">
-				</div>
-			</div>
-			<div class="two columns">
-				<div class="producto full cajaconborde">
-					<img src="uploads/productos/sparkz/rk021/rk021_3.jpg" alt="">
-				</div>
-			</div>
-			<div class="clear"></div>
 		</div>
-		<div class="row">
+		<div class="row shop">
 			<div class="cajaconborde">
 				<div class="six columns ">
 					<div id="tab" class="marca_info">
@@ -35,13 +34,13 @@
 						<div id="description">
 							<div class="row">
 								<div class="two columns">
-									<img src="uploads/logos/logo-lacoste.jpg" alt="" width="100%">
+									<a href="{{ route('shop-brand', [$item->brand->id]) }}"><img src="{{ asset('uploads/brands/'.$item->brand->photo->filename ) }}" alt="{{ $item->name }}" width="100%"></a>
 								</div>
 								<div class="four columns">
 									<div class="row">
-										<h3><a href="">Chaqueta de cuero sintético - RK021G001-Q11</a></h3>
+										<h3><a href="">{{ $item->name }}</a></h3>
 										<p>
-											Largo normal,  cuero sintético, relleno ligero, bolsillos con cremallera
+											{{ $item->description }}
 										</p>
 										<div class="clear"></div>
 									</div>
@@ -122,12 +121,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<h2 class="tituloTrendi">sparkz en <span>Social SUMMER</span></h2>
+			<h2 class="tituloTrendi">{{ $item->brand->name }} en <span>Social SUMMER</span></h2>
 			<div class="row trend">
 				<div class="two columns">
 					<div class="perfil">
 						<figure class="foto">
-							<img src="uploads/perfil/profile-girl-alejandra.jpg" alt="Perfil de Jessica">
+							<img src="{{ asset('uploads/perfil/profile-girl-alejandra.jpg') }}" alt="Perfil de Jessica">
 						</figure>
 						<div class="descripcion">
 							<div class="nombre">
@@ -149,7 +148,7 @@
 				<div class="two columns ">
 					<div class="perfil">
 						<figure class="foto">
-							<img src="uploads/perfil/Gabriela/profile-girl-full-01.jpg" alt="Perfil de Jessica">
+							<img src="{{ asset('uploads/perfil/Gabriela/profile-girl-full-01.jpg') }}" alt="Perfil de Jessica">
 						</figure>
 						<div class="descripcion">
 							<div class="nombre">
@@ -170,7 +169,7 @@
 				<div class="two columns ">
 					<div class="perfil">
 						<figure class="foto">
-							<img src="uploads/perfil/profile-girl-daniela.jpg" alt="Perfil de Jessica">
+							<img src="{{ asset('uploads/perfil/profile-girl-daniela.jpg') }}" alt="Perfil de Jessica">
 						</figure>
 						<div class="descripcion">
 							<div class="nombre">
@@ -191,4 +190,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 @stop
+

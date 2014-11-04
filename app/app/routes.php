@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+
+Route::get('/', ['as' => 'socialsummer', 'uses' => 'UserController@index']);
 
 
 Route::get('socialsummer/', ['as' => 'socialsummer', 'uses' => 'UserController@socialsummer']);
 Route::get('armario/{profile}/{id}', ['as' => 'closet', 'uses' => 'UserController@closet']);
 Route::get('tienda', ['as' => 'shop', 'uses' => 'UserController@shop']);
-Route::get('producto', ['as' => 'shop-item', 'uses' => 'UserController@shopItem']);
+Route::get('tienda/marca/{id}', ['as' => 'shop-brand', 'uses' => 'UserController@shopBrand']);
+Route::get('producto/{id}', ['as' => 'item', 'uses' => 'UserController@shopItem']);
+Route::get('marcas', ['as' => 'brands', 'uses' => 'UserController@brands']);

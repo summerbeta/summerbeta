@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration {
 
 			$table->string('name');
 			$table->integer('brand_id')->unsigned()->foreign('brand_id')->references('id')->on('brands');
+			$table->string('description');
 			$table->string('geoposition');
 			$table->integer('place_id')->unsigned()->foreign('place_id')->references('id')->on('places');
 

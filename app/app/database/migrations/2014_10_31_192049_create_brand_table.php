@@ -12,12 +12,13 @@ class CreateBrandTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('brand', function(Blueprint $table)
+		Schema::create('brands', function(Blueprint $table)
 		{
 			$table->increments('id');
 
 			$table->string('name');
 			$table->string('description');
+			$table->string('gender');
 
 			$table->timestamps();
 		});

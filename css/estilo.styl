@@ -82,11 +82,15 @@ header
 	clear both
 .closet
 	.marcas
-		border 1px solid color-gris
-		.marcas_imagen
-			width 100%
-			img
+		.columns:nth-child(0n+7)
+			margin-left: 0
+		.marca
+			border 1px solid color-gris
+			margin-bottom 1em
+			.marcas_imagen
 				width 100%
+				img
+					width 100%
 
 @import "maqueta"
 
@@ -242,56 +246,7 @@ header
 	50% {border-top:10px solid color-gris-caja;border-bottom:10px solid color-gris-caja;}
 	100% {border-top:10px solid color-gris;border-bottom:10px solid color-gris;}
 }
-.producto
-	color #ffffff
-	height 367px
-	margin 0
-	margin-bottom 1em
-	padding 0
-	position relative
-	img
-		width 100%
-		height auto
-	.descripcion
-		background rgba(0,0,0,0.8)
-		bottom 0
-		height 4em
-		margin 0
-		overflow hidden
-		padding 0
-		position absolute
-		width 100%
-		.nombre_marca,
-		.precio
-			display inline-block
-			vertical-align top
-		.nombre_marca
-			width 75%
-			margin-top 0.5em
-			margin-left 0.7em
-		.precio
-			background color-mujer
-			// float right
-			font-size 1.2em
-			height 4em
-			padding 0.2em
-			position absolute
-			right 0
-			text-align center
-			top 0
-			width 20%
-			.detalles
-				border-top 1px solid #fff
-				font-size 0.8em
-	.producto_image
-		width 100%
-		display block
-		img
-			width 100%
-			border 1px solid color-gris
-			margin 0
-			padding 0
-			display block
+
 .publicaciones
 	margin-top 1em
 	/*div

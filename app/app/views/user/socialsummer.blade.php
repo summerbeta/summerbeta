@@ -4,7 +4,7 @@
 
 @section ('content')
 		<div class="row trend">
-	@foreach ($profiles as $profile)
+		@foreach ($profiles as $profile)
 			<div class="two columns">
 				<div class="perfil">
 					<figure class="foto">
@@ -32,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-	@endforeach
+		@endforeach
 		</div>
 
 @stop

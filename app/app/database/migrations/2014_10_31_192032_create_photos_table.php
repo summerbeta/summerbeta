@@ -16,10 +16,14 @@ class CreatePhotosTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->integer('item_id')unsigned()->foreign('item_id')->references('id')->on('items');
-			$table->integer('brand_id')unsigned()->foreign('brand_id')->references('id')->on('brands');
+			$table->string('filename');
 
-			$table->enum('style');
+			$table->integer('item_id')->unsigned()->foreign('item_id')->references('id')->on('items');
+			$table->integer('brand_id')->unsigned()->foreign('brand_id')->references('id')->on('brands');
+
+			$table->string('title');
+			$table->string('description');
+			$table->string('style');
 			$table->string('geoposition');
 
 			$table->timestamps();
