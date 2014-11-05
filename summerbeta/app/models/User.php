@@ -23,4 +23,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+	/**
+	 * Defining Fillable Attributes On A Model.
+	 * http://laravel.com/docs/4.2/eloquent#mass-assignment
+	 *
+	 * @var array
+	 */
+	
+	protected $fillable = array('user_name', 'email');
+	
+	public function setPasswordAttribute($value)
+	{
+		$this->attributes['password'] = Hash::make($value);
+	}
+
 }

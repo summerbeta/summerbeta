@@ -1,7 +1,7 @@
 <?php
 
 class Profile extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = ['first_name', 'last_name', 'description', 'date', 'gender', 'address', 'user_id'];
 
 	public function user()
 	{

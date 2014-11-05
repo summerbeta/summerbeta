@@ -48,6 +48,49 @@ class UserController extends \BaseController {
 		return View::make('user/brands', ['brands' => $brands]);
 	}
 
+	public function signup()
+	{
+		return View::make('user/signup');
+	}
+
+	public function signupUser()
+	{
+		$mayorEdad = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")-18);
+		$fechaMayorEdad =date('Y-m-d', $mayorEdad);
+		
+		$data = Input::only('user_name', 'email', 'email_confirmation', 'date', 'gender');
+		$rules = [
+			'user_name' 	=> 'required',
+			'email' 	=> 'required|email|unique:users,email|confirmed',
+			'date' 	=> 'required|before:'.$fechaMayorEdad,
+			'gender' 	=> 'required',
+		];
+		
+		$validation = Validator::make($data, $rules);
+		
+		if ($validation->passes()) {
+			// Guardamos el usuario
+			$user = User::create($data);
+			// Guardamos su perfil
+			$profile = Profile::create([
+				'user_id' 	=> $user->id,
+				'date' 		=> $data['date'],
+				'gender' 	=> $data['gender'],
+			]);
+			// dd($profile->id);
+			return Redirect::route('signup-brands', ['profile' => $profile->id]);
+			// return View::make('user/signupBrands')->with('profile', $profile);
+		}
+		// return Redirect::back()->withInput()->withErrors($validation);
+		return Redirect::back()->withErrors($validation);
+	}
+	
+	public function signupBrands()
+	{
+		// dd(Input::all());
+		return View::make('user/signupBrands');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

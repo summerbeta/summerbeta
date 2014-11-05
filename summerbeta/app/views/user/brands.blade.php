@@ -1,6 +1,6 @@
 @extends ('layout')
 
-@section ('title') Social @stop
+@section ('title') Registro - Marcas @stop
 
 @section('bodyclass') closet @stop
 
@@ -17,20 +17,5 @@
 			</div>
 			@endforeach
 		</div>
-		<!-- 
-			<div class="clear"></div>
-		</div>
-		-->
-		<!-- <div class="loader row">
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-		</div> -->
 		<div class="clear"></div>
 @stop

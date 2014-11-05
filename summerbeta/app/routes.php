@@ -21,3 +21,7 @@ Route::get('tienda', ['as' => 'shop', 'uses' => 'UserController@shop']);
 Route::get('tienda/marca/{id}', ['as' => 'shop-brand', 'uses' => 'UserController@shopBrand']);
 Route::get('producto/{id}', ['as' => 'item', 'uses' => 'UserController@shopItem']);
 Route::get('marcas', ['as' => 'brands', 'uses' => 'UserController@brands']);
+
+Route::get('registro', ['as' => 'signup', 'uses' => 'UserController@signup']);
+Route::post('crearusuario', ['as' => 'signup-user', 'uses' => 'UserController@signupUser']);
+Route::get('registro-marcas', ['as' => 'signup-brands', 'uses' => 'UserController@signupBrands']);
