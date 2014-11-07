@@ -33,7 +33,7 @@ class PicturesTableSeeder extends Seeder {
 
 				// Guardar en la tabla
 				Picture::create([
-					'user_id' 	=> $profile,
+					'profile_id' 	=> $profile,
 					'filename' 	=> $fileName,
 					'style' 		=> $style,
 					'title' 		=> $faker->sentence($nbWords = 3),

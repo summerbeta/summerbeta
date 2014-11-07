@@ -553,7 +553,7 @@ header {
   display: inline-block;
   vertical-align: top;
 }
-.registro .marcas {
+.registro .marca {
   border: 1px solid #e0e0e0;
   margin: 0.5em;
   margin-bottom: 1em;
@@ -565,13 +565,17 @@ header {
 			background none
 			border 0*/
 }
-.registro .marcas:first-child {
+.registro .marca:nth-child(4n) {
+  margin-right: 17.02128%;
+}
+.registro .marca:first-child,
+.registro .marca:nth-child(4n+1) {
   margin-left: 17.02128%;
 }
-.registro .marcas .marcas_imagen {
+.registro .marca .marcas_imagen {
   width: 100%;
 }
-.registro .marcas .marcas_imagen img {
+.registro .marca .marcas_imagen img {
   width: 100%;
 }
 .registro .pasos {

@@ -20,7 +20,7 @@
 			</div>
 			<div class="four columns">
 				<div class="pasos">
-					<img src="img/usuario.png" alt="" class="icono">
+					<!-- <img src="img/usuario.png" alt="" class="icono"> -->
 					<div class="instruccion">
 						<p>USUARIO NUEVO</p>
 					</div>
@@ -35,7 +35,7 @@
 		<div class="row registro">
 			<div class="three columns">
 				<div class="add">
-					<img src="uploads/publicidad4cols-ck.jpg" width="759" height="348" alt="">
+					<img src="uploads/publicidad/publicidad4cols-ck.jpg" width="759" height="348" alt="">
 				</div>
 			</div>
 			<div class="three columns">

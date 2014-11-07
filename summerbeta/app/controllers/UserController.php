@@ -15,10 +15,7 @@ class UserController extends \BaseController {
 
 	public function closet($name, $id)
 	{
-		// return 'Esta es la lista de usuarios';
-
 		$profile = Profile::find($id);
-		// dd($id);
 
 		return View::make('user/otroarmario', ['profile' => $profile]);
 	}
@@ -53,7 +50,7 @@ class UserController extends \BaseController {
 		return View::make('user/signup');
 	}
 
-	public function signupUser()
+	public function signupUserMake()
 	{
 		$mayorEdad = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")-18);
 		$fechaMayorEdad =date('Y-m-d', $mayorEdad);
@@ -85,10 +82,36 @@ class UserController extends \BaseController {
 		return Redirect::back()->withErrors($validation);
 	}
 	
-	public function signupBrands()
+	public function signupBrands($id)
+	{
+		return View::make('user/signupBrands', ['id' => $id]);
+	}
+	
+	public function signupBrandsMake()
 	{
 		// dd(Input::all());
-		return View::make('user/signupBrands');
+		$data = Input::all();
+		$user_id = $data['user_id'];
+		foreach ($data as $key => $value) {
+			
+			$is_brand = strpos($key, 'brand');
+			
+			if ( $is_brand !== false) {
+				$brandlike = BrandsLike::create([
+					'profile_id' 	=> $user_id,
+					'brand_id' 	=> $value,
+				]);
+				// var_dump($brandlike);
+			}
+		}
+		return Redirect::route('signup-brands-picture', ['id' => $user_id]);
+		// dd($data);
+		// return Redirect::route('signup-brands', ['profile' => $profile->id]);
+	}
+	
+	public function signupPicture()
+	{
+		return View::make('user/signupPicture');
 	}
 
 	/**

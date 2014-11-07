@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="two columns">
 				<div class="logo">
-					<img src="img/logo.svg" alt="" class="">
+					<img src="{{ asset('img/logo.svg') }}" alt="" class="">
 				</div>
 			</div>
 			<div class="four columns">
@@ -36,6 +36,10 @@
 			@yield('content')
 		</div>
 	</section>
+	
+	<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/summer.js') }}"></script>
 	
 </body>
 </html>

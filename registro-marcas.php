@@ -21,7 +21,7 @@
 			</div>
 			<div class="four columns">
 				<div class="pasos">
-					<img src="img/usuario.png" alt="" class="icono">
+					<!-- <img src="img/usuario.png" alt="" class="icono"> -->
 					<div class="instruccion">
 						<p>DIME, ¿QUE MARCAS TE INTERESAN?</p>
 					</div>
@@ -52,30 +52,30 @@
 		*/
 
 		$result = [
-			['idMarca' => '1', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '2', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '3', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '4', 'nombre' => 'Armani', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '5', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '6', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '7', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '8', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '9', 'nombre' => 'Armani', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '10', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '11', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '12', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '13', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg'],
-			['idMarca' => '14', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/logos/logo-nike.jpg']
+			['idMarca' => '1', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '2', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '3', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '4', 'nombre' => 'Armani', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '5', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '6', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '7', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '8', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '9', 'nombre' => 'Armani', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '10', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '11', 'nombre' => 'Nike', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '12', 'nombre' => 'Lacoste', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '13', 'nombre' => 'CK', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg'],
+			['idMarca' => '14', 'nombre' => 'Zara', 'imagen' => 'http://localhost:8888/uploads/brands/logo-1.jpg']
 		];
 		?>
 		<div class="row registro">
-			<div class="row">
+			<div class="row marcas">
 				<?php
 				$a = 0;
 				// while ($row = mysqli_fetch_array($result)) {
 				foreach ($result as $row) {
 				?>
-				<div class="one columns marcas">
+				<div class="one columns marca">
 					<div class="marcas_imagen">
 						<img id="imagenMarca" src="<?php echo $row['imagen']; ?>" >
 					</div>

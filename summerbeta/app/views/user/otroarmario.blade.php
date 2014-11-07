@@ -139,31 +139,18 @@
 			<div class="clear"></div>
 		</div>
 		<div class="row">
-			@foreach (range(1, 6) as $count)
+			@foreach ($profile->brandsLike as $brandlike)
+			@if ($brand = Brand::find($brandlike->brand_id)) @endif
+			{{-- $brand->photo->filename --}}
 			<div class="one columns marcas">
 				<div class="marcas_imagen">
-					<a href="#">
-						<img id="imagenMarca" src="{{ asset('uploads/logos/logo-'.$count.'.jpg') }}" >
+					<a href="{{ route('shop-brand', [$brand->id]) }}">
+						<img id="imagenMarca" src="{{ @asset('uploads/brands/'.$brand->photo->filename) }}" >
 					</a>
 
 				</div>
 			</div>
 			@endforeach
 		</div>
-		<!-- 
-			<div class="clear"></div>
-		</div>
-		-->
-		<!-- <div class="loader row">
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-			<div class="two columns cajaconborde">
-				<div class="preloader"></div>
-			</div>
-		</div> -->
-		<div class="clear"></div>
+		<div class="clear borde1"></div>
 @stop

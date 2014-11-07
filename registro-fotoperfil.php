@@ -21,10 +21,9 @@
 			</div>
 			<div class="four columns">
 				<div class="pasos">
-					<img src="img/usuario.png" alt="" class="icono">
+					<!-- <img src="img/usuario.png" alt="" class="icono"> -->
 					<div class="instruccion">
-						<p>Un ultimo paso</p>
-						<p>Crea tu perfil de usuario</p>
+						<p>Un ultimo paso. Crea tu perfil de usuario</p>
 						<p>*Elije un formato</p>
 					</div>
 					

@@ -1,7 +1,7 @@
 <?php
 
 class Profile extends \Eloquent {
-	protected $fillable = ['first_name', 'last_name', 'description', 'date', 'gender', 'address', 'user_id'];
+	protected $fillable = ['first_name', 'last_name', 'description', 'date', 'gender', 'address', 'profile_id'];
 
 	public function user()
 	{
@@ -11,5 +11,11 @@ class Profile extends \Eloquent {
 	public function lastesPicProfile()
 	{
 		return $this->hasMany('Picture');
+	}
+	
+	public function brandsLike()
+	{
+		// return $this->hasMany('BrandsLike');
+		return $this->hasMany('BrandsLike');
 	}
 }
