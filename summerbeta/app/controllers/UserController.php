@@ -113,6 +113,14 @@ class UserController extends \BaseController {
 	{
 		return View::make('user/signupPicture');
 	}
+	
+	public function signupPictureUp()
+	{
+		// return View::make('user/signupPicture');
+		$data = Input::all();
+		return Response::json($data);
+		
+	}
 
 	/**
 	 * Display a listing of the resource.

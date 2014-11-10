@@ -41,5 +41,6 @@
 	<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/summer.js') }}"></script>
 	
+	@yield('script')
 </body>
 </html>

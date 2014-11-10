@@ -27,3 +27,5 @@ Route::post('picture-usuario-make', ['as' => 'signup-user', 'uses' => 'UserContr
 Route::get('registro-marcas/{id}', ['as' => 'signup-brands', 'uses' => 'UserController@signupBrands']);
 Route::post('registro-marcas-make', ['as' => 'signup-brands-make', 'uses' => 'UserController@signupBrandsMake']);
 Route::get('registro-foto/{id}', ['as' => 'signup-brands-picture', 'uses' => 'UserController@signupPicture']);
+
+Route::post('registro-foto-subir',['as' => 'signup-picture-up', 'uses' => 'UserController@signupPictureUp']);
