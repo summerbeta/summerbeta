@@ -11,7 +11,7 @@
 
 @section ('content')
 		<div class="row foto_perfil">
-			<div class="two columns">
+			<div class="two columns"><div id="mensaje"></div>
 				<div class="foto_perfil_caja medium">
 					<div class="foto_perfil_image medium">
 						<img src="" class="perfil_foto">
@@ -24,9 +24,11 @@
 						<h3>Agregar foto de perfil</h3>
 						<ul>
 							<li><a href="#">Subir una foto</a>
-								{{ Form::open([null, null, 'onsubmit' => 'singupSendPicture(form); return false;']) }}
-								{{-- array('route' => 'signup-user', 'method' => 'POST') --}}
+								{{ Form::open(['route' => 'signup-picture-up',  'files' => true, 'onsubmit' => 'singupSendPicture(form); return false;']) }}
+									@if ($profile = Profile::find($id)) @endif
+									<input type="hidden" name="user_id" value="{{ $profile->id }}">
 									{{ Form::input('file', 'picture') }}
+									<button>subir</button>
 								{{ Form::close() }}
 							</li>
 							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
@@ -54,7 +56,6 @@
 					</div>
 				</div>
 			</div>
-			<div id="mensaje"></div>
 			<div class="clear"></div>
 		</div>
 		<div class="row registro">
@@ -102,18 +103,40 @@
 	});
 	
 	function singupSendPicture(form) {
-		console.log("entro a subir imagen");
 		var Data = new FormData(form);
+		
+		$("#mensaje").html('Subir');
+		console.log("entro a subir imagen: ");
 		
 		$.ajax({
 			url: "{{ route('signup-picture-up') }}",
 			type: "POST",
+			contentType: false,
+			processData: false,
 			data: Data,
-		}).done( function() {
-			$("#mensaje").html(this);
-			console.log(this);
+			/*success : function(res) {
+				$("#mensaje").html('Subio el archivo');
+				console.log("subio todo bien. ");
+				console.log(res);
+				console.log(this);
+			},*/
+			error: function(e){
+				$("#mensaje").html('Ocurrio un error');
+				
+				console.log("entro al error: ");
+				console.log(e);
+			}
+		})
+		.done( function(e) {
+			console.log("subio todo bien. ");
+			console.log(e);
+			
 		});
 	}
+	
+	$( "input[name='picture']" ).change(singupSendPicture)
+	
+	
 	</script>
 @stop
 

@@ -109,17 +109,18 @@ class UserController extends \BaseController {
 		// return Redirect::route('signup-brands', ['profile' => $profile->id]);
 	}
 	
-	public function signupPicture()
+	public function signupPicture($id)
 	{
-		return View::make('user/signupPicture');
+		return View::make('user/signupPicture', ['id' => $id]);
 	}
 	
 	public function signupPictureUp()
 	{
 		// return View::make('user/signupPicture');
 		$data = Input::all();
-		return Response::json($data);
-		
+		$file = Input::file("picture");
+		dd($data);
+		return Response::json($file);
 	}
 
 	/**
