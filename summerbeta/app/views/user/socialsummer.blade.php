@@ -7,10 +7,14 @@
 		@foreach ($profiles as $profile)
 			<div class="two columns">
 				<div class="perfil">
-					<figure class="foto">
+					<figure class="perfil_foto">
 						<!-- <a href="@{{ route('armario', [$profile->first_name, $profile->id]) }}"> -->
-						<a href="{{ route('closet', [$profile->first_name, $profile->id]) }}">
-							<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de Jessica">
+						<a href="{{ route('closet', ['profile'.$profile->slug, $profile->id]) }}">
+							@if ($profile->picture)
+							<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de {{ $profile->first_name }}">
+							@else
+							<img src="" alt="Perfil de {{ $profile->first_name }}">
+							@endif
 						</a>
 					</figure>
 					<div class="descripcion">

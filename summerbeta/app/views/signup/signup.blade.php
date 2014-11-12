@@ -1,4 +1,4 @@
-@extends ('user/layout_singup')
+@extends ('signup/layout_singup')
 
 @section ('title') Registro @stop
 @section('bodyclass')  @stop

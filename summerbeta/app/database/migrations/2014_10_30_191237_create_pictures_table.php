@@ -18,7 +18,7 @@ class CreatePicturesTable extends Migration {
 
 			$table->integer('profile_id')->unsigned()->foreign('profile_id')->references('id')->on('profiles');
 			$table->string('filename');
-			$table->enum('style', ['full','medium']);
+			$table->enum('style', ['full','medium','original']);
 			$table->string('title');
 			$table->string('description');
 

@@ -1,4 +1,4 @@
-@extends ('user/layout_singup')
+@extends ('signup/layout_singup')
 
 @section ('title') Registro - Foto @stop
 @section('bodyclass')  @stop
@@ -26,9 +26,10 @@
 							<li><a href="#">Subir una foto</a>
 								{{ Form::open(['route' => 'signup-picture-up',  'files' => true, 'onsubmit' => 'singupSendPicture(form); return false;']) }}
 									@if ($profile = Profile::find($id)) @endif
-									<input type="hidden" name="user_id" value="{{ $profile->id }}">
+									<input type="hidden" name="profile_id" value="{{ $profile->id }}">
+									<input type="hidden" name="style" value="medium">
 									{{ Form::input('file', 'picture') }}
-									<button>subir</button>
+									<button class="send">subir</button>
 								{{ Form::close() }}
 							</li>
 							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
@@ -121,13 +122,26 @@
 				console.log(this);
 			},*/
 			error: function(e){
-				$("#mensaje").html('Ocurrio un error');
+				
+				if (e.status == 200) {
+					$("#mensaje").html('Ocurrio un error en el servidor');
+				} else if(e.status == 400){
+					$("#mensaje").html('No se encontro el servidor');
+				} else {
+					$("#mensaje").html(e.statusText);
+				};
+				
 				
 				console.log("entro al error: ");
-				console.log(e);
+				console.log(e.status, e.statusText);
+			},
+			ajaxSend: function() {
+				$("#mensaje").html('Cargando');
+				$(".send").attr('disabled','disabled');
 			}
 		})
 		.done( function(e) {
+			$(".send").removeAttr('disabled');
 			console.log("subio todo bien. ");
 			console.log(e);
 			

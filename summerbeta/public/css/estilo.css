@@ -252,6 +252,11 @@ header {
   width: 100%;
   height: auto;
 }
+.perfil .perfil_foto img {
+  background: url("../img/perfil_gb_full.jpg") no-repeat center bottom;
+  height: 591px;
+  width: 351px;
+}
 .perfil .perfil_informacion h2 {
   font-size: 1.2em;
   margin: 0;
