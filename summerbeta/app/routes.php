@@ -27,4 +27,4 @@ Route::get('registro-marcas/{id}', ['as' => 'signup-brands', 'uses' => 'SignupCo
 Route::post('registro-marcas-make', ['as' => 'signup-brands-make', 'uses' => 'SignupController@signupBrandsMake']);
 Route::get('registro-foto/{id}', ['as' => 'signup-picture', 'uses' => 'SignupController@signupPicture']);
 Route::post('registro-foto-subir',['as' => 'signup-picture-up', 'uses' => 'SignupController@signupPictureUp']);
-Route::get('registro-foto-subir',['as' => 'signup-picture-up-get', 'uses' => 'SignupController@index']);
+// Route::get('registro-foto-subir',['as' => 'signup-picture-up-get', 'uses' => 'SignupController@index']);

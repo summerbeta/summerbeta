@@ -24,12 +24,12 @@
 						<h3>Agregar foto de perfil</h3>
 						<ul>
 							<li><a href="#">Subir una foto</a>
-								{{ Form::open(['route' => 'signup-picture-up',  'files' => true, 'onsubmit' => 'singupSendPicture(form); return false;']) }}
+								{{ Form::open(['route' => 'signup-picture-up', 'id' => 'form_medium',  'files' => true]) }} {{-- , 'onsubmit' => 'singupSendPicture(form); return false;' --}}
 									@if ($profile = Profile::find($id)) @endif
-									<input type="hidden" name="profile_id" value="{{ $profile->id }}">
-									<input type="hidden" name="style" value="medium">
+									<input type="hidden" class="profile_id_input" name="profile_id" value="{{ $profile->id }}">
+									<input type="hidden" id="style_input" name="style" value="medium">
 									{{ Form::input('file', 'picture') }}
-									<button class="send">subir</button>
+									<!-- <button class="send">subir</button> -->
 								{{ Form::close() }}
 							</li>
 							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
@@ -51,6 +51,14 @@
 						<h3>Agregar foto de perfil</h3>
 						<ul>
 							<li><a href="#">Subir una foto</a></li>
+								{{ Form::open(['route' => 'signup-picture-up', 'id' => 'form_full',  'files' => true]) }} {{-- , 'onsubmit' => 'singupSendPicture(form); return false;' --}}
+									@if ($profile = Profile::find($id)) @endif
+									<input type="hidden" class="profile_id_input" name="profile_id" value="{{ $profile->id }}">
+									<input type="hidden" id="style_input" name="style" value="medium">
+									{{-- Form::input('file', 'picture') --}}
+									{{ Form::file('file','',array('id'=>'medium')) }}
+									<!-- <button class="send">subir</button> -->
+								{{ Form::close() }}
 							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
 							<li><a href="#">Eliminar una foto</a></li>
 						</ul>
@@ -104,10 +112,16 @@
 	});
 	
 	function singupSendPicture(form) {
-		var Data = new FormData(form);
+		var Data = new FormData();
+		
+		// Data += $( ".profile_id_input" ) ;
+		// Data += $( "#style_input" ) ;
+		
+		console.log('Mandamos:');
+		console.log(form);
+		// console.log(Data);
 		
 		$("#mensaje").html('Subir');
-		console.log("entro a subir imagen: ");
 		
 		$.ajax({
 			url: "{{ route('signup-picture-up') }}",
@@ -123,7 +137,7 @@
 			},*/
 			error: function(e){
 				
-				if (e.status == 200) {
+				if (e.status == 500) {
 					$("#mensaje").html('Ocurrio un error en el servidor');
 				} else if(e.status == 400){
 					$("#mensaje").html('No se encontro el servidor');
@@ -131,24 +145,41 @@
 					$("#mensaje").html(e.statusText);
 				};
 				
-				
 				console.log("entro al error: ");
-				console.log(e.status, e.statusText);
+				console.log(e.responseText);
 			},
-			ajaxSend: function() {
+			beforeSend: function() {
 				$("#mensaje").html('Cargando');
-				$(".send").attr('disabled','disabled');
+				// $(".send").attr('disabled','disabled');
+			},
+			success: function(e) {
+				console.log("subio todo bien. ");
+				console.log(e);
+				// Poner la imagen en la
+			},
+			complete: function(e) {
+				$(".send").removeAttr('disabled');
+				
+				console.log("Termino la carga. ");
+				console.log(e.responseText);
+				
+				// Poner la imagen en la
 			}
-		})
-		.done( function(e) {
-			$(".send").removeAttr('disabled');
-			console.log("subio todo bien. ");
-			console.log(e);
-			
 		});
 	}
 	
-	$( "input[name='picture']" ).change(singupSendPicture)
+	$( "input[name=picture]" ).change( function(e) {
+		
+		// console.log('Cambio el boton');
+		
+		console.log(e);
+		 // ePadre = e.currentTarget;.parent()
+		 // ePadre = $( "input[name=picture]" ).parent().serialize();
+		 ePadre = $( "input[name=picture]" ).parent()
+		console.log( ePadre );
+		
+		// singupSendPicture(ePadre)
+	});
 	
 	
 	</script>

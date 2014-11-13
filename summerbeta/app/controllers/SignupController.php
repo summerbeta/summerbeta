@@ -78,15 +78,16 @@ class SignupController extends \BaseController {
 		$data = Input::only('profile_id', 'style');
 		$file = Input::file("picture");
 		
-		$fileName = md5($data['profile_id']) . '-' . uniqid() . '.jpg';
+		$fileUnid = uniqid();
+		$fileName = md5($data['profile_id']) . '-' . $fileUnid . '.jpg';
 		
-		// dd($data['picture']['originalName']);
 		$dataUpload =[
 			'profile_id'	=> $data['profile_id'],
 			'style'		=> $data['style'],
 			'filename'	=> $file
 		];
 		
+		dd($data);
 		$rules = [
 			'profile_id'	=> 'required|exists:profiles,id',
 			'style'		=> 'required',
@@ -96,14 +97,13 @@ class SignupController extends \BaseController {
 		$validation = Validator::make($dataUpload, $rules);
 		
 		if ($validation) {
-			
 			$picture = new Picture;
-			$picture->profile_id = $data['profile_id'];
-			$picture->style = $data['style'];
+			$picture->profile_id = $dataUpload['profile_id'];
+			$picture->style = $dataUpload['style'];
 			$picture->filename = $fileName;
 			
 			if ( $picture->save() ) {
-				$messages[] = ['ok' => $picture->id ];
+				$messages[] = ['id' => $picture->id ];
 				
 				if ( $file->move("uploads/profile/", $fileName) ) {
 					$messages[] = ['filename' => $fileName];
