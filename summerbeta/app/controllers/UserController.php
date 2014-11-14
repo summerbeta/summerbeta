@@ -13,7 +13,7 @@ class UserController extends \BaseController {
 		return View::make('user/socialsummer')->with('profiles', $profiles);
 	}
 
-	public function closet($name, $id)
+	public function closet($id)
 	{
 		$profile = Profile::find($id);
 
@@ -55,9 +55,38 @@ class UserController extends \BaseController {
 		// return 'Esta es la lista de usuarios';
 
 		$profiles = Profile::all();
-		return View::make('user/socialsummer')->with('profiles', $profiles);
+		return View::make('home')->with('profiles', $profiles);
 	}
-
+	
+	public function logout()
+	{
+		Auth::logout();
+		return View::make('home');
+	}
+	
+	public function login()
+	{
+		$data = Input::all();
+		$user_name = Input::get('user_name');
+		$password = Input::get('password');
+		// dd($data);
+		
+		$rules = [
+			'user_name' 	=> 'required|exists:users,user_name',
+			'password' 	=> 'required',
+		];
+		
+		$validation = Validator::make($data, $rules);
+		
+		if ($validation) {
+			if ( Auth::attempt(['user_name' => $user_name, 'password' => $password]) ) {
+				
+			 	return View::make('user/socialsummer');
+			}
+		}
+		 
+		 return Redirect::back()->withErrors($validation);
+	}
 
 	/**
 	 * Show the form for creating a new resource.

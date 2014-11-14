@@ -5,15 +5,20 @@ class SignupController extends \BaseController {
 
 	public function signup()
 	{
+		// Mostrar la pagina de registro
 		return View::make('signup/signup');
 	}
 
 	public function signupUserMake()
 	{
+		// Obtener el dia de hoy pero de hace 18 años
 		$mayorEdad = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")-18);
 		$fechaMayorEdad =date('Y-m-d', $mayorEdad);
 		
+		// Obtenermos los siguientes datos del formulario
 		$data = Input::only('user_name', 'email', 'email_confirmation', 'date', 'gender');
+		
+		// Creamos las reglas
 		$rules = [
 			'user_name' 	=> 'required',
 			'email' 	=> 'required|email|unique:users,email|confirmed',
@@ -21,22 +26,30 @@ class SignupController extends \BaseController {
 			'gender' 	=> 'required',
 		];
 		
+		// Validar las reglas con los datos obtenidos
 		$validation = Validator::make($data, $rules);
 		
+		// Comparar la validación
 		if ($validation->passes()) {
+			// Si esta todo correcto entonces:
+			
 			// Guardamos el usuario
 			$user = User::create($data);
+			
 			// Guardamos su perfil
 			$profile = Profile::create([
-				'user_id' 	=> $user->id,
-				'date' 		=> $data['date'],
-				'gender' 	=> $data['gender'],
+				'user_id' 	=> $user->id,			// Este campo relaciona el perfil con el usuario
+				'first_name'	=> $user->user_name,		// Por defecto asignamos el mismo que la del usuario
+				'date' 		=> $data['date'],		// La fecha de nacimiento
+				'gender' 	=> $data['gender'],		// Genero Masculino o Femenino
 			]);
-			// dd($profile->id);
+			
+			Auth::attempt(['user_name' => $user->user_name]);
+			
+			// Despues de guardar lo mandamos a seleccionar sus marcas favoritas
 			return Redirect::route('signup-brands', ['profile' => $profile->id]);
-			// return View::make('signup/signupBrands')->with('profile', $profile);
 		}
-		// return Redirect::back()->withInput()->withErrors($validation);
+		// Si la validacion no pasa lo regresamos al registro
 		return Redirect::back()->withErrors($validation);
 	}
 	
@@ -47,77 +60,114 @@ class SignupController extends \BaseController {
 	
 	public function signupBrandsMake()
 	{
-		// dd(Input::all());
+		// Obtener todos los datos del formulario
 		$data = Input::all();
 		$user_id = $data['user_id'];
+		
+		// Escaneamos todos los datos del formulario
 		foreach ($data as $key => $value) {
 			
+			// extraemos el nombre del elemento 
 			$is_brand = strpos($key, 'brand');
 			
+			// Si el nombre es una marca
 			if ( $is_brand !== false) {
+				
+				// Guardamos la relacion de la marca con el perfir
 				$brandlike = BrandsLike::create([
 					'profile_id' 	=> $user_id,
 					'brand_id' 	=> $value,
 				]);
-				// var_dump($brandlike);
 			}
 		}
+		
+		// Lo mandamos a la pagina para subir su foto
 		return Redirect::route('signup-picture', ['id' => $user_id]);
-		// dd($data);
-		// return Redirect::route('signup-brands', ['profile' => $profile->id]);
 	}
 	
 	public function signupPicture($id)
 	{
-		return View::make('signup/signupPicture', ['id' => $id]);
+		$profile = Profile::find($id);
+		return View::make('signup/signupPicture', ['profile' => $profile]);
 	}
 	
 	public function signupPictureUp()
 	{
-		// return View::make('signup/signupPicture');
+		sleep(2);
+		// Obtenemos todos los datos del formulario, el archivo y esperamos mensajes
 		$data = Input::only('profile_id', 'style');
 		$file = Input::file("picture");
+		$messages = array();
 		
+		// Crear un nombre unico y codificamos el id
 		$fileUnid = uniqid();
-		$fileName = md5($data['profile_id']) . '-' . $fileUnid . '.jpg';
+		$md5_profile_id = md5($data['profile_id']);
 		
+		// Creamos el nombre nuevo del archivo
+		$fileName = $md5_profile_id . '-' . $fileUnid . '.' . $file->getClientOriginalExtension();
+		
+		// Organizamos los datos del formulario
 		$dataUpload =[
 			'profile_id'	=> $data['profile_id'],
 			'style'		=> $data['style'],
 			'filename'	=> $file
 		];
 		
-		dd($data);
+		// Creamos las reglas
 		$rules = [
 			'profile_id'	=> 'required|exists:profiles,id',
 			'style'		=> 'required',
 			'filename'	=> 'required|mimes:jpeg,bmp,png'
 		];
 		
+		// Validar el formulario con las reglas
 		$validation = Validator::make($dataUpload, $rules);
 		
+		// Si la validacion es correcta
 		if ($validation) {
+			
+			// Instanciamos una Foto y le pasamos los valores
 			$picture = new Picture;
 			$picture->profile_id = $dataUpload['profile_id'];
 			$picture->style = $dataUpload['style'];
 			$picture->filename = $fileName;
 			
+			// Si se guarda
 			if ( $picture->save() ) {
-				$messages[] = ['id' => $picture->id ];
 				
+				// Si movemos la imagen a la carpeta de perfiles y le damos el nuevo nombre
 				if ( $file->move("uploads/profile/", $fileName) ) {
-					$messages[] = ['filename' => $fileName];
+					// Generamos un mensaje con el id
+					$messages = ['id' => $picture->id, 'filename' => $fileName];
+					
+					// Cortar la foto
+					// http://image.intervention.io/
+					
+					$manipulation = Image::make('uploads/profile/' . $fileName);
+					// Si el estilo es full shot
+					if ($data['style'] == 'medium') {
+						// $manipulation->resize(354, 409);
+						$manipulation->crop(354, 409);
+					// Si el estilo en medium shot
+					} elseif ($data['style'] == 'full') {
+						// $manipulation->resize(354, 596);
+						$manipulation->crop(354, 596);
+					}
+					$manipulation->save('uploads/profile/' . $fileName );
+					
 				} else {
-					$messages[] = ['errorFile' => 'No se movio el archivo'];
+					// Generamos un mensaje
+					$messages = ['id' => $picture->id, 'errorFile' => 'No se movio el archivo'];
 				}
 				
 			}
-			
+		// Si la validación falla
 		} else {
-			$messages[] = ['error' 	=>$validation->messages()];
+			// Generamos un mensaje de error
+			$messages = ['error' => $validation->messages()];
 		}
 		
-		
+		// Regresamos el mensaje
 		return Response::json($messages);
 	}
 

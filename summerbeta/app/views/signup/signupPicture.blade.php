@@ -17,25 +17,10 @@
 						<img src="" class="perfil_foto">
 					</div>
 					<div class="foto_perfil_nombre">
-						Jessy
+						{{ $profile->first_name }}
 					</div>
 					<div class="foto_perfil_boton"><i id="camara_medium" class="icon-camera"></i></div>
-					<div class="foto_perfil_cargar_foto hidden medium">
-						<h3>Agregar foto de perfil</h3>
-						<ul>
-							<li><a href="#">Subir una foto</a>
-								{{ Form::open(['route' => 'signup-picture-up', 'id' => 'form_medium',  'files' => true]) }} {{-- , 'onsubmit' => 'singupSendPicture(form); return false;' --}}
-									@if ($profile = Profile::find($id)) @endif
-									<input type="hidden" class="profile_id_input" name="profile_id" value="{{ $profile->id }}">
-									<input type="hidden" id="style_input" name="style" value="medium">
-									{{ Form::input('file', 'picture') }}
-									<!-- <button class="send">subir</button> -->
-								{{ Form::close() }}
-							</li>
-							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
-							<li><a href="#">Eliminar una foto</a></li>
-						</ul>
-					</div>
+					<div class="foto_perfil_cargar_foto hidden medium"></div>
 				</div>
 			</div>
 			<div class="two columns">
@@ -44,31 +29,17 @@
 						<img src="" class="perfil_foto">
 					</div>
 					<div class="foto_perfil_nombre">
-						Jessy
+						{{ $profile->first_name }}
 					</div>
 					<div class="foto_perfil_boton"><i id="camara_full" class="icon-camera"></i></div>
-					<div class="foto_perfil_cargar_foto hidden full">
-						<h3>Agregar foto de perfil</h3>
-						<ul>
-							<li><a href="#">Subir una foto</a></li>
-								{{ Form::open(['route' => 'signup-picture-up', 'id' => 'form_full',  'files' => true]) }} {{-- , 'onsubmit' => 'singupSendPicture(form); return false;' --}}
-									@if ($profile = Profile::find($id)) @endif
-									<input type="hidden" class="profile_id_input" name="profile_id" value="{{ $profile->id }}">
-									<input type="hidden" id="style_input" name="style" value="medium">
-									{{-- Form::input('file', 'picture') --}}
-									{{ Form::file('file','',array('id'=>'medium')) }}
-									<!-- <button class="send">subir</button> -->
-								{{ Form::close() }}
-							<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>
-							<li><a href="#">Eliminar una foto</a></li>
-						</ul>
-					</div>
+					<div class="foto_perfil_cargar_foto hidden full"></div>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="row registro">
-			<button class="registrame">Iniciar</button>
+			<!-- <button class="registrame">Iniciar</> -->
+			<a href="" class="button registrame">Iniciar</a>
 		</div>
 		
 		
@@ -97,7 +68,7 @@
 	// $(".foto_perfil_boton").click( function(){
 		var 	elementClick,
 			id,
-			size
+			size;
 			
 		elementClick = e.currentTarget
 		id = elementClick.id;
@@ -105,36 +76,60 @@
 		size = id.substring(id.indexOf('_')+1, id.length);
 		
 		capa = ".foto_perfil_caja." + size + " > .foto_perfil_cargar_foto";
-		console.log( capa );
+		
+		html = '';
+		html += "<h3>Agregar foto de perfil</h3>";
+		html += "<ul>";
+		html += '<li><a href="#">Subir una foto</a>';
+		html += '<form id="form_' + size + '" class="formulario" action="recibirfoto.php" method="post">';
+		html += '<input type="hidden" class="profile_id_input" name="profile_id" value="15">';
+		html += '<input type="hidden" id="style_input" name="style" value="' + size + '">';
+		html += '<input type="file" name="picture">';
+		// html += '<input type="submit" id="send" value="Submit">';
+		html += '</form>';
+		html += '</li>';
+		html += '<li><a href="#" class="foto_perfil_boton_tomar">Tomar una foto</a></li>';
+		html += '<li><a href="#">Eliminar una foto</a></li>';
+		html += '</ul>';
+		
+		$(capa).html(html);
 		
 		$( ".foto_perfil_caja." + size + " > .foto_perfil_cargar_foto" ).removeClass( "hidden" );
 		
+		// $( ".foto_perfil_cargar_foto" ).blur( function() {
+		$( ".foto_perfil_cargar_foto" ).mouseleave( function() {
+			$( ".foto_perfil_caja." + size + " > .foto_perfil_cargar_foto" ).addClass( "hidden" );
+		});
+		
+		// Esperamos que cambie el estado del boton
+		$( "input[name='picture']" ).change( function(e) {
+			
+			// Construir el formulario
+			var Data = new FormData();
+			
+			// Obtener los valores y asignoarlo al formulario
+				//  profile_id
+			Data.append("profile_id", 	$("input[name='profile_id']").val());
+				// style
+			Data.append("style", 		$("input[name='style']").val());
+				// Imagen
+			Data.append("picture", 	$( "input[name=picture]" )[0].files[0]);
+			// console.log(Data); //.files[0]
+			
+			// Mandar el formulario			
+			singupSendPicture(Data, size)
+		});
+		
+		
 	});
 	
-	function singupSendPicture(form) {
-		var Data = new FormData();
-		
-		// Data += $( ".profile_id_input" ) ;
-		// Data += $( "#style_input" ) ;
-		
-		console.log('Mandamos:');
-		console.log(form);
-		// console.log(Data);
-		
-		$("#mensaje").html('Subir');
-		
+	function singupSendPicture(Data, size) {
 		$.ajax({
 			url: "{{ route('signup-picture-up') }}",
 			type: "POST",
 			contentType: false,
 			processData: false,
 			data: Data,
-			/*success : function(res) {
-				$("#mensaje").html('Subio el archivo');
-				console.log("subio todo bien. ");
-				console.log(res);
-				console.log(this);
-			},*/
 			error: function(e){
 				
 				if (e.status == 500) {
@@ -144,42 +139,23 @@
 				} else {
 					$("#mensaje").html(e.statusText);
 				};
+				console.log(e.responseText.error);
 				
-				console.log("entro al error: ");
-				console.log(e.responseText);
+				// Poner un mensaje "Fallo, intenta mas tarde. Gracias"
 			},
 			beforeSend: function() {
 				$("#mensaje").html('Cargando');
-				// $(".send").attr('disabled','disabled');
+				// Poner una imagen que indiqe que esta cargando
 			},
 			success: function(e) {
-				console.log("subio todo bien. ");
-				console.log(e);
-				// Poner la imagen en la
+				$("#mensaje").html('Subio el archivo');
+				
+				// Poner la imagen en la etiqueta img
+				img_selector = $(".foto_perfil_image." + size + " > .perfil_foto");
+				img_selector.attr("src", "{{ asset('uploads/profile') }}/" + e.filename);
 			},
-			complete: function(e) {
-				$(".send").removeAttr('disabled');
-				
-				console.log("Termino la carga. ");
-				console.log(e.responseText);
-				
-				// Poner la imagen en la
-			}
 		});
 	}
-	
-	$( "input[name=picture]" ).change( function(e) {
-		
-		// console.log('Cambio el boton');
-		
-		console.log(e);
-		 // ePadre = e.currentTarget;.parent()
-		 // ePadre = $( "input[name=picture]" ).parent().serialize();
-		 ePadre = $( "input[name=picture]" ).parent()
-		console.log( ePadre );
-		
-		// singupSendPicture(ePadre)
-	});
 	
 	
 	</script>

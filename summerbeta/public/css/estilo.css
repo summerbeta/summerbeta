@@ -363,16 +363,20 @@ header {
 .registro header {
   border-bottom: 0;
 }
-.registro button {
+.registro button,
+.registro .button {
   background: #e0e0e0;
   border: 1px solid #e0e0e0;
   padding: 0.5em 1em;
+  text-decoration: none;
 }
-.registro button:hover {
+.registro button:hover,
+.registro .button:hover {
   background: #fff;
   border: 1px solid #b0b0b0;
 }
-.registro button.registrame {
+.registro button.registrame,
+.registro .button.registrame {
   float: right;
   margin: 1em 17.02128% 3em;
 }

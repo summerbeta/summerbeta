@@ -18,4 +18,9 @@ class Profile extends \Eloquent {
 		// return $this->hasMany('BrandsLike');
 		return $this->hasMany('BrandsLike');
 	}
+	
+	public function getPicture()
+	{
+		return $this->hasOne('Picture');
+	}
 }

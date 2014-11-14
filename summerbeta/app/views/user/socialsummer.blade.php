@@ -9,11 +9,13 @@
 				<div class="perfil">
 					<figure class="perfil_foto">
 						<!-- <a href="@{{ route('armario', [$profile->first_name, $profile->id]) }}"> -->
-						<a href="{{ route('closet', ['profile'.$profile->slug, $profile->id]) }}">
+						<a href="{{ route('closet', [$profile->id]) }}">
 							@if ($profile->picture)
 							<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de {{ $profile->first_name }}">
 							@else
-							<img src="" alt="Perfil de {{ $profile->first_name }}">
+								{{-- @if ($picture = $profile->lastesPicProfile->take(1)) @endif --}}
+								@if ($picture = $profile->getPicture) @endif
+							<img src="uploads/profile/{{ $picture['filename'] }}" alt="Perfil de {{ $profile->first_name }}">
 							@endif
 						</a>
 					</figure>

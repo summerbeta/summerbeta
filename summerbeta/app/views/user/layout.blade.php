@@ -16,7 +16,13 @@
 	<header>
 		<div id = "topmenu" class="row">
 			<div class="social">
-
+				
+				@if (Auth::check())
+				<a href="">logout</a>
+				@else
+				<a href="">login</a>
+				@endif
+				
 				<i class="icon-settings"></i>
 				<i class="icon-info"></i>
 				<i class="icon-truck"></i>
