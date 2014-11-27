@@ -5,7 +5,7 @@ class Profile extends \Eloquent {
 	
 	public function user()
 	{
-		return $this->hasOne('User');
+		return $this->belongsTo('User');
 	}
 
 	public function lastesPicProfile()
@@ -21,6 +21,8 @@ class Profile extends \Eloquent {
 	
 	public function getPicture()
 	{
-		return $this->hasOne('Picture');
+		return $this->hasMany('Picture', 'profile_id', 'id');
+		// return $this->belongsTo('Picture', 'profile_id', 'id');
+		
 	}
 }

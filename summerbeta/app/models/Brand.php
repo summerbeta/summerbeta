@@ -18,4 +18,9 @@ class Brand extends \Eloquent {
 		// return $this->hasOne('Photo');
 		return $this;
 	}
+	
+	public function gender($gender)
+	{
+		return $this->where('gender', '=', $gender);
+	}
 }

@@ -137,7 +137,6 @@
 	<div class="popup_overlay hidden">
 		<div class="popup_box">
 			<h3>Ingresar</h3>
-			<!-- <form action="" id="login"> -->
 			{{ Form::open( ['route' => 'login', 'method' => 'POST'] ) }}
 				<div class="row">
 					<div class="three columns">
@@ -163,7 +162,6 @@
 					<button id="popup_close">Cerrar</button>
 				</div>
 			{{ Form::close() }}
-			<!-- </form> -->
 			
 					<!-- <p class="forgot_pass"><a href="#">Olvide mi contraseña</a></p> -->
 			
