@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>@yield('title', 'Social') - SUMMER</title>
+	<title>@yield('title', 'Summer Beta')</title>
 	
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans' type='text/css'>
 	<link rel="stylesheet" href='{{ asset('css/normalize.css') }}'>
@@ -16,7 +16,7 @@
 	background: #fff;
 }
 </style>
-<body class="registro">
+<body class="@yield('bodyclass', 'registro')">
 	<header>
 		<div class="row">
 			<div class="two columns">

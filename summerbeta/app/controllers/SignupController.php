@@ -24,14 +24,10 @@ class SignupController extends \BaseController {
 		}
 		
 		
-		//  Mandar el correo de confirmación
-		// Mail::send('emails/confirmarRegistro', $user_array, function ($message) use ($user_name, $user_email){
 		Mail::send('emails/confirmarRegistro', $user_array, function ($message) use ($user){
-		// Mail::send('emails/confirmarRegistro', $user_array, function ($message, $user_name, $user_email){
 			$message->subject('Hola ' . $user->user_name . ' confirmación de Summer Beta ');
 			$message->to($user->email);
 		});
-		// dd($mail);
 		
 		$messages = ['status' => 'ok', $user_array];
 		
@@ -48,9 +44,11 @@ class SignupController extends \BaseController {
 		$data[] = json_decode(json_encode($user), true);
 		
 		// Guardar la confirmación
-		
-		return Response::json($data);
-		// return View::make('signup/signup');
+		if (Auth::check()) {
+			return Redirect::route('socialsummer');
+		}
+		return View::make('signup/signupConfirmation');
+		// return Response::json($data);
 	}
 	
 	public function signupUser()
@@ -96,18 +94,30 @@ class SignupController extends \BaseController {
 				'date' 		=> $data['date'],		// La fecha de nacimiento
 				'gender' 	=> $data['gender'],		// Genero Masculino o Femenino
 			]);
-			/*
+			
 			//  Mandar el correo de confirmación
-			Mail::send('emails/confirmarRegistro', $user, function ($message, $user){
-				$message->subject('Correo de confirmación de ' . $user->user_name);
+			$user_array = json_decode(json_encode($user), true);
+			
+			$user_valuecode = json_decode($user->valuecode, true);
+			if ( $user_valuecode['status'] == 'confirmation' ) {
+				$user_array['value'] = $user_valuecode['value'];
+			}
+			
+			Mail::send('emails/confirmarRegistro', $user_array, function ($message) use ($user){
+				$message->subject('Hola ' . $user->user_name . ' confirmación de Summer Beta ');
 				$message->to($user->email);
 			});
-			*/
-			// Registramos al usuario para el siguiente paso
-			Auth::attempt(['user_name' => $user->user_name, 'password' => $user->password]);
 			
-			// Despues de guardar lo mandamos a seleccionar sus marcas favoritas
-			return Redirect::route('signup-brands', ['profile' => $profile->id]);
+			// Registramos al usuario para el siguiente paso
+			if (Auth::attempt(['user_name' => $data['user_name'], 'password' => $data['password'] ])) {
+			// if (Auth::loginUsingId($user->id)) {
+			
+				// dd($registro);
+			
+				// Despues lo mandamos a seleccionar sus marcas favoritas
+				return Redirect::route('signup-brands', ['profile' => $profile->id]);
+			}
+			
 		}
 		// Si la validacion no pasa lo regresamos al registro
 		return Redirect::back()->withInput()->withErrors($validation);
@@ -115,7 +125,10 @@ class SignupController extends \BaseController {
 	
 	public function signupBrands($id)
 	{
-		return View::make('signup/signupBrands', ['id' => $id]);
+		$user = Auth::user();
+		$gender = $user->profile->gender;
+		$brands = Brand::whereIn('gender', [$gender, 'mf'])->get();
+		return View::make('signup/signupBrands', ['user' => $user, 'gender' =>$gender, 'brands' => $brands]);
 	}
 	
 	public function signupBrandsMake()

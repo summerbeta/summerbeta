@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href='{{ asset('css/estilo.css') }}' type="text/css" />
 
 </head>
-<body class="{{ @$body_class }}">
+
+<body class="@yield('bodyclass', 'registro')">
 
 	<header>
 		<div id = "topmenu" class="row">
@@ -19,15 +20,17 @@
 				
 				@if (Auth::check())
 				<a href="{{ route('logout') }}">logout</a>
+				@else
+				<a href="{{ route('login') }}">login</a>
 				@endif
 				
-				<i class="icon-settings"></i>
+				<!-- <i class="icon-settings"></i>
 				<i class="icon-info"></i>
 				<i class="icon-truck"></i>
 				<form action="/" class="search_form">
 					<input type="text" value="" id="search">
 					<button class="icon-search"></button>
-				</form>
+				</form> -->
 				
 
 			</div>
@@ -42,7 +45,7 @@
 			<div class="four columns">
 				<nav id="nav" class="navprimary">
 					<ul class="navul">
-						<li><a href="#" class="actual">{{ Auth::user()->user_name }}</a></li>
+						<li><a href="{{ route('shop') }}" class="actual">{{ Auth::user()->user_name }}</a></li>
 						<li><a href="{{ route('shop') }}">Mujer</a></li>
 						<li><a href="{{ route('shop') }}">Hombre</a></li>
 						<li><a href="{{ route('socialsummer') }}">Social Summer</a></li>

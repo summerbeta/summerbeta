@@ -1,7 +1,8 @@
 @extends ('signup/layout_singup')
 
-@section ('title') Registro @stop
-@section('bodyclass')  @stop
+@section ('title') Registro - Summer Beta @stop
+
+@section('bodyclass') registro {{ $gender }} @stop
 
 @section('steep')  
 
@@ -41,14 +42,13 @@
 						
 						{{ Form::label('gender', 'Tu Sexo'); }}
 						<div class="heart">
-							{{ Form::radio('gender', 'male') }}{{ Form::label('gender', 'Hombre') }}
-							{{ Form::radio('gender', 'female') }}{{ Form::label('gender', 'Mujer') }}
+							{{ Form::radio('gender', 'boy') }}{{ Form::label('gender', 'Hombre') }}
+							{{ Form::radio('gender', 'girl') }}{{ Form::label('gender', 'Mujer') }}
 						</div>
 						{{ $errors->first('gender', '<div class="alert">:message</div>') }}
 						
 						<p>Al registrarme confirmo que he leído y estoy conforme con la <a href="#">politica de privacidad</a> y <a href="#">terminos de uso</a> de SUMMER</p>
 						
-						<!-- <button>Registrarme</button> -->
 						{{ Form::submit('Registrarme') }}
 					{{ Form::close() }}
 				</div>

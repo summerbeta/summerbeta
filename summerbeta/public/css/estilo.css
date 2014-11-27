@@ -7,6 +7,10 @@ body {
   margin: 0;
   padding: 0;
 }
+div,
+p {
+  word-wrap: break-word;
+}
 footer {
   background: #e0e0e0;
   display: block;
@@ -235,6 +239,38 @@ table.rounded > tbody:first-child tr:first-child td {
 .girl .button {
   background: #d803c6;
   color: #fff;
+}
+.girl.registro .roundedOne input[type=checkbox]:checked + label:before {
+  background: #d803c6;
+}
+.girl.registro label:hover::before {
+  background: #d803c6;
+}
+.girl.registro .foto_perfil_image.medium:after {
+  background: url("../img/perfil_gb_medium_girl.jpg") no-repeat center bottom;
+}
+.girl.registro .foto_perfil_image.full:after {
+  background: url("../img/perfil_gb_full_girl.jpg") no-repeat center bottom;
+}
+.boy a {
+  color: #01a4b3;
+  text-decoration: none;
+}
+.boy .button {
+  background: #01a4b3;
+  color: #fff;
+}
+.boy.registro .roundedOne input[type=checkbox]:checked + label:before {
+  background: #01a4b3;
+}
+.boy.registro label:hover::before {
+  background: #01a4b3;
+}
+.boy.registro .foto_perfil_image.medium:after {
+  background: url("../img/perfil_gb_medium_boy.jpg") no-repeat center bottom;
+}
+.boy.registro .foto_perfil_image.full:after {
+  background: url("../img/perfil_gb_full_boy.jpg") no-repeat center bottom;
 }
 .heart .icon-heart.girl {
   color: #d803c6;
@@ -635,7 +671,6 @@ table.rounded > tbody:first-child tr:first-child td {
   max-width: 365px;
 }
 .registro .foto_perfil .foto_perfil_image.medium:after {
-  background: url("../img/perfil_gb_medium.jpg") no-repeat center bottom;
   content: "";
   display: block;
   height: 358px;
@@ -648,7 +683,6 @@ table.rounded > tbody:first-child tr:first-child td {
   max-width: 365px;
 }
 .registro .foto_perfil .foto_perfil_image.full:after {
-  background: url("../img/perfil_gb_full.jpg") no-repeat center bottom;
   content: "";
   display: block;
   height: 100%;
@@ -732,9 +766,6 @@ table.rounded > tbody:first-child tr:first-child td {
 .registro .roundedOne input[type=checkbox] {
   visibility: hidden;
 }
-.registro .roundedOne input[type=checkbox]:checked + label:before {
-  background: #d803c6;
-}
 .registro .roundedOne label {
   color: #fff;
   height: 20px;
@@ -759,9 +790,6 @@ table.rounded > tbody:first-child tr:first-child td {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
-}
-.registro .roundedOne label:hover::before {
-  background: #d803c6;
 }
 .shop .add2cols {
   margin-top: 1em;
@@ -964,6 +992,14 @@ table.rounded > tbody:first-child tr:first-child td {
   padding: 0;
   text-align: center;
 }
+.trend .perfil figure img.medium {
+  height: 409px;
+  width: 354px;
+}
+.trend .perfil figure img.full {
+  height: 596px;
+  width: 354px;
+}
 .trend .perfil .descripcion {
   display: block;
   font-size: 1.25em;
@@ -977,6 +1013,11 @@ table.rounded > tbody:first-child tr:first-child td {
   display: inline-block;
   vertical-align: top;
   border-left: 1px solid #b0b0b0;
+}
+.trend .perfil .descripcion .nombre a:hover,
+.trend .perfil .descripcion .summer_love a:hover {
+  color: #000;
+  text-decoration: none;
 }
 .trend .perfil .descripcion .nombre {
   border-left: 0;

@@ -1,7 +1,8 @@
 @extends ('signup/layout_singup')
 
-@section ('title') Registro - Foto @stop
-@section('bodyclass')  @stop
+@section ('title') Sube una Foto - Summer Beta @stop
+
+@section('bodyclass')registro {{Auth::user()->profile->gender}} @stop
 
 @section('steep')  
 
@@ -39,7 +40,7 @@
 		</div>
 		<div class="row registro">
 			<!-- <button class="registrame">Iniciar</> -->
-			<a href="" class="button registrame">Iniciar</a>
+			<a href="{{ route('summerbeta') }}" class="button registrame">Iniciar</a>
 		</div>
 		
 		
