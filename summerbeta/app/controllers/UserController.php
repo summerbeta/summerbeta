@@ -4,16 +4,26 @@ class UserController extends \BaseController {
 
 	public function socialsummer()
 	{
-		// Muestra la lista de los perfiles
-
+		// Obtenemos los datos del usuario
+		$user = Auth::user();
+		$gender = $user->profile->gender;
+		
 		// llamamos a todos los perfiles
-		$profiles = DB::table('profiles')->where('gender', 'male')->get();
+		// $profiles = DB::table('profiles')->where('gender', 'male')->get();
+		$profiles = Profile::all();
 
 		// Creamos la vista
-		return View::make('user/socialsummer')->with('profiles', $profiles);
+		return View::make('user/socialsummer', ['user' => $user, 'gender' => $gender, 'profiles' => $profiles]);
+	}
+	
+	public function closet()
+	{
+		$profile = Auth::user()->profile;
+
+		return View::make('user/armario', ['profile' => $profile]);
 	}
 
-	public function closet($id)
+	public function closetOther($id)
 	{
 		$profile = Profile::find($id);
 

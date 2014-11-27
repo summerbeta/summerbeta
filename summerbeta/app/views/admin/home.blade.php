@@ -41,7 +41,7 @@
 				<div class="cajaconborde pdd1">
 					
 					<h2>Publicidad</h2>
-					<p><a href="{{ route('ads_new') }}">Agregar una nueva publicidad</a></p>
+					<p><a href="{{ route('ads') }}">Agregar una nueva publicidad</a></p>
 					<p>Ver las publicidades</p>
 				</div>
 				<div class="cajaconborde pdd1">

@@ -12,20 +12,18 @@
 				
 				<h2>Crear una nueva Publicidad</h2>
 				
-				{{ Form::open(array('route' => 'ads_create', 'method' => 'POST')) }}
+				{{ Form::open(array('route' => 'ads', 'method' => 'POST')) }}
 					<p>
 						{{ Form::label('ad_name', 'Nombre de la campaña') }}
 						{{ Form::text('ad_name', null, ['class' => 'txtinput wide-xx']) }}
 					</p>
 					<p>
 						{{ Form::label('ad_name', 'Elige una marca') }}
-						{{ Form::select('size', array('L' => 'Large', 'S' => 'Small')) }}
+						{{ Form::select('size', $listBrands = $brands->lists('name', 'id')) }}
 					</p>
 						
 					
 				{{ Form::close() }}
-				
-				{{ HTML::listing(['A', 'b', 'c']); }}
 				
 			</div>
 			
@@ -56,12 +54,15 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="row cajaconborde space10">
-			<h2>Opciones</h2>
-			<p>Tamaños de imagenes</p>
-			<li>6 cols = full = 1150 x 457</li>
-			<li>4 cols = 759 x 348</li>
-			<li>2 cols = 367 x 155</li>
+		<div class="row space10">
+			<div class="cajaconborde  pdd1">
+				<h2>Opciones</h2>
+				<p>Tamaños de imagenes</p>
+				<li>6 cols = full = 1150 x 457</li>
+				<li>4 cols = 759 x 348</li>
+				<li>2 cols = 367 x 155</li>
+			</div>
+				
 			
 		</div>
 @stop

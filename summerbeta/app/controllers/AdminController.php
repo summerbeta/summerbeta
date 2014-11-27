@@ -31,6 +31,12 @@ class AdminController extends \BaseController {
 		return Response::json($data);
 	}
 	
+	public function ads()
+	{
+		$brands = Brand::all();
+		return View::make('admin/adsNew', ['brands' => $brands]);
+	}
+	
 	public function adsNew()
 	{
 		return View::make('admin/adsNew');
