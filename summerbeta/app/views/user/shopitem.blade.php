@@ -1,7 +1,6 @@
 @extends ('user/layout')
 
-@section ('title') {{ $item->name }} @stop
-@section('bodyclass')  @stop
+@section ('title') {{ $item->name }} - SUMMER BETA @stop
 
 @section ('content')
 		

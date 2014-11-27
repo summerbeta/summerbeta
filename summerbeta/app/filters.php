@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('/');
 		}
 	}
 });
@@ -88,3 +88,32 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Agrupar por roles
+|--------------------------------------------------------------------------
+|
+| The CSRF filter is responsible for protecting your application against
+| cross-site request forgery attacks. If this special token in a user
+| session does not match the one given in this request, we'll bail.
+|
+*/
+/*function is_admin ()
+{
+	return :
+}*/
+
+Route::filter('admin', function()
+{
+	// dd(Auth::user()->userRoles->type);
+	if ( Auth::check() )
+	{
+		/*if ( Auth::user()->userRoles->type == 'admin' ) 
+		{
+			// 
+		}*/
+	}
+});
+

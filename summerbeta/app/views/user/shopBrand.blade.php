@@ -1,7 +1,6 @@
 @extends ('user/layout')
 
 @section ('title') Tienda - Marcas @stop
-@section('bodyclass')  @stop
 
 @section ('content')
 

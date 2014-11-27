@@ -1,11 +1,10 @@
 @extends ('layout')
 
-@section ('title') Registro - Marcas @stop
-
-@section('bodyclass') closet @stop
+@section ('title') Marcas - SUMMER BETA @stop
 
 @section ('content')
-		
+	<div class="closet">
+			
 		<div class="row marcas">
 			@foreach ($brands as $brand)
 			<div class="one columns marca">
@@ -18,4 +17,5 @@
 			@endforeach
 		</div>
 		<div class="clear"></div>
+	</div>
 @stop

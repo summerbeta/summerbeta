@@ -8,20 +8,65 @@ class SignupController extends \BaseController {
 		// Mostrar la pagina de registro
 		return View::make('signup/signup');
 	}
-
-	public function signupUserMake()
+	
+	public function signupSendMail()
+	{
+		$user = User::find(16);
+		
+		$user_name = $user->user_name;
+		$user_email = $user->email;
+		
+		$user_array = json_decode(json_encode($user), true);
+		
+		$user_valuecode = json_decode($user->valuecode, true);
+		if ( $user_valuecode['status'] == 'confirmation' ) {
+			$user_array['value'] = $user_valuecode['value'];
+		}
+		
+		
+		//  Mandar el correo de confirmación
+		// Mail::send('emails/confirmarRegistro', $user_array, function ($message) use ($user_name, $user_email){
+		Mail::send('emails/confirmarRegistro', $user_array, function ($message) use ($user){
+		// Mail::send('emails/confirmarRegistro', $user_array, function ($message, $user_name, $user_email){
+			$message->subject('Hola ' . $user->user_name . ' confirmación de Summer Beta ');
+			$message->to($user->email);
+		});
+		// dd($mail);
+		
+		$messages = ['status' => 'ok', $user_array];
+		
+		// return View::make('signup/signup');
+		return Response::json($messages);
+	}
+	
+	public function signupConfirmation($user_name, $confirmation)
+	{
+		$data[] = $user_name;
+		$data[] = $confirmation;
+		
+		$user = User::where('user_name', '=', $user_name)->get();
+		$data[] = json_decode(json_encode($user), true);
+		
+		// Guardar la confirmación
+		
+		return Response::json($data);
+		// return View::make('signup/signup');
+	}
+	
+	public function signupUser()
 	{
 		// Obtener el dia de hoy pero de hace 18 años
 		$mayorEdad = mktime(0, 0, 0, date("m"),   date("d"),   date("Y")-18);
 		$fechaMayorEdad =date('Y-m-d', $mayorEdad);
 		
 		// Obtenermos los siguientes datos del formulario
-		$data = Input::only('user_name', 'email', 'email_confirmation', 'date', 'gender');
+		$data = Input::only('user_name', 'email', 'email_confirmation', 'date', 'gender', 'password');
 		
 		// Creamos las reglas
 		$rules = [
-			'user_name' 	=> 'required',
+			'user_name' 	=> 'required|unique:users,user_name',
 			'email' 	=> 'required|email|unique:users,email|confirmed',
+			'password' => 'required',
 			'date' 	=> 'required|before:'.$fechaMayorEdad,
 			'gender' 	=> 'required',
 		];
@@ -29,12 +74,20 @@ class SignupController extends \BaseController {
 		// Validar las reglas con los datos obtenidos
 		$validation = Validator::make($data, $rules);
 		
+		// dd(json_decode(['status' => 'confirmation', 'value' => uniqid()], true));
+		
 		// Comparar la validación
 		if ($validation->passes()) {
 			// Si esta todo correcto entonces:
 			
 			// Guardamos el usuario
-			$user = User::create($data);
+			// $user = User::create($data);
+			$user = new User;
+			$user->user_name 	= $data['user_name'];
+			$user->email 		= $data['email'];
+			$user->password 	= $data['password'];
+			$user->valuecode 	= json_encode(['status' => 'confirmation', 'value' => uniqid()]);
+			$user->save();
 			
 			// Guardamos su perfil
 			$profile = Profile::create([
@@ -43,14 +96,21 @@ class SignupController extends \BaseController {
 				'date' 		=> $data['date'],		// La fecha de nacimiento
 				'gender' 	=> $data['gender'],		// Genero Masculino o Femenino
 			]);
-			
-			Auth::attempt(['user_name' => $user->user_name]);
+			/*
+			//  Mandar el correo de confirmación
+			Mail::send('emails/confirmarRegistro', $user, function ($message, $user){
+				$message->subject('Correo de confirmación de ' . $user->user_name);
+				$message->to($user->email);
+			});
+			*/
+			// Registramos al usuario para el siguiente paso
+			Auth::attempt(['user_name' => $user->user_name, 'password' => $user->password]);
 			
 			// Despues de guardar lo mandamos a seleccionar sus marcas favoritas
 			return Redirect::route('signup-brands', ['profile' => $profile->id]);
 		}
 		// Si la validacion no pasa lo regresamos al registro
-		return Redirect::back()->withErrors($validation);
+		return Redirect::back()->withInput()->withErrors($validation);
 	}
 	
 	public function signupBrands($id)

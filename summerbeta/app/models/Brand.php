@@ -7,9 +7,15 @@ class Brand extends \Eloquent {
 	{
 		return $this->hasMany('Item');
 	}
-
+	
 	public function photo()
 	{
 		return $this->hasOne('Photo');
+	}
+	
+	public function get_brands_array()
+	{
+		// return $this->hasOne('Photo');
+		return $this;
 	}
 }

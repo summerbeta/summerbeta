@@ -1,11 +1,9 @@
-@extends ('layout')
+@extends ('user/layout')
 
-@section ('title') Social @stop
-
-@section('bodyclass') closet @stop
+@section ('title') Social - SUMMER BETA @stop
 
 @section ('content')
-		<div class="row">
+		<div class="row closet">
 			<div class="two columns perfil">
 				<img class="perfil_foto" src="{{ asset('uploads/profile/'.$profile->picture) }}" width="356" height="596">
 				<div class="perfil_informacion">
