@@ -1,7 +1,6 @@
 @extends ('user/layout')
 
-@section ('title') Tienda @stop
-@section('bodyclass')  @stop
+@section ('title') Tienda - SUMMER BETA @stop
 
 @section ('content')
 

@@ -10,6 +10,12 @@
 
 	<link rel="stylesheet" href='{{ asset('css/estilo.css') }}' type="text/css" />
 </head>
+<style>
+.registro header
+{
+	background: #fff;
+}
+</style>
 <body class="registro">
 	<header>
 		<div class="row">

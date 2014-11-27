@@ -18,36 +18,27 @@
 			<div class="three columns">
 				<div class="forms">
 					{{ Form::open(array('route' => 'signup-user', 'method' => 'POST')) }}
-						<!-- <label for="username">Tu Nombre</label>
-						<input type="text" name="username" class="txtinput wide-xx" required>
-						<div class="alert">El nombre es requerido</div> -->
-						{{ Form::label('user_name', 'Tu Nombre') }}
+					
+						{{ Form::label('user_name', 'Nombre de Usuario') }}
 						{{ Form::text('user_name', null, ['class' => 'txtinput wide-xx']) }}
 						{{ $errors->first('user_name', '<div class="alert">:message</div>') }}
 						
-						<!-- <label for="usermail">Tu Email</label>
-						<input type="email" name="usermail" class="txtinput wide-xx"> -->
 						{{ Form::label('email', 'Tu Email') }}
 						{{ Form::email('email', null, ['class' => 'txtinput wide-xx']) }}
 						{{ $errors->first('email', '<div class="alert">:message</div>') }}
 						
-						<!-- <label for="usermail_confirmation">Confirma Tu Email</label>
-						<input type="email" name="usermail_confirmation" class="txtinput wide-xx"> -->
 						{{ Form::label('email_confirmation', 'Confirma Tu Email') }}
 						{{ Form::email('email_confirmation', null, ['class' => 'txtinput wide-xx']) }}
 						{{ $errors->first('email_confirmation', '<div class="alert">:message</div>') }}
 						
-						<!-- <label for="userbirthday">Tu fecha de nacimiento</label>
-						<input type="date" name="userbirthday" class="txtinput wide-xx"> -->
+						{{ Form::label('password', 'Tu Contraseña') }}
+						{{ Form::password('password', null, ['class' => 'txtinput wide-xx']) }}
+						{{ $errors->first('password', '<div class="alert">:message</div>') }}
+						
 						{{ Form::label('date', 'Tu fecha de nacimiento') }}
 						{{ Form::input('date', 'date') }}
 						{{ $errors->first('date', '<div class="alert">:message</div>') }}
 						
-						<!-- <label for="usersex">Tu Sexo</label>
-						<div class="heart">
-							<input type="radio" name="usersex" value="male" class="sexo"><label><i class="icon-heart boy"></i>Hombre</label>
-							<input type="radio" name="usersex" value="female" class="sexo"><label><i class="icon-heart girl"></i>Mujer</label>
-						</div> -->
 						{{ Form::label('gender', 'Tu Sexo'); }}
 						<div class="heart">
 							{{ Form::radio('gender', 'male') }}{{ Form::label('gender', 'Hombre') }}

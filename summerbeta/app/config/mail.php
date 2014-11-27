@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'smtp', //smtp
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,10 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com', //  smtp.gmail.com
+	/*
+	Si has configurado tu servidor SMTP en el puerto 465 (con SSL) y en el puerto 587 (con TLS) pero sigues teniendo problemas para enviar correo, prueba a configurar tu SMTP para que utilice el puerto 25 (con SSL).
+	*/
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +44,7 @@ return array(
 	|
 	*/
 
-	'port' => 587,
+	'port' => 465, // 465 = ssl, 587 = tls
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +57,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'design.socialsummer@gmail.com', 'name' => 'Sumer Beta'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +70,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => 'ssl', // tls, ssl
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +83,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'design.socialsummer@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +96,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'smm-desgn$374',
 
 	/*
 	|--------------------------------------------------------------------------

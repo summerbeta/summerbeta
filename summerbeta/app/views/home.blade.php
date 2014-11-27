@@ -105,10 +105,16 @@
 			<div class="skip">
 				<a href="#" id="skip_intro">Saltar Intro</a>
 			</div>
-			<div>
-				<p>Para crear tu cuenta manda una solicitud</p>
+			<div style="text-align: center;">
+				<p>Solicita una cuenta</p>
+				<p>
+					<input type="email" placeholder="Tu Correo electronico">
+					<button>Enviar</button>
+				</p>
+				
 			</div>
-			<!-- <div class="two columns registroFace">
+			<hr>
+			<div class="two columns registroFace">
 				<div class="buttonFace">
 					<a class="uiButton uiButtonConfirm uiButtonLarge" href="/login.php?" role="button" name="login">
 						<span class="uiButtonText">Iniciar sesión con facebook</span>
@@ -120,15 +126,15 @@
 					<img src="img/usuario.png" alt="" class="icono">
 				</div>
 				<div class="buttonSummer">
-					Crear una cuenta
+					<a href="{{ route('signup') }}">Crear una cuenta</a>
 				</div>
-			</div> -->
+			</div>
 			<div class="clear"></div>
 		</div>
 	</section>
 
 
-	<div class="popup_overlay">
+	<div class="popup_overlay hidden">
 		<div class="popup_box">
 			<h3>Ingresar</h3>
 			<!-- <form action="" id="login"> -->
