@@ -45,6 +45,15 @@ class UserController extends \BaseController {
 		return View::make('user/brands', ['brands' => $brands]);
 	}
 
+	public function sommerhome()
+	{
+		$id = Auth::id();
+		$me = Profile::where('user_id', '=', $id)->first();
+		
+		dd( $me );
+		return View::make('user/summerhome');
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -61,7 +70,8 @@ class UserController extends \BaseController {
 	public function logout()
 	{
 		Auth::logout();
-		return View::make('home');
+		// return View::make('home');
+		return Redirect::to('/');
 	}
 	
 	public function login()
@@ -81,11 +91,11 @@ class UserController extends \BaseController {
 		if ($validation) {
 			if ( Auth::attempt(['user_name' => $user_name, 'password' => $password]) ) {
 				
-			 	return View::make('user/socialsummer');
+			 	return Redirect::to('socialsummer');
 			}
 		}
 		 
-		 return Redirect::back()->withErrors($validation);
+		return Redirect::back()->withInput()->withErrors($validation);
 	}
 
 	/**
