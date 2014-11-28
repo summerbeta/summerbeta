@@ -21,11 +21,16 @@ class UsersTableSeeder extends Seeder {
 				'password' 	=> '123456',
 				'valuecode'		=> $hashmd5,
 			]);
-
+			
 			$pic_category = $faker->randomElement(['city','transport','food','nightlife']);
 			$img = file_get_contents($faker->imageUrl('351', '591', $pic_category ));
 			$fileName = 'profile_'.$user->id.'_'.$hashmd5.'_'.$firstname.'_'.str_random(5).'.jpg';
-
+			
+			if ($gender == 'male') {
+				$genderProfile = 'boy';
+			} else {
+				$genderProfile = 'girl';
+			}
 			Profile::create([
 				'user_id' 	=> $user->id,
 				'picture' 	=> $fileName,
@@ -38,6 +43,8 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			file_put_contents("public/uploads/profile/$fileName", $img);
+			
+			echo ".";
 		}
 	}
 

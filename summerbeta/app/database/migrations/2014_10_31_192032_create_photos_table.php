@@ -20,6 +20,7 @@ class CreatePhotosTable extends Migration {
 
 			$table->integer('item_id')->unsigned()->foreign('item_id')->references('id')->on('items');
 			$table->integer('brand_id')->unsigned()->foreign('brand_id')->references('id')->on('brands');
+			$table->integer('ad_id')->unsigned()->foreign('ad_id')->references('id')->on('ads');
 
 			$table->string('title');
 			$table->string('description');

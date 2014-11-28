@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateUserRolesTable extends Migration {
+class CreateUserRolTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -18,7 +18,7 @@ class CreateUserRolesTable extends Migration {
 			
 			// Relacionar el usuario
 			$table->integer('user_id')->unsigned()->foreign('user_id')->references('id')->on('users');
-			// Relacionar el roldel usuario
+			// Relacionar el rol del usuario
 			$table->integer('role_id')->unsigned()->foreign('role_id')->references('role_id')->on('roles');
 			//  El rol actual que tiene el usuario
 			$table->string('role');

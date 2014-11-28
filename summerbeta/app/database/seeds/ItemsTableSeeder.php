@@ -11,9 +11,9 @@ class ItemsTableSeeder extends Seeder {
 
 		// Crear las marcas con sus imagenes
 		$brands =[
-			'mf' => ['Armani', 'Guess', 'lacoste', 'LEVIS', 'nike', 'oakley', 'New Balance',  'adidas'],
-			'female' => ['ONLY', 'DKNY'],
-			'male' => ['only & sons', 'Vans'],
+			'both' => ['Armani', 'Guess', 'lacoste', 'LEVIS', 'nike', 'oakley', 'New Balance',  'adidas'],
+			'girl' => ['ONLY', 'DKNY'],
+			'boy' => ['only & sons', 'Vans'],
 		]; 
 		foreach($brands as $gender => $gender_val)
 		{
@@ -29,7 +29,7 @@ class ItemsTableSeeder extends Seeder {
 				// Ponemos la imagen de la marca
 				$filename = 'logo-' . $brand->id . '.jpg';
 
-				echo " [ $brand->name ] ";
+				echo ".";
 
 				Photo::create([
 					'brand_id'	=> $brand->id,
@@ -55,7 +55,7 @@ class ItemsTableSeeder extends Seeder {
 						'geoposition' 	=> $faker->latitude . "," . $faker->longitude,
 					]);
 
-					echo " [ $item->name ] ";
+					echo ".";
 
 					// Creamos un numero aleatorio de imagenes o dejarlo predeterminado de 3?
 					foreach(range(1, 3) as $photo_num)
@@ -80,7 +80,7 @@ class ItemsTableSeeder extends Seeder {
 						// Subir la foto en la carpeta
 						file_put_contents("public/uploads/items/$fileName", $img);
 
-						echo "$photo->id . ";
+						echo ".";
 
 					}
 				}

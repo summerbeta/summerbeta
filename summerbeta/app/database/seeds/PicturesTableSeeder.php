@@ -42,6 +42,8 @@ class PicturesTableSeeder extends Seeder {
 
 				//  Guardar la imagen
 				file_put_contents("public/uploads/profile/$fileName", $img);
+				
+				echo ".";
 			}
 				
 		}

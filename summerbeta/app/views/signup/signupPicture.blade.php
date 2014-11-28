@@ -82,7 +82,7 @@
 		html += "<h3>Agregar foto de perfil</h3>";
 		html += "<ul>";
 		html += '<li><a href="#">Subir una foto</a>';
-		html += '<form id="form_' + size + '" class="formulario" action="recibirfoto.php" method="post">';
+		html += '<form id="form_' + size + '" class="formulario" action="" method="post">';
 		html += '<input type="hidden" class="profile_id_input" name="profile_id" value="15">';
 		html += '<input type="hidden" id="style_input" name="style" value="' + size + '">';
 		html += '<input type="file" name="picture">';

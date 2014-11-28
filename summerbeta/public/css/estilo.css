@@ -167,8 +167,8 @@ table.rounded > tbody:first-child tr:first-child td {
   width: 100%;
 }
 .columns {
-  float: none;
-  margin-left: 0;
+  float: left;
+  margin-left: 2.12766%;
   margin-right: 0;
   width: auto;
 /*&:last-child
@@ -178,6 +178,9 @@ table.rounded > tbody:first-child tr:first-child td {
 .columns:first-child,
 .columns.alpha {
   margin-left: 0;
+}
+.columns.omega {
+  float: right;
 }
 @media only screen and (min-width: 767px) {
   .columns {
@@ -514,50 +517,7 @@ table.rounded > tbody:first-child tr:first-child td {
 .publicaciones .columns.four {
   width: 64.837%;
 }
-.registro {
-  font-size: 16px;
-  color: #494949;
-}
-.registro a {
-  color: #000;
-  font-weight: bold;
-}
-.registro header {
-  border-bottom: 0;
-}
-.registro button,
-.registro .button {
-  background: #e0e0e0;
-  border: 1px solid #e0e0e0;
-  padding: 0.5em 1em;
-  text-decoration: none;
-}
-.registro button:hover,
-.registro .button:hover {
-  background: #fff;
-  border: 1px solid #b0b0b0;
-}
-.registro button.registrame,
-.registro .button.registrame {
-  float: right;
-  margin: 1em 17.02128% 3em;
-}
-.registro label {
-  display: block;
-  margin-bottom: 0.5em;
-  padding-left: 1em;
-  width: 100%;
-}
-.registro input {
-  border: 1px solid #c4c4c4;
-  height: 2em;
-  margin-bottom: 1.5em;
-  padding-left: 0.5em;
-}
-.registro input.wide-xx {
-  width: 100%;
-}
-.registro .alert {
+.alert {
   background: #f0c5c5;
   border: 1px solid #ca3838;
   color: #7b2121;
@@ -572,12 +532,12 @@ table.rounded > tbody:first-child tr:first-child td {
   padding: 0 10px;
   position: relative;
   word-wrap: break-word;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   transition-duration: 0.2s;
 }
-.registro .alert:after {
+.alert:after {
   content: "\2716";
   font-size: 16px;
   position: absolute;
@@ -585,6 +545,61 @@ table.rounded > tbody:first-child tr:first-child td {
   right: 15px;
   z-index: 999;
   color: #ca3838;
+}
+button,
+.button {
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+button:hover,
+.button:hover {
+  background: #fff;
+  border: 1px solid #b0b0b0;
+}
+button.registrame,
+.button.registrame {
+  float: right;
+  margin: 1em 17.02128% 3em;
+}
+form {
+  display: block;
+  width: 100%;
+}
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+  width: 100%;
+}
+input {
+  border: 1px solid #c4c4c4;
+  height: 2em;
+  margin-bottom: 1.5em;
+  padding-left: 0.5em;
+}
+input.wide-xx {
+  width: 100%;
+}
+textarea {
+  border: 1px solid #c4c4c4;
+  margin-bottom: 1.5em;
+  padding-left: 0.5em;
+}
+textarea.wide-xx {
+  width: 100%;
+}
+.registro {
+  font-size: 16px;
+  color: #494949;
+}
+.registro a {
+  color: #000;
+  font-weight: bold;
+}
+.registro header {
+  border-bottom: 0;
 }
 .registro .confirm {
   display: inline-block;

@@ -10,18 +10,36 @@
 			<div class="cajaconborde pdd1 space10">
 					
 				
-				<h2>Crear una nueva Publicidad</h2>
+				<h2>Crear una nuevo Anuncio</h2>
 				
 				{{ Form::open(array('route' => 'ads', 'method' => 'POST')) }}
 					<p>
-						{{ Form::label('ad_name', 'Nombre de la campaña') }}
-						{{ Form::text('ad_name', null, ['class' => 'txtinput wide-xx']) }}
+						{{ Form::label('title', 'Nombre de anuncio') }}
+						{{ Form::text('title', null, ['class' => 'txtinput wide-xx']) }}
 					</p>
 					<p>
-						{{ Form::label('ad_name', 'Elige una marca') }}
-						{{ Form::select('size', $listBrands = $brands->lists('name', 'id')) }}
+						{{ Form::label('description', 'Descripción') }}
+						{{ Form::textarea('description', null, ['class' => 'txtinput wide-xx']) }}
 					</p>
-						
+					<div class="row">
+						<div class="columns three">
+					<p>
+						{{ Form::label('brand_id', 'Elige una marca') }}
+						{{ Form::select('brand_id', $brands->lists('name', 'id')) }}
+					</p>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="columns three">
+					<p>
+						{{ Form::label('gender', 'Sexo') }}
+						{{ Form::select('gender', ['both' => 'Ambos', 'boy' => 'Hombre', 'girl' => 'Mujer']) }}
+					</p>
+							
+						</div>
+					</div>
+					<button>Crear</button>
 					
 				{{ Form::close() }}
 				

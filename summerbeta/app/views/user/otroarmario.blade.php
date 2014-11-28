@@ -1,4 +1,4 @@
-@extends ('user/layout')
+@extends ('layout')
 
 @section ('title') Social - SUMMER BETA @stop
 

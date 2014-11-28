@@ -37,7 +37,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('registro-marcas/{id}', ['as' => 'signup-brands', 'uses' => 'SignupController@signupBrands']);
 	Route::post('registro-marcas-make', ['as' => 'signup-brands-make', 'uses' => 'SignupController@signupBrandsMake']);
 	Route::get('registro-foto/{id}', ['as' => 'signup-picture', 'uses' => 'SignupController@signupPicture']);
-	Route::post('registro-foto-subir',['as' => 'signup-picture-up', 'uses' => 'SignupController@signupPictureUp']);
+	Route::post('registro-foto-subir',['as' => 'signup_picture_up', 'uses' => 'SignupController@signupPictureUp']);
 	Route::get('registro-mandar-correo',['as' => 'signup_send_mail', 'uses' => 'SignupController@signupSendMail']);
 	
 	Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
@@ -52,6 +52,9 @@ Route::group(['before' => 'admin'], function () {
 	
 	Route::get('administrador/publicidad', ['as' => 'ads', 'uses' => 'AdminController@ads']);
 	Route::post('administrador/publicidad', ['as' => 'ads_new', 'uses' => 'AdminController@adsNew']);
+	Route::get('administrador/publicidad-editar/{id}', ['as' => 'ads_edit', 'uses' => 'AdminController@adsEdit']);
+	Route::post('administrador/publicidad-editar/{id}', ['as' => 'ads_edit', 'uses' => 'AdminController@adsSave']);
+	Route::post('administrador/publicidad-save-picture', ['as' => 'ads_send_picture', 'uses' => 'AdminController@adsSendPicture']);
 	// Route::get('publicidad-crear', ['as' => 'ads_create', 'uses' => 'AdminController@adsCreate']);
 });
 

@@ -16,7 +16,6 @@ class BrandslikeTableSeeder extends Seeder {
 			$profile_name = $profile->name;
 			$brands_nums = $faker->numberBetween($min = 3, $max = 6);
 			
-			echo "[ $profile_name ] ";
 			
 			foreach(range(1, $brands_nums) as $brand_num)
 			{
@@ -27,7 +26,6 @@ class BrandslikeTableSeeder extends Seeder {
 				]);
 				
 				$brand_id = $brand_like->brand_id;
-				echo "$brand_id, ";
 			}
 		}
 	}

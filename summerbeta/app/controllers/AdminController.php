@@ -39,7 +39,58 @@ class AdminController extends \BaseController {
 	
 	public function adsNew()
 	{
-		return View::make('admin/adsNew');
+		// Obtenemos todos los datos del formulario
+		$data = Input::only('title', 'description', 'gender', 'style', 'brand_id');
+		
+		// Organizamos los datos del formulario
+		$dataUpload =[
+			'title'		=> $data['title'],
+			'brand_id'		=> $data['brand_id'],
+		];
+		
+		// Creamos las reglas
+		$rules = [
+			'title'		=> 'required|exists:ads,title',
+			'brand_id'		=> 'required|exists:brands,id',
+		];
+		
+		// Validar el formulario con las reglas
+		$validation = Validator::make($dataUpload, $rules);
+		if ($validation) {
+			$ad = Ad::create($data);
+			return Redirect::route('ads_edit', ['id' => $ad->id]);
+		}
+			
+		return Redirect::back()->withInput()->withErrors($validation);
+		
+	}
+	
+	public function adsEdit($id)
+	{
+		$ad = Ad::find($id);
+		$brands = Brand::all();
+		
+		return View::make('admin/adsEdit', ['ad' => $ad, 'brands' => $brands]);
+	}
+	
+	public function adsSave($id)
+	{
+		// Obtenemos todos los datos del formulario
+		// $dataAll = Input::all();
+		$data = Input::only('id', 'title', 'description', 'gender', 'style', 'brand_id');
+		$dataGet = Input::get('id');
+		
+		
+		$manager = Ad::find($data['id']);
+		// dd($manager);
+		$manager->fill($data);
+		
+		if ($manager->save()) {
+			return Redirect::route('ads_edit', ['id' => $data['id']]);
+		}
+			
+		return Redirect::back()->withInput()->withErrors($validation);
+		
 	}
 	
 	public function adsCreate()
@@ -58,6 +109,87 @@ class AdminController extends \BaseController {
 		}}*/
 		// return View::make('admin/adsNew');
 	}
+	
+	public function adsSendPicture()
+	{
+		sleep(2);
+		// Obtenemos todos los datos del formulario, el archivo y esperamos mensajes
+		$data = Input::only('ad_id');
+		$file = Input::file("picture");
+		$messages = array();
+		
+		return Response::json($data);
+		
+		// Crear un nombre unico y codificamos el id
+		$fileUnid = uniqid();
+		$md5_ad_id = md5($data['ad_id']);
+		
+		// Creamos el nombre nuevo del archivo
+		$fileName = $md5_ad_id . '-' . $fileUnid . '.' . $file->getClientOriginalExtension();
+		
+		// Organizamos los datos del formulario
+		$dataUpload =[
+			'profile_id'	=> $data['ad_id'],
+			'filename'	=> $file
+		];
+		
+		// Creamos las reglas
+		$rules = [
+			'profile_id'	=> 'required|exists:profiles,id',
+			'filename'	=> 'required|mimes:jpeg,bmp,png'
+		];
+		
+		// Validar el formulario con las reglas
+		$validation = Validator::make($dataUpload, $rules);
+		
+		// Si la validacion es correcta
+		if ($validation) {
+			
+			// Instanciamos una Foto y le pasamos los valores
+			$picture = new Picture;
+			$picture->profile_id = $dataUpload['profile_id'];
+			$picture->style = $dataUpload['style'];
+			$picture->filename = $fileName;
+			
+			// Si se guarda
+			if ( $picture->save() ) {
+				
+				// Si movemos la imagen a la carpeta de perfiles y le damos el nuevo nombre
+				if ( $file->move("uploads/profile/", $fileName) ) {
+					// Generamos un mensaje con el id
+					$messages = ['id' => $picture->id, 'filename' => $fileName];
+					
+					// Cortar la foto
+					// http://image.intervention.io/
+					
+					$manipulation = Image::make('uploads/profile/' . $fileName);
+					// Si el estilo es full shot
+					if ($data['style'] == 'medium') {
+						// $manipulation->resize(354, 409);
+						$manipulation->crop(354, 409);
+					// Si el estilo en medium shot
+					} elseif ($data['style'] == 'full') {
+						// $manipulation->resize(354, 596);
+						$manipulation->crop(354, 596);
+					}
+					$manipulation->save('uploads/profile/' . $fileName );
+					
+				} else {
+					// Generamos un mensaje
+					$messages = ['id' => $picture->id, 'errorFile' => 'No se movio el archivo'];
+				}
+				
+			}
+		// Si la validación falla
+		} else {
+			// Generamos un mensaje de error
+			$messages = ['error' => $validation->messages()];
+		}
+		
+		// Regresamos el mensaje
+		return Response::json($messages);
+	}
+
 	
 	/**
 	 * Show the form for creating a new resource.

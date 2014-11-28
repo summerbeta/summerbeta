@@ -156,6 +156,7 @@
 					<p>Usuario o contraseña incorrectos.</p>
 				</div>
 				@endif
+				{{ Form::checkbox('remember') }} No cerrar sesión
 				<div class="botones">
 					<button>Entrar</button>
 					{{-- Form::submit('Entrar') --}}

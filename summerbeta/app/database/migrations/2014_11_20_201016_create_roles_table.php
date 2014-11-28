@@ -25,6 +25,8 @@ class CreateRolesTable extends Migration {
 		{
 			$table->increments('id');
 			
+			$table->string('name');
+			$table->string('role');
 			// Tipo de Roll
 			// Permisos para
 			$table->timestamps();

@@ -86,20 +86,24 @@ class UserController extends \BaseController {
 	
 	public function login()
 	{
-		$data = Input::all();
-		$user_name = Input::get('user_name');
-		$password = Input::get('password');
+		$data = Input::only('user_name', 'password', 'remember');
 		// dd($data);
 		
+		// Ordenamos los datos del formulario para pasarlo autenticar
+		$credentials = [
+			'user_name' 	=> $data['user_name'],
+			'password' 	=> $data['password']
+		];
+		
+		// Creamos las reglas
 		$rules = [
 			'user_name' 	=> 'required|exists:users,user_name',
 			'password' 	=> 'required',
 		];
 		
-		$validation = Validator::make($data, $rules);
-		
-		if ($validation) {
-			if ( Auth::attempt(['user_name' => $user_name, 'password' => $password]) ) {
+		// Validamos al usuario
+		if (Validator::make($credentials, $rules)) {
+			if ( Auth::attempt($credentials, $data['remember']) ) {
 				
 			 	return Redirect::to('socialsummer');
 			}
