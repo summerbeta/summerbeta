@@ -23,7 +23,7 @@ Route::group(array('before' => 'guest'), function() {
 
 // Si es usuario registrado
 Route::group(array('before' => 'auth'), function() {
-	// Route::get('/', ['as' => 'home2', 'uses' => 'UserController@sommerhome']);
+	Route::get('/', ['as' => 'home2', 'uses' => 'UserController@sommerhome']);
 	
 	Route::get('summerbeta', ['as' => 'summerbeta', 'uses' => 'UserController@socialsummer']);
 	Route::get('socialsummer', ['as' => 'socialsummer', 'uses' => 'UserController@socialsummer']);

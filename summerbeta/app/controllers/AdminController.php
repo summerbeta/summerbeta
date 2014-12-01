@@ -34,7 +34,8 @@ class AdminController extends \BaseController {
 	public function ads()
 	{
 		$brands = Brand::all();
-		return View::make('admin/adsNew', ['brands' => $brands]);
+		$ads = Ad::all();
+		return View::make('admin/adsNew', ['brands' => $brands, 'ads' => $ads]);
 	}
 	
 	public function adsNew()
@@ -112,18 +113,14 @@ class AdminController extends \BaseController {
 	
 	public function adsSendPicture()
 	{
-		sleep(2);
 		// Obtenemos todos los datos del formulario, el archivo y esperamos mensajes
-		$data = Input::only('ad_id');
-		$file = Input::file("picture");
+		$data = Input::only('ad_id', 'style');
+		$file = Input::file("image");
 		$messages = array();
-		
-		return Response::json($data);
 		
 		// Crear un nombre unico y codificamos el id
 		$fileUnid = uniqid();
 		$md5_ad_id = md5($data['ad_id']);
-		
 		// Creamos el nombre nuevo del archivo
 		$fileName = $md5_ad_id . '-' . $fileUnid . '.' . $file->getClientOriginalExtension();
 		
@@ -142,6 +139,55 @@ class AdminController extends \BaseController {
 		// Validar el formulario con las reglas
 		$validation = Validator::make($dataUpload, $rules);
 		
+		// Si la validacion es correcta
+		if ($validation) {
+			
+			// Instanciamos una Foto y le pasamos los valores
+			$picture = new Photo;
+			$picture->ad_id = $data['ad_id'];
+			$picture->style = $data['style'];
+			$picture->filename = $fileName;
+			
+			// Si se guarda
+			if ( $picture->save() ) {
+				
+				// Si movemos la imagen a la carpeta de perfiles y le damos el nuevo nombre
+				if ( $file->move("uploads/adds/", $fileName) ) {
+					// Generamos un mensaje con el id
+					$messages = ['id' => $picture->id, 'filename' => $fileName];
+					
+					$manipulation = Image::make('uploads/adds/' . $fileName);
+					/*
+					{{ Form::select('style', ['2col' => 'Pequeño 367x155', '4col' => 'Mediano 759x348', '6col' => 'Grande 1150x452']) }}
+					*/
+					if ($data['style'] == '2col') {
+						// $manipulation->resize(354, 409);
+						$manipulation->crop(367, 155);
+						
+					} elseif ($data['style'] == '4col') {
+						// $manipulation->resize(354, 596);
+						$manipulation->crop(759, 348);
+						
+					} elseif ($data['style'] == '6col') {
+						// $manipulation->resize(354, 596);
+						$manipulation->crop(1150, 452);
+					}
+					$manipulation->save('uploads/adds/' . $fileName );
+					
+				} else {
+					// Generamos un mensaje
+					$messages = ['id' => $picture->id, 'errorFile' => 'No se movio el archivo'];
+				}
+				
+			}
+		}
+		
+		// Regresamos el mensaje
+		return Response::json($messages);
+	}
+		
+	public function adsSendPictureOld()
+	{
 		// Si la validacion es correcta
 		if ($validation) {
 			

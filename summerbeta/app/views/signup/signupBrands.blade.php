@@ -14,9 +14,6 @@
 			{{ Form::open(array('route' => 'signup-brands-make', 'method' => 'POST')) }}
 			<input type="hidden" name="user_id" value="{{ $user->profile->id }}">
 			<div class="row">
-				{{ $user->profile }} <br>
-				{{ $user->profile->id }} <br>
-				{{ $gender }}
 				<button class="registrame">Siguiente</button>
 				<div class="clear"></div>
 			</div>

@@ -2,7 +2,7 @@
 
 @section ('title') Registro - Summer Beta @stop
 
-@section('bodyclass') registro {{ $gender }} @stop
+@section('bodyclass') registro @stop
 
 @section('steep')  
 

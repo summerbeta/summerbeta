@@ -7,31 +7,25 @@
 @section ('content')
 
 		<!-- {{ $count = 1 }} -->
+		
 		<div class="row">
 		
 		@foreach ($profiles as $profile)
-			<div class="two columns">
-							
+			<div class="two columns">	
+				
 				<div class="perfil">
 					<figure class="perfil_foto">
-						<!-- <a href="@{{ route('armario', [$profile->first_name, $profile->id]) }}"> -->
 						<a href="{{ route('closet_other', [$profile->id]) }}">
 							
 							@if ($profile->picture)
 							
 							<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de {{ $profile->first_name }}">
 							
-							@else
+							@elseif ( ! is_null($profile->getPicture) )
 							
 							<img src="uploads/profile/{{ $profile->getPicture->reverse()->first()->filename }}" class="{{ $profile->getPicture->reverse()->first()->style }}" alt="{{ $profile->first_name }} - {{ $profile->getPicture->reverse()->first()->title }}">
 							
-							{{-- @if ($picture = $profile->getPicture->take(1)) @endif
-							@if ($picture = $profile->getPicture[0]) @endif --}}
-							{{-- {{ $profile_id = $profile->id }}
-							{{ $profile->getPicture->first() }}
-							json_encode(Profile::find($profile_id)->user) --}}
 							@endif
-							
 						</a>
 					</figure>
 					<div class="descripcion">
@@ -58,9 +52,8 @@
 		</div>
 		<div class="row">
 				<!-- {{ $count = 1 }} -->
-			 @endif
+			 @endif	
 		@endforeach
 		
 		</div>
-
 @stop

@@ -2,10 +2,28 @@
 
 @section ('title') Social - SUMMER BETA @stop
 
+@section('bodyclass')registro {{ $gender }} @stop
+
 @section ('content')
 		<div class="row closet">
 			<div class="two columns perfil">
-				<img class="perfil_foto" src="{{ asset('uploads/profile/'.$profile->picture) }}" width="356" height="596">
+				
+				@if ($profile->picture)
+				
+				<img src="uploads/profile/{{ $profile->picture }}" alt="Perfil de {{ $profile->first_name }}">
+				
+				@else
+				
+				@if ( ! is_null($profile->getPicture) )
+				<img src="uploads/profile/{{ $profile->getPicture->reverse()->first()->filename }}" >
+				{{-- 
+				<img src="uploads/profile/{{ $profile->getPicture->reverse()->first()->filename }}" class="{{ $profile->getPicture->reverse()->first()->style }}" alt="{{ $profile->first_name }} - {{ $profile->getPicture->reverse()->first()->title }}">
+				--}}
+				@endif
+				
+				@endif
+				
+				<!-- <img class="perfil_foto" src="{{ asset('uploads/profile/'.$profile->picture) }}" width="356" height="596"> -->
 				<div class="perfil_accion">
 					<div class="perfil_spoint">
 						<i class="icon-banknote"></i>
@@ -34,8 +52,10 @@
 						<p class="popular_cantidad">302</p>
 					</div>
 					<div class="popular_caja notificaciones">
-						<p class="popular_titulo">Seguir</p>
-						<p class="popular_cantidad"><span class="icon-plus-circle"></span></p>
+						<!-- <p class="popular_titulo">Seguir</p> -->
+						<p class="popular_titulo">Perfil</p>
+						<!-- <p class="popular_cantidad"><span class="icon-plus-circle"></span></p> -->
+						<p class="popular_cantidad"><a href="#">Editar</a></p>
 					</div>
 						
 				</div>

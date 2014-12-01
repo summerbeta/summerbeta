@@ -83,7 +83,7 @@
 		html += "<ul>";
 		html += '<li><a href="#">Subir una foto</a>';
 		html += '<form id="form_' + size + '" class="formulario" action="" method="post">';
-		html += '<input type="hidden" class="profile_id_input" name="profile_id" value="15">';
+		html += '<input type="hidden" class="profile_id_input" name="profile_id" value="' + {{ $profile->id }} + '">';
 		html += '<input type="hidden" id="style_input" name="style" value="' + size + '">';
 		html += '<input type="file" name="picture">';
 		// html += '<input type="submit" id="send" value="Submit">';
@@ -126,7 +126,7 @@
 	
 	function singupSendPicture(Data, size) {
 		$.ajax({
-			url: "{{ route('signup-picture-up') }}",
+			url: "{{ route('signup_picture_up') }}",
 			type: "POST",
 			contentType: false,
 			processData: false,
@@ -140,7 +140,8 @@
 				} else {
 					$("#mensaje").html(e.statusText);
 				};
-				console.log(e.responseText.error);
+				// console.log(e.responseText.error);
+				console.log(e.responseText);
 				
 				// Poner un mensaje "Fallo, intenta mas tarde. Gracias"
 			},

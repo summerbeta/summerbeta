@@ -50,27 +50,34 @@
 				<h2>Crear una marca</h2>
 			</div>
 			
-			Lista de las ultimas publicidades
-			<table>
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Marca</th>
-						<th>Genero</th>
-						<th>Visto</th>
-						<th>Click</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>AAA</td>
-						<td>AAA</td>
-						<td>AAA</td>
-						<td>AAA</td>
-						<td>AAA</td>
-					</tr>
-				</tbody>
-			</table>
+			
+			<div class="cajaconborde pdd1 space10">
+			
+				<h2>Lista de publicidades</h2>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Marca</th>
+							<th>Genero</th>
+							<th>Mostrado</th>
+							<th>Click</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach ($ads as $ad) 
+						<tr>
+							<td><a href="{{ route('ads_edit', $ad->id) }}">{{ $ad->title }}</a></td>
+							<td>{{ $ad->brand->name }}</td>
+							<td>{{ $ad->gender }}</td>
+							<td>999</td>
+							<td>99</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="row space10">
 			<div class="cajaconborde  pdd1">

@@ -126,8 +126,9 @@ class SignupController extends \BaseController {
 	public function signupBrands($id)
 	{
 		$user = Auth::user();
+		// dd($user->profile->gender);
 		$gender = $user->profile->gender;
-		$brands = Brand::whereIn('gender', [$gender, 'mf'])->get();
+		$brands = Brand::whereIn('gender', [$gender, 'both'])->get();
 		return View::make('signup/signupBrands', ['user' => $user, 'gender' =>$gender, 'brands' => $brands]);
 	}
 	

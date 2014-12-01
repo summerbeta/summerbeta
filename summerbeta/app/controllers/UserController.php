@@ -10,7 +10,8 @@ class UserController extends \BaseController {
 		
 		// llamamos a todos los perfiles
 		// $profiles = DB::table('profiles')->where('gender', 'male')->get();
-		$profiles = Profile::all();
+		// $profiles = Profile::all();
+		$profiles = Profile::all()->except($user->profile->id);
 
 		// Creamos la vista
 		return View::make('user/socialsummer', ['user' => $user, 'gender' => $gender, 'profiles' => $profiles]);
@@ -19,8 +20,9 @@ class UserController extends \BaseController {
 	public function closet()
 	{
 		$profile = Auth::user()->profile;
+		$gender = $profile->gender;
 
-		return View::make('user/armario', ['profile' => $profile]);
+		return View::make('user/armario', ['profile' => $profile, 'gender' => $gender,]);
 	}
 
 	public function closetOther($id)

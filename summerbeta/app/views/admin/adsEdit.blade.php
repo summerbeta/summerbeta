@@ -49,8 +49,8 @@
 			<div class="cajaconborde pdd1 space10">
 				<h2>Imágenes</h2>
 					
-				{{ Form::open(array('route' => 'signup_picture_up', 'method' => 'POST', 'name' => 'adsUpPhoto', 'id' => 'adsUpPhoto')) }}
-				<div class="cajaconborde pdd1 space10">
+				<div class="space10">
+				{{ Form::open(array('route' => 'ads_send_picture', 'method' => 'POST', 'name' => 'adsUpPhoto', 'id' => 'adsUpPhoto')) }}
 					<input type="hidden" name="ad_id" value="{{ $ad->id }}">
 					{{ Form::file('image') }}
 					
@@ -58,7 +58,10 @@
 					{{ Form::select('style', ['2col' => 'Pequeño 367x155', '4col' => 'Mediano 759x348', '6col' => 'Grande 1150x452']) }}
 					
 					<button>Subir</button>
+				</div>
 					
+				<div class="cajaconborde pdd1 space10">
+					{{ $ad->images }}
 				</div>
 				{{ Form::close() }}
 			</div>
@@ -69,17 +72,21 @@
 @section('script') 
 			$('#adsUpPhoto').submit( function(event){
 				event.preventDefault();
-				sendPhoto(event);
+				sendPhoto(event.currentTarget);
 			});
 			
-			function sendPhoto(Data){
-				console.log(Data);
+			function sendPhoto(form){
+				var Data = new FormData(form);
 				$.ajax({
 					url: "{{ route('ads_send_picture') }}",
 					type: "POST",
 					contentType: false,
 					processData: false,
 					data: Data,
+					error: function(e){
+						// console.log(e.responseText.error);
+						console.log(e.responseText);
+					},
 					beforeSend: function() {
 						// Poner una imagen que indiqe que esta cargando
 						// $("#mensaje").html('Cargando');
