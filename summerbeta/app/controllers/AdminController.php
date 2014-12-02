@@ -111,7 +111,7 @@ class AdminController extends \BaseController {
 		// return View::make('admin/adsNew');
 	}
 	
-	public function adsSendPicture()
+	public function adsPictureSave()
 	{
 		// Obtenemos todos los datos del formulario, el archivo y esperamos mensajes
 		$data = Input::only('ad_id', 'style');
@@ -161,16 +161,17 @@ class AdminController extends \BaseController {
 					{{ Form::select('style', ['2col' => 'Pequeño 367x155', '4col' => 'Mediano 759x348', '6col' => 'Grande 1150x452']) }}
 					*/
 					if ($data['style'] == '2col') {
-						// $manipulation->resize(354, 409);
-						$manipulation->crop(367, 155);
+						// $manipulation->resize(367, 155);
+						$manipulation->resize(367, 155);
+						// $manipulation->crop(367, 155);
 						
 					} elseif ($data['style'] == '4col') {
-						// $manipulation->resize(354, 596);
-						$manipulation->crop(759, 348);
+						$manipulation->resize(759, 348);
+						// $manipulation->crop(759, 348);
 						
 					} elseif ($data['style'] == '6col') {
-						// $manipulation->resize(354, 596);
-						$manipulation->crop(1150, 452);
+						$manipulation->resize(1150, 452);
+						// $manipulation->crop(1150, 452);
 					}
 					$manipulation->save('uploads/adds/' . $fileName );
 					
@@ -186,54 +187,33 @@ class AdminController extends \BaseController {
 		return Response::json($messages);
 	}
 		
-	public function adsSendPictureOld()
+	public function adsPictureDelete($id)
 	{
-		// Si la validacion es correcta
-		if ($validation) {
-			
-			// Instanciamos una Foto y le pasamos los valores
-			$picture = new Picture;
-			$picture->profile_id = $dataUpload['profile_id'];
-			$picture->style = $dataUpload['style'];
-			$picture->filename = $fileName;
-			
-			// Si se guarda
-			if ( $picture->save() ) {
-				
-				// Si movemos la imagen a la carpeta de perfiles y le damos el nuevo nombre
-				if ( $file->move("uploads/profile/", $fileName) ) {
-					// Generamos un mensaje con el id
-					$messages = ['id' => $picture->id, 'filename' => $fileName];
-					
-					// Cortar la foto
-					// http://image.intervention.io/
-					
-					$manipulation = Image::make('uploads/profile/' . $fileName);
-					// Si el estilo es full shot
-					if ($data['style'] == 'medium') {
-						// $manipulation->resize(354, 409);
-						$manipulation->crop(354, 409);
-					// Si el estilo en medium shot
-					} elseif ($data['style'] == 'full') {
-						// $manipulation->resize(354, 596);
-						$manipulation->crop(354, 596);
-					}
-					$manipulation->save('uploads/profile/' . $fileName );
-					
-				} else {
-					// Generamos un mensaje
-					$messages = ['id' => $picture->id, 'errorFile' => 'No se movio el archivo'];
-				}
-				
-			}
-		// Si la validación falla
-		} else {
-			// Generamos un mensaje de error
-			$messages = ['error' => $validation->messages()];
-		}
+		$photo = Photo::find($id);
+		$brands = Brand::all();
+		// $ad = Ad::find($photo->ad_id);
 		
-		// Regresamos el mensaje
-		return Response::json($messages);
+		if (File::delete('uploads/adds/' . $photo->filename)) {
+			$messages[] = ['archivo' => 'borrado'];
+			// Borrarlo de la base de datos
+			if ($photo->delete()) {
+				$messages[] = ['BD' => 'borrado'];
+			} else {
+				$messages[] = ['BD' => 'fallo'];
+			}
+		} else {
+			// Fallo borrar la imagen
+			$messages[] = ['archivo' => 'Fallo'];
+		}
+		// dd($messages);
+		
+		// return Response::json($fileName);
+		
+		return Redirect::route('ads_edit', ['ad_id' => $photo->ad_id]);
+		// return View::make('admin/adsEdit', ['ad' => $ad, 'brands' => $brands, );
+		
+		
+		
 	}
 
 	

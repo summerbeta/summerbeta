@@ -10,8 +10,7 @@ class Ad extends \Eloquent {
 	}
 	public function images()
 	{
-		// return $this->hasOne('Photo');
-		return $this->belongsTo('Photo' );
+		return $this->hasMany('Photo');
 		
 	}
 }

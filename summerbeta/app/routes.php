@@ -53,8 +53,9 @@ Route::group(['before' => 'admin'], function () {
 	Route::get('administrador/publicidad', ['as' => 'ads', 'uses' => 'AdminController@ads']);
 	Route::post('administrador/publicidad', ['as' => 'ads_new', 'uses' => 'AdminController@adsNew']);
 	Route::get('administrador/publicidad-editar/{id}', ['as' => 'ads_edit', 'uses' => 'AdminController@adsEdit']);
-	Route::post('administrador/publicidad-editar/{id}', ['as' => 'ads_edit', 'uses' => 'AdminController@adsSave']);
-	Route::post('administrador/publicidad-save-picture', ['as' => 'ads_send_picture', 'uses' => 'AdminController@adsSendPicture']);
+	// Route::post('administrador/publicidad-editar/{id}', ['as' => 'ads_edit', 'uses' => 'AdminController@adsSave']);
+	Route::post('administrador/publicidad-picture-save', ['as' => 'ads_picture_save', 'uses' => 'AdminController@adsPictureSave']);
+	Route::get('administrador/publicidad-picture-delete/{id}', ['as' => 'ads_picture_delete', 'uses' => 'AdminController@adsPictureDelete']);
 	// Route::get('publicidad-crear', ['as' => 'ads_create', 'uses' => 'AdminController@adsCreate']);
 });
 
