@@ -23,9 +23,9 @@ Route::group(array('before' => 'guest'), function() {
 
 // Si es usuario registrado
 Route::group(array('before' => 'auth'), function() {
-	Route::get('/', ['as' => 'home2', 'uses' => 'UserController@sommerhome']);
+	Route::get('/', ['as' => 'sommerhome', 'uses' => 'UserController@sommerhome']);
 	
-	Route::get('summerbeta', ['as' => 'summerbeta', 'uses' => 'UserController@socialsummer']);
+	Route::get('summerbeta', ['as' => 'summerbeta', 'uses' => 'UserController@sommerhome']);
 	Route::get('socialsummer', ['as' => 'socialsummer', 'uses' => 'UserController@socialsummer']);
 	Route::get('mi-armario', ['as' => 'closet', 'uses' => 'UserController@closet']);
 	Route::get('armario/{id}', ['as' => 'closet_other', 'uses' => 'UserController@closetOther']);

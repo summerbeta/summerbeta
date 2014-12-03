@@ -3,8 +3,8 @@
 class BrandsLike extends \Eloquent {
 	protected $fillable = ['profile_id', 'brand_id'];
 	
-	/*public function brands()
+	public function brands()
 	{
-		return $this->hasMany('Brand');
-	}*/
+		return $this->belongsToMany('Brand');
+	}
 }

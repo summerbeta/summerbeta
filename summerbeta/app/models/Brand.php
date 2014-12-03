@@ -23,4 +23,10 @@ class Brand extends \Eloquent {
 	{
 		return $this->where('gender', '=', $gender);
 	}
+	
+	public function ads()
+	{
+		return $this->hasManyThrough('Profile', 'Ad');
+	}
+	
 }

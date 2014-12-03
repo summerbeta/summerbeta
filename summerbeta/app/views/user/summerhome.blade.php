@@ -4,22 +4,26 @@
 
 @section ('content')
 
-	
+		
 		<div class="row space10">
 			<div class="six columns">
-				<img src="/summerbeta/public/uploads/publicidad/banner-hombre-levis.jpg" alt="summer banner hombre levi's" style="width: 100%;">
+				@include('user/adfull')
+				<!-- <img src="/summerbeta/public/uploads/publicidad/banner-hombre-levis.jpg" alt="summer banner hombre levi's" style="width: 100%;"> -->
 			</div>
 			<div class="clear"></div>
 		</div>
+		
 		<div class="row borde1 add">
 			<div class="four columns">
 				<div class="add4cols">
-					<img src="summerbeta/public/uploads/publicidad/publicidad4cols-ck.jpg" width="759" height="348" alt="">
+					@include('user/adMeduim')
+					<!-- <img src="summerbeta/public/uploads/publicidad/publicidad4cols-ck.jpg" width="759" height="348" alt=""> -->
 				</div>
 			</div>
 			<div class="two columns">
 				<div class="add2cols top">
-					<img src="summerbeta/public/uploads/publicidad/add2cols-lv.jpg" width="375" height="158" alt="lv">
+					@include('user/adSmall')
+					<!-- <img src="summerbeta/public/uploads/publicidad/add2cols-lv.jpg" width="375" height="158" alt="lv"> -->
 				</div>
 				<div class="add2cols">
 					<img src="summerbeta/public/uploads/publicidad/add2cols-oakley.jpg" width="375" height="158" alt="lv">

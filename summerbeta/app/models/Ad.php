@@ -8,9 +8,20 @@ class Ad extends \Eloquent {
 	{
 		return $this->belongsTo('Brand' );
 	}
+	
 	public function images()
 	{
 		return $this->hasMany('Photo');
-		
 	}
+	
+	public function photoFull()
+	{
+		return $this->where('user_id', '=', $id)->first();
+	}
+	
+	public function brands()
+	{
+		return $this->hasManyThrough('Profile', 'Brand');
+	}
+	
 }

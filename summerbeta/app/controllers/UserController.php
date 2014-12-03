@@ -59,11 +59,21 @@ class UserController extends \BaseController {
 
 	public function sommerhome()
 	{
-		$id = Auth::id();
-		$me = Profile::where('user_id', '=', $id)->first();
+		$profile = Auth::user()->profile;
 		
-		dd( $me );
-		return View::make('user/summerhome');
+		// Preprarar las publicidades en base a las marcas
+		
+		// Primero obtenemos las marcas que le gusta al usuario
+		// $profile_brands = $profile->brandsLike->first()->brand_id;
+		$profile_brands = $profile->brandsLike->lists('brand_id');
+		
+		// Consultamos que publicidades se relaciona con las marcas
+		// $ads = Ad::where('user_id', '=', $id)->first();
+		$ads = Ad::all();
+		// dd();
+		
+		// dd( $me );
+		return View::make('user/summerhome', ['profile_brands' => $profile_brands, 'ads' => $ads]);
 	}
 	
 	/**
@@ -73,9 +83,11 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		// return 'Esta es la lista de usuarios';
-
+		/*if (Auth::check()) {
+			return Redirect::to('sommerhome');
+		}*/
 		$profiles = Profile::all();
+		
 		return View::make('home')->with('profiles', $profiles);
 	}
 	

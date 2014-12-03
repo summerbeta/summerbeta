@@ -15,8 +15,12 @@ class Profile extends \Eloquent {
 	
 	public function brandsLike()
 	{
-		// return $this->hasMany('BrandsLike');
 		return $this->hasMany('BrandsLike');
+	}
+	
+	public function brands()
+	{
+		return $this->hasManyThrough('BrandsLike', 'Brand', 'id', 'brand_id');
 	}
 	
 	public function getPicture()
