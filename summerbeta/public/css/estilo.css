@@ -104,12 +104,12 @@ table.rounded > tbody:first-child tr:first-child td {
   width: 100%;
   height: auto;
 }
-.add .add2cols {
+.add .add2cols div {
   display: block;
   margin-top: 22px;
   margin-top: 1.375em;
 }
-.add .add2cols.top {
+.add .add2cols div:first-child {
   margin-top: 0;
 }
 .borde1 {
@@ -243,16 +243,20 @@ table.rounded > tbody:first-child tr:first-child td {
   background: #d803c6;
   color: #fff;
 }
-.girl.registro .roundedOne input[type=checkbox]:checked + label:before {
+.girl.registro,
+.girl .producto .descripcion .precio {
   background: #d803c6;
 }
-.girl.registro label:hover::before {
+.girl .roundedOne input[type=checkbox]:checked + label:before {
   background: #d803c6;
 }
-.girl.registro .foto_perfil_image.medium:after {
+.girl label:hover::before {
+  background: #d803c6;
+}
+.girl .foto_perfil_image.medium:after {
   background: url("../img/perfil_gb_medium_girl.jpg") no-repeat center bottom;
 }
-.girl.registro .foto_perfil_image.full:after {
+.girl .foto_perfil_image.full:after {
   background: url("../img/perfil_gb_full_girl.jpg") no-repeat center bottom;
 }
 .boy a {
@@ -262,6 +266,9 @@ table.rounded > tbody:first-child tr:first-child td {
 .boy .button {
   background: #01a4b3;
   color: #fff;
+}
+.boy .producto .descripcion .precio {
+  background: #01a4b3;
 }
 .boy.registro .roundedOne input[type=checkbox]:checked + label:before {
   background: #01a4b3;
@@ -925,6 +932,9 @@ textarea.wide-xx {
   padding: 0;
   position: relative;
 }
+.producto a {
+  color: #fff;
+}
 .producto img {
   width: 100%;
   height: auto;
@@ -950,7 +960,6 @@ textarea.wide-xx {
   margin-left: 0.7em;
 }
 .producto .descripcion .precio {
-  background: #d803c6;
   font-size: 1.2em;
   height: 4em;
   padding: 0.2em;

@@ -10,7 +10,7 @@ function adsMedium()
 		if ($image->style == '4col' and $view > 2)  {
 			echo $image->filename;
 		} else {
-			adsMedium();
+			// adsMedium();
 			$view++;
 		}
 	}

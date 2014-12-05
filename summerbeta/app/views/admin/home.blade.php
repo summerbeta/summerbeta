@@ -46,7 +46,19 @@
 				</div>
 				<div class="cajaconborde pdd1">
 					
-					<h2>Notificaciones</h2>
+					<h2>Noticias</h2>
+					
+					<p><a href="{{ route('admin_posts') }}">Agregar una nueva Noticia</a></p>
+					<p>Ver las noticias</p>
+					
+				</div>
+				<div class="cajaconborde pdd1">
+					
+					<h2>Marcas</h2>
+					
+					<p><a href="#">Agregar una nueva Marca</a></p>
+					<p>Ver las Marcas</p>
+					
 				</div>
 				<div class="cajaconborde pdd1">
 					<h2>Administradores</h2>

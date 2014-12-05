@@ -56,8 +56,9 @@
 	</div>
 @stop
 
+<script type="text/javascript">
+
 @section('script') 
-	<script type="text/javascript">
 	
 	if( $( "#tab" ).length != 0 ){
 		// alert("jQuery esta funcionando !!");
@@ -160,6 +161,7 @@
 	}
 	
 	
-	</script>
 @stop
+
+</script>
 

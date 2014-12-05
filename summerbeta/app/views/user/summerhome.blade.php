@@ -1,13 +1,14 @@
-@extends ('user/layout')
+@extends ('layout')
 
 @section ('title') Inicio - SUMMER BETA @stop
 
+@section('bodyclass')closet {{ $gender }} @stop
+
 @section ('content')
 
-		
 		<div class="row space10">
 			<div class="six columns">
-				@include('user/adfull')
+				@include('user/summerhome/adfull')
 				<!-- <img src="/summerbeta/public/uploads/publicidad/banner-hombre-levis.jpg" alt="summer banner hombre levi's" style="width: 100%;"> -->
 			</div>
 			<div class="clear"></div>
@@ -16,17 +17,18 @@
 		<div class="row borde1 add">
 			<div class="four columns">
 				<div class="add4cols">
-					@include('user/adMeduim')
+					@include('user/summerhome/adMeduim')
 					<!-- <img src="summerbeta/public/uploads/publicidad/publicidad4cols-ck.jpg" width="759" height="348" alt=""> -->
 				</div>
 			</div>
-			<div class="two columns">
-				<div class="add2cols top">
-					@include('user/adSmall')
+			<div class="two columns add2cols">
+				<div class="top">
+					@include('user/summerhome/adSmall')
 					<!-- <img src="summerbeta/public/uploads/publicidad/add2cols-lv.jpg" width="375" height="158" alt="lv"> -->
 				</div>
-				<div class="add2cols">
-					<img src="summerbeta/public/uploads/publicidad/add2cols-oakley.jpg" width="375" height="158" alt="lv">
+				<div class="bottom">
+					@include('user/summerhome/adSmall')
+					<!-- <img src="summerbeta/public/uploads/publicidad/add2cols-lv.jpg" width="375" height="158" alt="lv"> -->
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -46,6 +48,8 @@
 				</div>	
 			</div>
 			<div class="two columns">
+				@include('user/summerhome/item')
+				<!-- 
 				<figure class="producto cajaconborde">
 					<img src="summerbeta/public/uploads/productos/productos-dnky-dk151h00.jpg" alt="">
 					<div class="descripcion">
@@ -60,78 +64,16 @@
 							</div>
 						</div>
 					</div>
-				</figure>
+				</figure> -->
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="row">
+			
 			<h2 class="tituloTrendi">Tendencia en <span>Social SUMMER</span></h2>
+			
 			<div class="row trend">
-				<div class="two columns">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/profile-girl-alejandra.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Alejandra
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">32</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-										<!-- <i class="icon-heart girl"></i>	 -->
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="two columns ">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/Gabriela/profile-girl-full-01.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Gabriela
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">382</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="two columns ">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/profile-girl-daniela.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Daniela
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">32</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-										<i class="icon-heart girl"></i>	
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
+				@include('user/summerhome/trendProfile')
 			</div>	
 			<div class="clear"></div>
 		</div>
@@ -155,96 +97,17 @@
 		<div class="row borde1">
 			<h2 class="tituloTrendi">Tendencia en <span>Social SUMMER</span></h2>
 			<div class="row trend">
-				<div class="two columns">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/profile-girl-carmen.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Carmen
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">32</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-										<!-- <i class="icon-heart girl"></i>	 -->
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="two columns ">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/profile-girl-adriana.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Adriana
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">32</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-										<i class="icon-heart girl"></i>	
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="two columns ">
-					<div class="perfil">
-						<figure class="foto">
-							<img src="summerbeta/public/uploads/perfil/profile-girl-veronica.jpg" alt="Perfil de Jessica">
-						</figure>
-						<div class="descripcion">
-							<div class="nombre">
-								Veronica
-							</div>
-							<div class="summer_love">
-								<div class="smm_lv_m">
-									<div class="love">32</div>
-									<div class="heart">
-										<i class="icon-heart"></i>
-										<i class="icon-heart boy"></i>	
-									</div>
-								</div>
-									
-							</div>
-						</div>
-					</div>
-				</div>
+				@include('user/summerhome/trendProfile')
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="row borde1">
 			<div class="two columns">
-				<figure class="producto cajaconborde">
-					<img src="summerbeta/public/uploads/productos/productos-d3021q000.jpg" alt="">
-					<div class="descripcion">
-						<div class="nombre_marca">
-							Chaqueta de plumas <span class="uppercase">Ralph Lauren</span> <br>
-							Tallas / 36, 38,  40, 42, 44
-						</div>
-						<div class="precio">
-							$345
-							<div class="detalles">
-								Detalles
-							</div>
-						</div>
-					</div>
-				</figure>
+				@include('user/summerhome/item')
 			</div>
 			<div class="four columns">
 				<div class="blog_element cajaconborde">
-					<img src="summerbeta/public/uploads/blog-10bdm.jpg" alt="10 blogs de moda">
+					<img src="{{ asset('uploads/blog-10bdm.jpg') }}" alt="10 blogs de moda">
 					<div class="inf">
 						<div class="meta">
 							<a href="#">Jessica Ruiz</a> compartió un <a href="#">enlace</a>.  Hace 27min

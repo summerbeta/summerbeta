@@ -33,12 +33,17 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('tienda/marca/{id}', ['as' => 'shop-brand', 'uses' => 'UserController@shopBrand']);
 	Route::get('producto/{id}', ['as' => 'item', 'uses' => 'UserController@shopItem']);
 	Route::get('marcas', ['as' => 'brands', 'uses' => 'UserController@brands']);
+	Route::get('noticias', ['as' => 'posts', 'uses' => 'UserController@posts']);
+	Route::get('noticia/{id}', ['as' => 'post', 'uses' => 'UserController@post']);
+	Route::get('perfil', ['as' => 'profile', 'uses' => 'UserController@profile']);
 	
 	Route::get('registro-marcas/{id}', ['as' => 'signup-brands', 'uses' => 'SignupController@signupBrands']);
 	Route::post('registro-marcas-make', ['as' => 'signup-brands-make', 'uses' => 'SignupController@signupBrandsMake']);
 	Route::get('registro-foto/{id}', ['as' => 'signup-picture', 'uses' => 'SignupController@signupPicture']);
 	Route::post('registro-foto-subir',['as' => 'signup_picture_up', 'uses' => 'SignupController@signupPictureUp']);
 	Route::get('registro-mandar-correo',['as' => 'signup_send_mail', 'uses' => 'SignupController@signupSendMail']);
+	
+	Route::post('ajax/modify/love',['as' => 'ajax_love', 'uses' => 'UserController@ajaxLove']);
 	
 	Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 	
@@ -57,6 +62,12 @@ Route::group(['before' => 'admin'], function () {
 	Route::post('administrador/publicidad-picture-save', ['as' => 'ads_picture_save', 'uses' => 'AdminController@adsPictureSave']);
 	Route::get('administrador/publicidad-picture-delete/{id}', ['as' => 'ads_picture_delete', 'uses' => 'AdminController@adsPictureDelete']);
 	// Route::get('publicidad-crear', ['as' => 'ads_create', 'uses' => 'AdminController@adsCreate']);
+	
+	Route::get('administrador/noticias', ['as' => 'admin_posts', 'uses' => 'AdminController@posts']);
+	Route::post('administrador/noticias-nuevo', ['as' => 'admin_posts_new', 'uses' => 'AdminController@postsNew']);
+	Route::get('administrador/noticias-editar/{id}', ['as' => 'admin_posts_edit', 'uses' => 'AdminController@postsEdit']);
+	Route::post('administrador/noticias-guardar', ['as' => 'admin_posts_save', 'uses' => 'AdminController@postsSave']);
+	
 });
 
 

@@ -19,7 +19,8 @@
 			<div class="social">
 
 				@if (Auth::check())
-				<a href="{{ route('logout') }}">logout</a>
+				<a href="{{ route('logout') }}"><span class="icon-logout"></span></a>
+				<a href="{{ route('profile') }}"><span class="icon-user2"></span></a>
 				@else
 				<a href="{{ route('login') }}">login</a>
 				@endif

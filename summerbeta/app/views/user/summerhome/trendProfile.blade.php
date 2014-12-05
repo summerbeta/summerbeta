@@ -1,18 +1,10 @@
-@extends ('layout')
 
-@section ('title') Social - SUMMER BETA @stop
+<?php
+$profiles = Profile::orderBy(DB::raw('RAND()'))->take(3)->get(); // 
+?>
 
-@section('bodyclass')trend {{ $gender }} {{ $user->id }} @stop
-
-@section ('content')
-
-		<!-- {{ $count = 1 }} -->
-		
-		<div class="row">
-		
 		@foreach ($profiles as $profile)
-			<div class="two columns">	
-				
+			<div class="two columns">
 				<div class="perfil">
 					<figure class="perfil_foto">
 						<a href="{{ route('closet_other', [$profile->id]) }}">
@@ -38,31 +30,37 @@
 							<div class="smm_lv_m">
 								<div class="love">32</div>
 								<div class="heart">
-									<i id="love_{{ $profile->id }}" class="icon-heart"></i>
+									<i class="icon-heart"></i>
 									<!-- <i class="icon-heart girl"></i>	 -->
 								</div>
 							</div>
 								
 						</div>
 					</div>
-				<!-- {{ $count++ }} -->
 				</div>
 			</div>
-			@if ( $count > 3 ) 
-		</div>
-		<div class="row">
-				<!-- {{ $count = 1 }} -->
-			 @endif	
 		@endforeach
-		
-		</div>
-@stop
-
-<script>
-
-@section('script') 
-			$('.icon-heart')
-@stop
-
-</script>
-
+				
+				<!-- <div class="two columns">
+	
+					<div class="perfil">
+						<figure class="foto">
+							<img src="summerbeta/public/uploads/perfil/profile-girl-alejandra.jpg" alt="Perfil de Jessica">
+						</figure>
+						<div class="descripcion">
+							<div class="nombre">
+								Alejandra
+							</div>
+							<div class="summer_love">
+								<div class="smm_lv_m">
+									<div class="love">32</div>
+									<div class="heart">
+										<i class="icon-heart"></i>
+										<!- - <i class="icon-heart girl"></i>	 - ->
+									</div>
+								</div>
+									
+							</div>
+						</div>
+					</div>
+				</div> -->

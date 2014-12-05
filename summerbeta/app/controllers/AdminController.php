@@ -216,6 +216,27 @@ class AdminController extends \BaseController {
 		
 	}
 
+	public function posts()
+	{
+		$brands = Brand::all();
+		$posts = Post::all();
+		return View::make('admin/post', ['brands' => $brands, 'posts' => $posts]);
+	}
+	
+	public function postsNew()
+	{
+		dd(Input::all());
+	}
+	
+	public function postsEdit($id)
+	{
+		dd(Input::all());
+	}
+	
+	public function postsSave()
+	{
+		dd(Input::all());
+	}
 	
 	/**
 	 * Show the form for creating a new resource.

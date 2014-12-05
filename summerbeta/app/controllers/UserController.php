@@ -60,20 +60,18 @@ class UserController extends \BaseController {
 	public function sommerhome()
 	{
 		$profile = Auth::user()->profile;
+		$gender = $profile->gender;
 		
 		// Preprarar las publicidades en base a las marcas
 		
 		// Primero obtenemos las marcas que le gusta al usuario
-		// $profile_brands = $profile->brandsLike->first()->brand_id;
 		$profile_brands = $profile->brandsLike->lists('brand_id');
 		
 		// Consultamos que publicidades se relaciona con las marcas
-		// $ads = Ad::where('user_id', '=', $id)->first();
 		$ads = Ad::all();
-		// dd();
 		
 		// dd( $me );
-		return View::make('user/summerhome', ['profile_brands' => $profile_brands, 'ads' => $ads]);
+		return View::make('user/summerhome', ['profile_brands' => $profile_brands, 'gender' => $gender, 'ads' => $ads]);
 	}
 	
 	/**
@@ -125,7 +123,14 @@ class UserController extends \BaseController {
 		 
 		return Redirect::back()->withInput()->withErrors($validation);
 	}
-
+	
+	public function like($id)
+	{
+		// introduce el id del perfil que te gusta
+		
+		// regresa formato json
+	}
+	
 	/**
 	 * Show the form for creating a new resource.
 	 *

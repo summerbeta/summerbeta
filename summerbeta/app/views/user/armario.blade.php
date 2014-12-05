@@ -61,7 +61,10 @@
 				</div>
 
 				<div class="publicaciones">
-					<div class="row">
+					<div style="height:577px; width:759px; background: #e0e0e0; text-align: center; margin-bottom: 1em;">
+						Proximamente
+					</div>
+					{{--<div class="row">
 						<div class="four columns">
 							<div class="row">
 								<div class="a">
@@ -95,7 +98,7 @@
 								<img src="{{ asset('uploads/publicar/gabriela/publicar-e.jpg') }}" alt="">
 							</div>
 						</div>
-					</div>
+					</div>--}}
 								
 					
 				</div>
@@ -120,7 +123,7 @@
 								<div class="smm_lv_m">
 									<div class="love">32</div>
 									<div class="heart">
-										<i class="icon-heart"></i>
+										<i class="icon-heart" id="love_{{ $profile->id }}"></i>
 										<!-- <i class="icon-heart girl"></i>	 -->
 									</div>
 								</div>
@@ -183,3 +186,11 @@
 		</div>
 		<div class="clear borde1"></div>
 @stop
+
+<script>
+
+@section('script') 
+@stop
+
+</script>
+
