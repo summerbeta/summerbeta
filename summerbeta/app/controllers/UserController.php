@@ -124,13 +124,6 @@ class UserController extends \BaseController {
 		return Redirect::back()->withInput()->withErrors($validation);
 	}
 	
-	public function like($id)
-	{
-		// introduce el id del perfil que te gusta
-		
-		// regresa formato json
-	}
-	
 	/**
 	 * Show the form for creating a new resource.
 	 *

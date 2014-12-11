@@ -243,6 +243,9 @@ table.rounded > tbody:first-child tr:first-child td {
   background: #d803c6;
   color: #fff;
 }
+.girl .heart .icon-heart.love {
+  color: #d803c6;
+}
 .girl.registro,
 .girl .producto .descripcion .precio {
   background: #d803c6;
@@ -266,6 +269,9 @@ table.rounded > tbody:first-child tr:first-child td {
 .boy .button {
   background: #01a4b3;
   color: #fff;
+}
+.boy .heart .icon-heart.love {
+  color: #01a4b3;
 }
 .boy .producto .descripcion .precio {
   background: #01a4b3;
@@ -379,7 +385,6 @@ table.rounded > tbody:first-child tr:first-child td {
   height: auto;
 }
 .perfil .perfil_foto img {
-  background: url("../img/perfil_gb_full.jpg") no-repeat center bottom;
   height: 591px;
   width: 351px;
 }
@@ -392,6 +397,18 @@ table.rounded > tbody:first-child tr:first-child td {
 .perfil .perfil_informacion p {
   font-size: 0.85em;
   margin: 0;
+}
+.perfil img.medium.girl {
+  background: url("../img/perfil_gb_medium_girl.jpg") no-repeat center bottom;
+}
+.perfil img.medium.boy {
+  background: url("../img/perfil_gb_medium_boy.jpg") no-repeat center bottom;
+}
+.perfil img.full.girl {
+  background: url("../img/perfil_gb_full_girl.jpg") no-repeat center bottom;
+}
+.perfil img.full.boy {
+  background: url("../img/perfil_gb_full_boy.jpg") no-repeat center bottom;
 }
 .popular {
   background: #f2f2f2;
@@ -1057,13 +1074,8 @@ textarea.wide-xx {
 .trend .perfil .descripcion .summer_love .heart {
   display: inline-block;
 }
-.trend .perfil .descripcion .summer_love .heart .icon-heart.girl {
+.trend .perfil .descripcion .summer_love .heart .icon-heart.love {
   margin-left: -0.5em;
-  color: #d803c6;
-}
-.trend .perfil .descripcion .summer_love .heart .icon-heart.boy {
-  margin-left: -0.5em;
-  color: #01a4b3;
 }
 .trend .perfil .descripcion .summer_love .love {
   display: inline-block;

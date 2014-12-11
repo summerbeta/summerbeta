@@ -15,8 +15,13 @@
 				
 				<div class="perfil">
 					<figure class="perfil_foto">
+							
 						<a href="{{ route('closet_other', [$profile->id]) }}">
 							
+							@if ($the_picture = $profile->getPicture->reverse()->first())
+							<img src="uploads/profile/{{ $the_picture->filename }}" class="{{ $profile->getPicture->reverse()->first()->style }} {{ $profile->gender }}" alt="{{ $profile->first_name }} - {{ $profile->getPicture->reverse()->first()->title }}">
+							@endif
+							{{--
 							@if ($profile->picture)
 							
 							<img src="{{ asset('uploads/profile/'.$profile->picture) }}" alt="Perfil de {{ $profile->first_name }}">
@@ -26,6 +31,7 @@
 							<img src="uploads/profile/{{ $profile->getPicture->reverse()->first()->filename }}" class="{{ $profile->getPicture->reverse()->first()->style }}" alt="{{ $profile->first_name }} - {{ $profile->getPicture->reverse()->first()->title }}">
 							
 							@endif
+							--}}
 						</a>
 					</figure>
 					<div class="descripcion">
@@ -36,14 +42,25 @@
 						</div>
 						<div class="summer_love">
 							<div class="smm_lv_m">
-								<div class="love">32</div>
-								<div class="heart">
+								<div class="love">
+									{{ the_love($user, $the_picture->id) }}
+								</div>
+								<div id="heart_{{ $the_picture->id }}" class="heart" data-love='{{ json_encode(array( 
+									"profile_id" => $user->id,  
+									"profile_love" => $profile->id, 
+									"picture_id" => $the_picture->id,
+									"meta_value" => $the_picture->meta_value,
+								)) }}'>
 									<i id="love_{{ $profile->id }}" class="icon-heart"></i>
-									<!-- <i class="icon-heart girl"></i>	 -->
+									<!-- <i class="icon-heart love"></i> -->
 								</div>
 							</div>
 								
 						</div>
+								<small>
+								
+								</small>
+						
 					</div>
 				<!-- {{ $count++ }} -->
 				</div>
@@ -61,7 +78,33 @@
 <script>
 
 @section('script') 
-			$('.icon-heart')
+			$('.heart').click( function(e){
+				
+				// Obtenemos los datos
+				elementClick = e.currentTarget
+				id = elementClick.id;
+				love_id = id.substring(id.indexOf('_')+1, id.length);
+				// element_class = elementClick.attr('class');
+				heart_class = $("#heart_" + love_id).attr('data-love');
+				console.log(heart_class);
+				
+				$.ajax({
+					url: "{{ route('ajax_love') }}",
+					type: "POST",
+					data: { user: {{ $user->id }}, love: love_id, history: heart_class },
+					beforeSend: function() {
+						console.log('Se manda el ajax');
+					},
+					error: function(e) {
+						console.log(e.responseText);
+					},
+					success: function(e) {
+						console.log(e);
+					},
+				});
+				
+				// console.log({{ $user->id }} + ', ' + love_id);
+			});
 @stop
 
 </script>

@@ -43,7 +43,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::post('registro-foto-subir',['as' => 'signup_picture_up', 'uses' => 'SignupController@signupPictureUp']);
 	Route::get('registro-mandar-correo',['as' => 'signup_send_mail', 'uses' => 'SignupController@signupSendMail']);
 	
-	Route::post('ajax/modify/love',['as' => 'ajax_love', 'uses' => 'UserController@ajaxLove']);
+	Route::post('ajax/modify/love',['as' => 'ajax_love', 'uses' => 'AjaxController@love']);
 	
 	Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
 	
